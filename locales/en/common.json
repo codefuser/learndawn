@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Home",
+    "exams": "Exams",
+    "academics": "Academics",
+    "courses": "Courses",
+    "learningSystem": "Learning System",
+    "mentorship": "Mentorship",
+    "resources": "Resources",
+    "about": "About Us",
+    "contact": "Contact",
+    "login": "Sign In",
+    "signUp": "Get Started",
+    "dashboard": "Dashboard",
+    "adminPortal": "Admin Portal"
+  },
+  "hero": {
+    "badge": "Digital Learning Academy of India",
+    "headline": "Learn Today. Build Your Tomorrow.",
+    "subheading": "A dedicated digital learning academy for competitive exams, academics, skills, mentorship, and career guidance.",
+    "primaryCta": "Start Learning",
+    "secondaryCta": "Explore Exams",
+    "statsStudents": "50,000+ Enrolled Learners",
+    "statsSelections": "98.4% Syllabus Retention"
+  },
+  "common": {
+    "searchPlaceholder": "Search exams, subjects, chapters or courses... (Ctrl+K)",
+    "viewDetails": "View Details",
+    "enrollNow": "Enroll Now",
+    "bookSession": "Book Session",
+    "readMore": "Read More",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "comingSoon": "Coming Soon"
+  }
+}
