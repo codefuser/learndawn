@@ -508,6 +508,7 @@ ALTER TABLE public.resources ENABLE ROW LEVEL SECURITY;
 
 -- PROFILES
 CREATE POLICY "Users can read own profile" ON public.profiles FOR SELECT USING (auth.uid() = id OR public.is_admin());
+CREATE POLICY "Users can insert own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
 CREATE POLICY "Users can update own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
 
 -- ROLES & USER_ROLES
@@ -545,8 +546,13 @@ CREATE POLICY "Users manage own question bookmarks" ON public.question_bookmarks
 -- MENTORS & BOOKINGS
 CREATE POLICY "Public read active mentors" ON public.mentors FOR SELECT USING (is_available = true OR public.is_admin());
 CREATE POLICY "Public read mentor sessions" ON public.mentor_sessions FOR SELECT USING (is_active = true OR public.is_admin());
-CREATE POLICY "Users manage own mentor bookings" ON public.mentor_bookings FOR ALL USING (auth.uid() = user_id OR public.is_admin());
-CREATE POLICY "Users manage own counselling requests" ON public.counselling_sessions FOR ALL USING (auth.uid() = user_id OR public.is_admin());
+CREATE POLICY "Anyone can insert mentor bookings" ON public.mentor_bookings FOR INSERT WITH CHECK (true);
+CREATE POLICY "Users view own mentor bookings" ON public.mentor_bookings FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+CREATE POLICY "Users update own mentor bookings" ON public.mentor_bookings FOR UPDATE USING (auth.uid() = user_id OR public.is_admin());
+
+CREATE POLICY "Anyone can insert counselling requests" ON public.counselling_sessions FOR INSERT WITH CHECK (true);
+CREATE POLICY "Users view own counselling requests" ON public.counselling_sessions FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+CREATE POLICY "Users update own counselling requests" ON public.counselling_sessions FOR UPDATE USING (auth.uid() = user_id OR public.is_admin());
 
 -- NOTIFICATIONS & CONTACT
 CREATE POLICY "Users read own notifications" ON public.notifications FOR ALL USING (auth.uid() = user_id);

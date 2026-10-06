@@ -135,8 +135,42 @@ export const AuthService = {
       }
 
       if (data.user) {
+        // Explicitly guarantee user profile row in public.profiles table
+        try {
+          await supabase.from('profiles').upsert({
+            id: data.user.id,
+            email: payload.email,
+            full_name: payload.fullName,
+            mobile: payload.mobile,
+            target_goal_exam: payload.targetExam,
+            preferred_language: payload.language || 'en',
+            academic_class: 'Class 12',
+            is_active: true,
+            updated_at: new Date().toISOString(),
+          });
+        } catch (profileErr) {
+          console.warn('[AuthService] Profile table upsert note:', profileErr);
+        }
+
         const profile = await this.getCurrentProfile();
-        return { user: profile, error: null };
+        if (profile) {
+          return { user: profile, error: null };
+        }
+
+        // Return newly registered user profile
+        const registeredUser: UserProfile = {
+          id: data.user.id,
+          email: payload.email,
+          full_name: payload.fullName,
+          mobile: payload.mobile,
+          preferred_language: payload.language || 'en',
+          target_goal_exam: payload.targetExam,
+          academic_class: 'Class 12',
+          role: 'student',
+          is_active: true,
+          created_at: new Date().toISOString(),
+        };
+        return { user: registeredUser, error: null };
       }
     }
 

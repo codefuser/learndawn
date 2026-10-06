@@ -2,19 +2,42 @@
 
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/Toast';
-import { Compass, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { useAuth } from '@/lib/auth/context';
+import { CounsellingService } from '@/services/counselling';
+import { Compass, CheckCircle2, ArrowRight, ShieldCheck, Loader2 } from 'lucide-react';
 
 export default function StudentCounsellingPage() {
+  const { user } = useAuth();
   const [targetExam, setTargetExam] = useState('NEET UG');
   const [category, setCategory] = useState('College & Quota Guidance');
   const [notes, setNotes] = useState('');
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { showToast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    showToast('Your counselling booking request has been confirmed.', 'success');
+    setLoading(true);
+
+    try {
+      const res = await CounsellingService.requestCounselling({
+        userId: user?.id,
+        category,
+        targetExam,
+        notes,
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        showToast(res.message, 'success');
+      } else {
+        showToast(res.message, 'error');
+      }
+    } catch {
+      showToast('Unable to log counselling request. Please try again.', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,11 +59,14 @@ export default function StudentCounsellingPage() {
               Counselling Request Logged
             </h3>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              A certified admissions counselor has been assigned to your profile. You will receive an SMS and dashboard notification with your meeting link.
+              A certified admissions counselor has been assigned to your profile. Your request is securely recorded in the database.
             </p>
             <button
-              onClick={() => setSubmitted(false)}
-              className="mt-4 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold"
+              onClick={() => {
+                setSubmitted(false);
+                setNotes('');
+              }}
+              className="mt-4 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold cursor-pointer"
             >
               Book Another Session
             </button>
@@ -96,10 +122,20 @@ export default function StudentCounsellingPage() {
 
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-2 cursor-pointer"
+              disabled={loading}
+              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
             >
-              <span>Submit Counselling Request</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              {loading ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span>Recording Request...</span>
+                </>
+              ) : (
+                <>
+                  <span>Submit Counselling Request</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </>
+              )}
             </button>
           </form>
         )}

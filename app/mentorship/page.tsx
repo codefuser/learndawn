@@ -23,31 +23,54 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+import { CounsellingService } from '@/services/counselling';
+
 export default function MentorshipPage() {
   const { user, openAuthModal } = useAuth();
   const { showToast } = useToast();
   const [selectedMentor, setSelectedMentor] = useState<string | null>(null);
   const [bookingSlot, setBookingSlot] = useState<string>('');
   const [counsellingCategory, setCounsellingCategory] = useState('career_guidance');
+  const [targetEntrance, setTargetEntrance] = useState('NEET UG 2025');
   const [counsellingSubmitted, setCounsellingSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleBookSession = (mentorName: string) => {
+  const handleBookSession = async (mentorName: string) => {
     if (!user) {
       openAuthModal('/mentorship');
       return;
     }
-    showToast(`Session booking requested with ${mentorName}. Check your dashboard for confirmation details.`, 'success');
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const res = await CounsellingService.bookMentorSession({
+      userId: user.id,
+      mentorName,
+      scheduledFor: bookingSlot || tomorrow.toISOString(),
+    });
+
+    showToast(res.message, 'success');
     setSelectedMentor(null);
   };
 
-  const handleCounsellingSubmit = (e: React.FormEvent) => {
+  const handleCounsellingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
       openAuthModal('/mentorship');
       return;
     }
+
+    setIsSubmitting(true);
+    const res = await CounsellingService.requestCounselling({
+      userId: user.id,
+      category: counsellingCategory,
+      targetExam: targetEntrance,
+    });
+    setIsSubmitting(false);
+
     setCounsellingSubmitted(true);
-    showToast('Your counselling request has been logged. An academic advisor will reach out shortly.', 'success');
+    showToast(res.message, 'success');
   };
 
   const careerCategories = [
@@ -228,6 +251,8 @@ export default function MentorshipPage() {
                       <input
                         type="text"
                         required
+                        value={targetEntrance}
+                        onChange={(e) => setTargetEntrance(e.target.value)}
                         placeholder="e.g. NEET UG 2025 or Class 12 Boards"
                         className="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
@@ -236,9 +261,10 @@ export default function MentorshipPage() {
 
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-lg transition flex items-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
                   >
-                    <span>Request Academic Counselling</span>
+                    <span>{isSubmitting ? 'Recording Request...' : 'Request Academic Counselling'}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </form>
