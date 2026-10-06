@@ -452,7 +452,11 @@ BEGIN
         NEW.raw_user_meta_data->>'mobile',
         NEW.raw_user_meta_data->>'target_goal_exam',
         COALESCE(NEW.raw_user_meta_data->>'preferred_language', 'en')
-    );
+    )
+    ON CONFLICT (id) DO UPDATE SET
+        full_name = COALESCE(EXCLUDED.full_name, public.profiles.full_name),
+        mobile = COALESCE(EXCLUDED.mobile, public.profiles.mobile),
+        target_goal_exam = COALESCE(EXCLUDED.target_goal_exam, public.profiles.target_goal_exam);
 
     -- 2. Fetch student role id
     SELECT id INTO student_role_id FROM public.roles WHERE name = 'student' LIMIT 1;
@@ -460,7 +464,8 @@ BEGIN
     -- 3. Assign student role (NEVER admin from signup)
     IF student_role_id IS NOT NULL THEN
         INSERT INTO public.user_roles (user_id, role_id)
-        VALUES (NEW.id, student_role_id);
+        VALUES (NEW.id, student_role_id)
+        ON CONFLICT (user_id, role_id) DO NOTHING;
     END IF;
 
     RETURN NEW;
@@ -507,22 +512,45 @@ ALTER TABLE public.banners ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.resources ENABLE ROW LEVEL SECURITY;
 
 -- PROFILES
+DROP POLICY IF EXISTS "Users can read own profile" ON public.profiles;
 CREATE POLICY "Users can read own profile" ON public.profiles FOR SELECT USING (auth.uid() = id OR public.is_admin());
+
+DROP POLICY IF EXISTS "Users can insert own profile" ON public.profiles;
 CREATE POLICY "Users can insert own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Users can update own profile" ON public.profiles;
 CREATE POLICY "Users can update own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
 
 -- ROLES & USER_ROLES
+DROP POLICY IF EXISTS "Anyone can view roles" ON public.roles;
 CREATE POLICY "Anyone can view roles" ON public.roles FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Users can view own roles" ON public.user_roles;
 CREATE POLICY "Users can view own roles" ON public.user_roles FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+
+DROP POLICY IF EXISTS "Only admins manage roles" ON public.user_roles;
 CREATE POLICY "Only admins manage roles" ON public.user_roles FOR ALL USING (public.is_admin());
 
 -- PUBLIC READ CATALOGS
+DROP POLICY IF EXISTS "Public read active exams" ON public.exams;
 CREATE POLICY "Public read active exams" ON public.exams FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read active academic programs" ON public.academic_programs;
 CREATE POLICY "Public read active academic programs" ON public.academic_programs FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read active subjects" ON public.subjects;
 CREATE POLICY "Public read active subjects" ON public.subjects FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read active chapters" ON public.chapters;
 CREATE POLICY "Public read active chapters" ON public.chapters FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read published courses" ON public.courses;
 CREATE POLICY "Public read published courses" ON public.courses FOR SELECT USING (is_published = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read course sections" ON public.course_sections;
 CREATE POLICY "Public read course sections" ON public.course_sections FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Public read lessons preview or enrolled" ON public.lessons;
 CREATE POLICY "Public read lessons preview or enrolled" ON public.lessons FOR SELECT USING (
     is_preview_allowed = true 
     OR public.is_admin()
@@ -534,38 +562,74 @@ CREATE POLICY "Public read lessons preview or enrolled" ON public.lessons FOR SE
 );
 
 -- ENROLLMENTS
+DROP POLICY IF EXISTS "Users read own enrollments" ON public.enrollments;
 CREATE POLICY "Users read own enrollments" ON public.enrollments FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+
+DROP POLICY IF EXISTS "Users can enroll themselves" ON public.enrollments;
 CREATE POLICY "Users can enroll themselves" ON public.enrollments FOR INSERT WITH CHECK (auth.uid() = user_id);
 
 -- QUESTIONS & ATTEMPTS
+DROP POLICY IF EXISTS "Authenticated users view questions" ON public.questions;
 CREATE POLICY "Authenticated users view questions" ON public.questions FOR SELECT USING (auth.role() = 'authenticated' OR public.is_admin());
+
+DROP POLICY IF EXISTS "Authenticated users view question options" ON public.question_options;
 CREATE POLICY "Authenticated users view question options" ON public.question_options FOR SELECT USING (auth.role() = 'authenticated' OR public.is_admin());
+
+DROP POLICY IF EXISTS "Users manage own question attempts" ON public.question_attempts;
 CREATE POLICY "Users manage own question attempts" ON public.question_attempts FOR ALL USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Users manage own question bookmarks" ON public.question_bookmarks;
 CREATE POLICY "Users manage own question bookmarks" ON public.question_bookmarks FOR ALL USING (auth.uid() = user_id);
 
 -- MENTORS & BOOKINGS
+DROP POLICY IF EXISTS "Public read active mentors" ON public.mentors;
 CREATE POLICY "Public read active mentors" ON public.mentors FOR SELECT USING (is_available = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read mentor sessions" ON public.mentor_sessions;
 CREATE POLICY "Public read mentor sessions" ON public.mentor_sessions FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Anyone can insert mentor bookings" ON public.mentor_bookings;
 CREATE POLICY "Anyone can insert mentor bookings" ON public.mentor_bookings FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Users view own mentor bookings" ON public.mentor_bookings;
 CREATE POLICY "Users view own mentor bookings" ON public.mentor_bookings FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+
+DROP POLICY IF EXISTS "Users update own mentor bookings" ON public.mentor_bookings;
 CREATE POLICY "Users update own mentor bookings" ON public.mentor_bookings FOR UPDATE USING (auth.uid() = user_id OR public.is_admin());
 
+DROP POLICY IF EXISTS "Anyone can insert counselling requests" ON public.counselling_sessions;
 CREATE POLICY "Anyone can insert counselling requests" ON public.counselling_sessions FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Users view own counselling requests" ON public.counselling_sessions;
 CREATE POLICY "Users view own counselling requests" ON public.counselling_sessions FOR SELECT USING (auth.uid() = user_id OR public.is_admin());
+
+DROP POLICY IF EXISTS "Users update own counselling requests" ON public.counselling_sessions;
 CREATE POLICY "Users update own counselling requests" ON public.counselling_sessions FOR UPDATE USING (auth.uid() = user_id OR public.is_admin());
 
 -- NOTIFICATIONS & CONTACT
+DROP POLICY IF EXISTS "Users read own notifications" ON public.notifications;
 CREATE POLICY "Users read own notifications" ON public.notifications FOR ALL USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Public can insert contact message" ON public.contact_messages;
 CREATE POLICY "Public can insert contact message" ON public.contact_messages FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Admins read contact messages" ON public.contact_messages;
 CREATE POLICY "Admins read contact messages" ON public.contact_messages FOR SELECT USING (public.is_admin());
 
 -- AUDIT LOGS & ANALYTICS
+DROP POLICY IF EXISTS "Admins read audit logs" ON public.audit_logs;
 CREATE POLICY "Admins read audit logs" ON public.audit_logs FOR SELECT USING (public.is_admin());
+
+DROP POLICY IF EXISTS "System inserts analytics events" ON public.analytics_events;
 CREATE POLICY "System inserts analytics events" ON public.analytics_events FOR INSERT WITH CHECK (true);
 
 -- BANNERS & RESOURCES
+DROP POLICY IF EXISTS "Public read active banners" ON public.banners;
 CREATE POLICY "Public read active banners" ON public.banners FOR SELECT USING (is_active = true OR public.is_admin());
+
+DROP POLICY IF EXISTS "Public read resources" ON public.resources;
 CREATE POLICY "Public read resources" ON public.resources FOR SELECT USING (true);
+
 
 -- ==============================================================================
 -- 13. SEED INITIAL CURRICULUM DATA (IDEMPOTENT)
