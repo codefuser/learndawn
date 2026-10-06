@@ -566,3 +566,65 @@ CREATE POLICY "System inserts analytics events" ON public.analytics_events FOR I
 -- BANNERS & RESOURCES
 CREATE POLICY "Public read active banners" ON public.banners FOR SELECT USING (is_active = true OR public.is_admin());
 CREATE POLICY "Public read resources" ON public.resources FOR SELECT USING (true);
+
+-- ==============================================================================
+-- 13. SEED INITIAL CURRICULUM DATA (IDEMPOTENT)
+-- ==============================================================================
+
+-- Exams
+INSERT INTO public.exams (slug, title, short_code, category, tagline, description, eligibility, exam_pattern, syllabus_summary, badge_label, accent_color, display_order, is_active)
+VALUES
+('neet-ug', 'NEET UG', 'NEET', 'competitive', 'India''s premier entrance test for MBBS, BDS, and allied medical admissions.', 'Master Physics, Chemistry, Botany, and Zoology with structured NCERT deep-dives, simulated NTA test series, and mentorship from AIIMS rankers.', '10+2 with Physics, Chemistry, Biology/Biotechnology and English with 50% minimum aggregate.', '720 Total Marks, 200 Questions (180 to be attempted) across 4 subjects in pen-and-paper mode.', 'Complete NCERT Class 11 & 12 syllabus covering 97 high-weightage chapters.', 'Flagship Medical', '#0284C7', 1, true),
+('jee-main', 'JEE Main', 'JEE', 'competitive', 'Gateway to NITs, IIITs, CFTIs and eligibility for JEE Advanced.', 'Elevate mathematical rigor and conceptual physics intuition with problem-solving architecture designed by top IITian faculty.', '10+2 with Physics and Mathematics as compulsory subjects alongside Chemistry/Biotechnology.', '300 Total Marks, Computer Based Test (CBT) with single-choice and numerical value questions.', 'Rigorous engineering syllabus across Mechanics, Calculus, Organic Chemistry and Coordinate Geometry.', 'Top Engineering', '#2563EB', 2, true),
+('cuet', 'CUET (UG)', 'CUET', 'competitive', 'Standardized national admission test for Central and State Universities.', 'Comprehensive domain subject preparation combined with Section 1 Language mastery and Section 3 General Aptitude modules.', '10+2 or equivalent examination recognized by central/state education boards.', 'Hybrid Computer-Based MCQ examination segmented by Domain Subjects, Languages, and General Aptitude.', 'Class 12 core curriculum combined with quantitative reasoning, current affairs, and vocabulary.', 'University Access', '#7C3AED', 3, true),
+('aiims-nursing', 'AIIMS Nursing Entrance', 'AIIMS-N', 'paramedical', 'Premier national entrance test for B.Sc (Hons) Nursing across all AIIMS institutes.', 'Specialized medical nursing curriculum with dedicated focus on Biology, General Knowledge, Physics, Chemistry, and Clinical aptitude.', 'Female candidates passing 10+2 with Physics, Chemistry, Biology and English with min 55% marks.', '100 Marks CBT covering Biology (30), Chemistry (30), Physics (30), and General Knowledge (10).', 'Targeted medical foundation tailored specifically to the AIIMS nursing standard.', 'Healthcare Elite', '#059669', 4, true),
+('aiims-paramedical', 'AIIMS Paramedical Entrance', 'AIIMS-P', 'paramedical', 'Direct admission to Medical Technology, Radiography, OT, and Lab Sciences at AIIMS.', 'Build clinical and diagnostic technical foundations for high-demand paramedical career pathways in government healthcare systems.', '10+2 with PCB/PCM with minimum 50% aggregate.', '90 MCQs (90 minutes) across Physics, Chemistry, and Biology/Maths.', 'Applied medical science foundations and core Class 11-12 natural science concepts.', 'Clinical Sciences', '#D97706', 5, true)
+ON CONFLICT (slug) DO UPDATE SET 
+    title = EXCLUDED.title,
+    tagline = EXCLUDED.tagline,
+    description = EXCLUDED.description;
+
+-- Academic Programs
+INSERT INTO public.academic_programs (slug, title, board, class_level, description, badge_label, display_order, is_active)
+VALUES
+('cbse-class-9', 'CBSE Class 9 Foundation', 'CBSE', 'Class 9', 'Critical bridging year strengthening algebraic fundamentals, atomics, and cellular biology.', 'Early Starter', 1, true),
+('cbse-class-10', 'CBSE Class 10 Board Excellence', 'CBSE', 'Class 10', 'Board examination perfection combined with diagnostic foundation assessment for medical/engineering stream selection.', 'Board Special', 2, true),
+('cbse-class-11', 'CBSE Class 11 Science Stream', 'CBSE', 'Class 11', 'Bridging high-school basics with rigorous senior secondary Physics, Chemistry, Math, and Biology.', 'Bridge & Core', 3, true),
+('cbse-class-12', 'CBSE Class 12 Science Stream', 'CBSE', 'Class 12', 'Dual-target strategy: 95%+ Board exam mastery coupled with NEET/JEE entrance baseline synchronization.', 'Dual Target', 4, true),
+('state-board-class-11', 'State Board Class 11', 'State Board', 'Class 11', 'Bilingual delivery aligning State Board textbooks with national competitive entrance standards.', 'State Core', 5, true),
+('state-board-class-12', 'State Board Class 12', 'State Board', 'Class 12', 'Extensive textbook derivation mastery, blue-print question models, and previous decade paper drills.', 'State Finals', 6, true)
+ON CONFLICT (slug) DO UPDATE SET 
+    title = EXCLUDED.title,
+    description = EXCLUDED.description;
+
+-- Subjects
+INSERT INTO public.subjects (slug, name, icon_name, accent_color, description, display_order, is_active)
+VALUES
+('physics', 'Physics', 'Atom', '#2563EB', 'Mechanics, Electrodynamics, Optics, Thermodynamics, and Modern Physics.', 1, true),
+('chemistry', 'Chemistry', 'FlaskConical', '#059669', 'Physical Chemistry, Inorganic Coordination, and Organic Reaction Mechanisms.', 2, true),
+('biology', 'Biology (Botany & Zoology)', 'Dna', '#0284C7', 'Human Physiology, Genetics, Cell Biology, Ecology, and Plant Morphology.', 3, true),
+('mathematics', 'Mathematics', 'Calculator', '#7C3AED', 'Calculus, Vectors & 3D, Algebra, Trigonometry, and Probability.', 4, true),
+('general-aptitude', 'General & Nursing Aptitude', 'Compass', '#EA580C', 'Logical reasoning, quantitative aptitude, medical ethics, and general awareness.', 5, true)
+ON CONFLICT (slug) DO UPDATE SET 
+    name = EXCLUDED.name,
+    description = EXCLUDED.description;
+
+-- Courses
+INSERT INTO public.courses (slug, title, subtitle, description, instructor_name, instructor_bio, thumbnail_url, duration_hours, total_lectures, language, difficulty_level, price, original_price, is_featured, is_published, display_order)
+VALUES
+('neet-conqueror-2025', 'NEET Conqueror 360° Comprehensive Batch', 'Complete 2-year integrated syllabus mastery with daily live interactive sessions.', 'An all-inclusive program covering Botany, Zoology, Physics, and Chemistry. Includes 600+ hours of live classes, NCERT line-by-line annotations, 40 full-length simulated mock tests, and 1:1 mentorship from AIIMS doctors.', 'Dr. Aarav Sharma & Team', 'AIIMS New Delhi Gold Medalist and seasoned medical educator with 12+ years mentoring top 100 AIR rankers.', '/images/courses/neet-course.jpg', 480, 320, 'English & Hinglish', 'Comprehensive', 4999.00, 12999.00, true, true, 1),
+('jee-pinnacle-rankers', 'JEE Main Pinnacle: Concept to Advanced Problem Solving', 'Engineered for aspirants aiming for 99+ percentile in JEE Main.', 'Deep problem-solving sessions focusing on high-frequency questions, shortcut calculus techniques, coordinate geometry visualizations, and physical chemistry numerical speed tricks.', 'Prof. Rajesh K. Varma', 'IIT Bombay (B.Tech Mechanical), 14 years teaching JEE physics with 80+ selections in top 500 AIR.', '/images/courses/jee-course.jpg', 520, 350, 'English', 'Advanced', 5499.00, 14999.00, true, true, 2),
+('aiims-nursing-accelerator', 'AIIMS Nursing & Clinical Aptitude Accelerator', 'Dedicated batch targeting AIIMS B.Sc (Hons) Nursing admission.', 'Exhaustive preparation across NCERT Biology, core Chemistry, numerical physics shortcuts, general knowledge, and healthcare aptitude.', 'Dr. Meenakshi Sundaram & Faculty Team', 'MMC Chennai alumnus, seasoned medical training counselor with 9+ years healthcare exam mentorship.', '/images/courses/nursing-course.jpg', 320, 210, 'English & Bilingual', 'Targeted', 3999.00, 9999.00, true, true, 3),
+('cuet-domain-booster', 'CUET UG General Test & Domain Subjects Booster', 'Crack high percentiles across Section 1, Section 2 & General Test.', 'Complete subject mastery for science and commerce domain tests paired with quantitative tricks, logical reasoning, and language accuracy modules.', 'Prof. Vikram Malhotra & Senior Council', 'Former Delhi University visiting faculty, test prep veteran with 15+ years experience.', '/images/courses/cuet-course.jpg', 280, 190, 'English', 'Foundation', 3499.00, 7999.00, false, true, 4)
+ON CONFLICT (slug) DO UPDATE SET 
+    title = EXCLUDED.title,
+    price = EXCLUDED.price;
+
+-- Mentors
+INSERT INTO public.mentors (name, headline, expertise_tags, rating, total_sessions, bio, is_available)
+VALUES
+('Dr. Aarav Sharma', 'AIIMS New Delhi Rank 14 • MBBS Resident', ARRAY['Medical', 'NEET Ranker', 'Biology', 'Exam Psychology'], 4.98, 480, 'Mentored 3,200+ NEET aspirants. Specialist in NCERT biology retention techniques and stress management.', true),
+('Er. Pranav Rastogi', 'IIT Madras B.Tech CSE • AIR 112 JEE Advanced', ARRAY['JEE Advanced', 'Calculus', 'Physics', 'Revision Frameworks'], 4.95, 390, 'Guided 120+ students into IITs and NITs. Expert in problem decomposition and exam speed calibration.', true),
+('Dr. Meenakshi Sundaram', 'Senior Pediatrician & Clinical Guide • MMC Chennai', ARRAY['Clinical Aptitude', 'Nursing', 'AIIMS Strategy', 'Career Choice'], 4.96, 520, 'Dedicated advisor for medical and nursing entrance pathways with an emphasis on clinical fundamentals.', true),
+('Er. Shweta Nair', 'NIT Trichy • Senior Physics Master Faculty', ARRAY['Mechanics', 'Electrostatics', 'Problem Solving Speed'], 4.92, 310, 'Passionate physics educator known for converting weak students into confident numerical solvers.', true)
+ON CONFLICT DO NOTHING;

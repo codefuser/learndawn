@@ -132,9 +132,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const switchDemoRole = (role: UserRole) => {
-    const updated = AuthService.setDemoRole(role);
-    if (updated) {
-      setUser({ ...updated });
+    if (user) {
+      setUser({ ...user, role });
       if (role === 'admin') {
         router.push('/dashboard/admin');
       } else {

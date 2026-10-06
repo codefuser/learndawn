@@ -1,12 +1,9 @@
 import { getSupabaseClient, isSupabaseConfigured } from '@/lib/supabase/client';
 import { UserProfile, UserRole } from '@/types';
 
-// Mock session key for demo/offline preview mode
-const DEMO_AUTH_STORAGE_KEY = 'learndawn_demo_user';
-
 export const AuthService = {
   /**
-   * Get current session or active demo profile
+   * Get currently authenticated user profile directly from Supabase
    */
   async getCurrentProfile(): Promise<UserProfile | null> {
     const supabase = getSupabaseClient();
@@ -16,12 +13,12 @@ export const AuthService = {
         const { data: { session }, error } = await supabase.auth.getSession();
         if (error || !session) return null;
 
-        // Fetch profile
+        // Fetch user profile from database
         const { data: profile } = await supabase
           .from('profiles')
           .select(`*, user_roles(roles(name))`)
           .eq('id', session.user.id)
-          .single();
+          .maybeSingle();
 
         if (profile) {
           const userRole = (profile.user_roles?.[0]?.roles?.name as UserRole) || 'student';
@@ -33,25 +30,47 @@ export const AuthService = {
             avatar_url: profile.avatar_url,
             preferred_language: profile.preferred_language || 'en',
             target_goal_exam: profile.target_goal_exam,
+            academic_class: profile.academic_class,
             role: userRole,
             is_active: profile.is_active ?? true,
             created_at: profile.created_at,
           };
         }
-      } catch (err) {
-        console.error('Error fetching Supabase profile:', err);
-      }
-    }
 
-    // Fallback: Check local storage demo profile
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(DEMO_AUTH_STORAGE_KEY);
-      if (stored) {
+        // If profile row doesn't exist yet, construct from session user metadata
+        const userMeta = session.user.user_metadata || {};
+        const fallbackProfile: UserProfile = {
+          id: session.user.id,
+          email: session.user.email || '',
+          full_name: userMeta.full_name || 'Student',
+          mobile: userMeta.mobile || '',
+          preferred_language: userMeta.preferred_language || 'en',
+          target_goal_exam: userMeta.target_goal_exam || 'NEET UG',
+          academic_class: 'Class 12',
+          role: 'student',
+          is_active: true,
+          created_at: session.user.created_at || new Date().toISOString(),
+        };
+
+        // Self-heal: upsert row into public.profiles
         try {
-          return JSON.parse(stored) as UserProfile;
+          await supabase.from('profiles').upsert({
+            id: fallbackProfile.id,
+            email: fallbackProfile.email,
+            full_name: fallbackProfile.full_name,
+            mobile: fallbackProfile.mobile,
+            target_goal_exam: fallbackProfile.target_goal_exam,
+            preferred_language: fallbackProfile.preferred_language,
+            is_active: true,
+            updated_at: new Date().toISOString(),
+          });
         } catch {
-          return null;
+          // ignore
         }
+
+        return fallbackProfile;
+      } catch (err) {
+        console.error('[AuthService] Error fetching Supabase profile:', err);
       }
     }
 
@@ -59,52 +78,41 @@ export const AuthService = {
   },
 
   /**
-   * Sign In with Email & Password
+   * Sign In with Email & Password via Supabase Auth
    */
   async signIn(email: string, password?: string): Promise<{ user: UserProfile | null; error: string | null }> {
     const supabase = getSupabaseClient();
 
-    if (supabase && isSupabaseConfigured && password) {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        return { user: null, error: error.message };
-      }
-
-      if (data.user) {
-        const profile = await this.getCurrentProfile();
-        return { user: profile, error: null };
-      }
+    if (!supabase || !isSupabaseConfigured) {
+      return { 
+        user: null, 
+        error: 'Supabase database is not configured. Please verify your environment keys in Vercel or .env.local.' 
+      };
     }
 
-    // Demo / preview mode behavior
-    // If logging in as an admin demo or student demo
-    const isAdminEmail = email.toLowerCase().includes('admin');
-    const demoUser: UserProfile = {
-      id: isAdminEmail ? 'usr-demo-admin-01' : 'usr-demo-student-01',
+    if (!password) {
+      return { user: null, error: 'Password is required to authenticate.' };
+    }
+
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
-      full_name: isAdminEmail ? 'Administrator (Preview)' : 'Arjun Sharma',
-      mobile: '+91 98765 43210',
-      preferred_language: 'en',
-      target_goal_exam: 'NEET UG',
-      academic_class: 'Class 12',
-      role: isAdminEmail ? 'admin' : 'student',
-      is_active: true,
-      created_at: new Date().toISOString(),
-    };
+      password,
+    });
 
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(DEMO_AUTH_STORAGE_KEY, JSON.stringify(demoUser));
+    if (error) {
+      return { user: null, error: error.message };
     }
 
-    return { user: demoUser, error: null };
+    if (data.user) {
+      const profile = await this.getCurrentProfile();
+      return { user: profile, error: null };
+    }
+
+    return { user: null, error: 'Authentication failed. Please verify your credentials.' };
   },
 
   /**
-   * Sign Up
+   * Sign Up student in Supabase Auth and database tables
    */
   async signUp(payload: {
     fullName: string;
@@ -116,83 +124,90 @@ export const AuthService = {
   }): Promise<{ user: UserProfile | null; error: string | null }> {
     const supabase = getSupabaseClient();
 
-    if (supabase && isSupabaseConfigured && payload.password) {
-      const { data, error } = await supabase.auth.signUp({
-        email: payload.email,
-        password: payload.password,
-        options: {
-          data: {
-            full_name: payload.fullName,
-            mobile: payload.mobile,
-            target_goal_exam: payload.targetExam,
-            preferred_language: payload.language || 'en',
-          },
+    if (!supabase || !isSupabaseConfigured) {
+      return { 
+        user: null, 
+        error: 'Supabase database is not configured. Please verify your environment keys in Vercel or .env.local.' 
+      };
+    }
+
+    if (!payload.password || payload.password.length < 6) {
+      return { user: null, error: 'Password must be at least 6 characters long.' };
+    }
+
+    // 1. Create User in Supabase Auth
+    const { data, error } = await supabase.auth.signUp({
+      email: payload.email,
+      password: payload.password,
+      options: {
+        data: {
+          full_name: payload.fullName,
+          mobile: payload.mobile,
+          target_goal_exam: payload.targetExam,
+          preferred_language: payload.language || 'en',
         },
-      });
+      },
+    });
 
-      if (error) {
-        return { user: null, error: error.message };
-      }
+    if (error) {
+      return { user: null, error: error.message };
+    }
 
-      if (data.user) {
-        // Explicitly guarantee user profile row in public.profiles table
-        try {
-          await supabase.from('profiles').upsert({
-            id: data.user.id,
-            email: payload.email,
-            full_name: payload.fullName,
-            mobile: payload.mobile,
-            target_goal_exam: payload.targetExam,
-            preferred_language: payload.language || 'en',
-            academic_class: 'Class 12',
-            is_active: true,
-            updated_at: new Date().toISOString(),
-          });
-        } catch (profileErr) {
-          console.warn('[AuthService] Profile table upsert note:', profileErr);
-        }
-
-        const profile = await this.getCurrentProfile();
-        if (profile) {
-          return { user: profile, error: null };
-        }
-
-        // Return newly registered user profile
-        const registeredUser: UserProfile = {
+    if (data.user) {
+      // 2. Immediately upsert the student profile into public.profiles table
+      try {
+        await supabase.from('profiles').upsert({
           id: data.user.id,
           email: payload.email,
           full_name: payload.fullName,
           mobile: payload.mobile,
-          preferred_language: payload.language || 'en',
           target_goal_exam: payload.targetExam,
+          preferred_language: payload.language || 'en',
           academic_class: 'Class 12',
-          role: 'student',
           is_active: true,
-          created_at: new Date().toISOString(),
-        };
-        return { user: registeredUser, error: null };
+          updated_at: new Date().toISOString(),
+        });
+
+        // 3. Ensure student role is assigned
+        const { data: roleData } = await supabase
+          .from('roles')
+          .select('id')
+          .eq('name', 'student')
+          .maybeSingle();
+
+        if (roleData) {
+          await supabase.from('user_roles').upsert({
+            user_id: data.user.id,
+            role_id: roleData.id,
+          });
+        }
+      } catch (insertErr) {
+        console.warn('[AuthService] Profile database save note:', insertErr);
       }
+
+      const profile = await this.getCurrentProfile();
+      if (profile) {
+        return { user: profile, error: null };
+      }
+
+      // If email confirmation is pending on Supabase, return authenticated profile representation
+      const registeredUser: UserProfile = {
+        id: data.user.id,
+        email: payload.email,
+        full_name: payload.fullName,
+        mobile: payload.mobile,
+        preferred_language: payload.language || 'en',
+        target_goal_exam: payload.targetExam,
+        academic_class: 'Class 12',
+        role: 'student',
+        is_active: true,
+        created_at: new Date().toISOString(),
+      };
+
+      return { user: registeredUser, error: null };
     }
 
-    // Preview / demo mode sign up
-    const newStudent: UserProfile = {
-      id: `usr-${Date.now()}`,
-      email: payload.email,
-      full_name: payload.fullName,
-      mobile: payload.mobile,
-      preferred_language: payload.language || 'en',
-      target_goal_exam: payload.targetExam,
-      academic_class: 'Class 12',
-      role: 'student', // ALWAYS student on signup as per Section 53
-      is_active: true,
-      created_at: new Date().toISOString(),
-    };
-
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(DEMO_AUTH_STORAGE_KEY, JSON.stringify(newStudent));
-    }
-
-    return { user: newStudent, error: null };
+    return { user: null, error: 'Failed to create student account.' };
   },
 
   /**
@@ -203,42 +218,12 @@ export const AuthService = {
     if (supabase && isSupabaseConfigured) {
       await supabase.auth.signOut();
     }
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem(DEMO_AUTH_STORAGE_KEY);
-    }
   },
 
   /**
-   * Set Demo Role (for client testing between student and admin views)
+   * Demo role switcher (deprecated, kept for interface compatibility)
    */
   setDemoRole(role: UserRole) {
-    if (typeof window !== 'undefined') {
-      const current = localStorage.getItem(DEMO_AUTH_STORAGE_KEY);
-      let user: UserProfile;
-      if (current) {
-        user = JSON.parse(current);
-        user.role = role;
-        if (role === 'admin') {
-          user.full_name = 'Learndawn Admin (Executive)';
-        } else {
-          user.full_name = 'Arjun Sharma';
-        }
-      } else {
-        user = {
-          id: role === 'admin' ? 'usr-demo-admin-01' : 'usr-demo-student-01',
-          email: role === 'admin' ? 'admin@learndawn.in' : 'student@learndawn.in',
-          full_name: role === 'admin' ? 'Learndawn Admin (Executive)' : 'Arjun Sharma',
-          mobile: '+91 98765 43210',
-          preferred_language: 'en',
-          target_goal_exam: 'NEET UG',
-          role,
-          is_active: true,
-          created_at: new Date().toISOString(),
-        };
-      }
-      localStorage.setItem(DEMO_AUTH_STORAGE_KEY, JSON.stringify(user));
-      return user;
-    }
     return null;
   }
 };

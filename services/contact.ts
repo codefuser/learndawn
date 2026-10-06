@@ -4,25 +4,30 @@ import { ContactFormValues } from '@/types';
 export const ContactService = {
   async submitInquiry(payload: ContactFormValues): Promise<{ success: boolean; message: string }> {
     const supabase = getSupabaseClient();
-    if (supabase && isSupabaseConfigured) {
-      const { error } = await supabase.from('contact_messages').insert({
-        name: payload.name,
-        email: payload.email,
-        mobile: payload.mobile,
-        subject: payload.subject,
-        message: payload.message,
-      });
-
-      if (error) {
-        return { success: false, message: error.message };
-      }
-      return { success: true, message: 'Your message has been received. Our academic team will connect with you within 24 hours.' };
+    
+    if (!supabase || !isSupabaseConfigured) {
+      return { 
+        success: false, 
+        message: 'Database connection not configured. Please ensure Supabase keys are active.' 
+      };
     }
 
-    // In demo/preview mode: simulate realistic submission
-    return {
-      success: true,
-      message: 'Thank you! Your query has been logged and our admissions counsellors will contact you shortly.',
+    const { error } = await supabase.from('contact_messages').insert({
+      name: payload.name.trim(),
+      email: payload.email.trim(),
+      mobile: payload.mobile?.trim() || null,
+      subject: payload.subject?.trim() || 'General Admission & Goal Counselling',
+      message: payload.message.trim(),
+    });
+
+    if (error) {
+      console.error('[ContactService] Error inserting contact message:', error);
+      return { success: false, message: error.message };
+    }
+
+    return { 
+      success: true, 
+      message: 'Your inquiry has been successfully recorded in the database. Our academic team will connect within 24 hours.' 
     };
   }
 };

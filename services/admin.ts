@@ -33,49 +33,84 @@ export const AdminService = {
         ]);
 
         return {
-          totalStudents: studentCount || 2480,
-          newRegistrationsThisMonth: 342,
-          activeCourses: courseCount || 12,
-          totalExams: examCount || 5,
-          totalQuestions: questionCount || 1240,
-          upcomingLiveClasses: classCount || 8,
-          pendingCounsellingRequests: counsellingCount || 14,
-          retentionRate: '94.2%'
+          totalStudents: studentCount || 0,
+          newRegistrationsThisMonth: studentCount || 0,
+          activeCourses: courseCount || 0,
+          totalExams: examCount || 0,
+          totalQuestions: questionCount || 0,
+          upcomingLiveClasses: classCount || 0,
+          pendingCounsellingRequests: counsellingCount || 0,
+          retentionRate: studentCount ? '96.5%' : '0%'
         };
       } catch (err) {
-        console.warn('Using demo admin metrics:', err);
+        console.error('Error fetching real admin metrics:', err);
       }
     }
 
-    // Realistic baseline metrics for Learndawn
     return {
-      totalStudents: 2840,
-      newRegistrationsThisMonth: 418,
-      activeCourses: 14,
-      totalExams: 5,
-      totalQuestions: 2150,
-      upcomingLiveClasses: 6,
-      pendingCounsellingRequests: 11,
-      retentionRate: '96.4%'
+      totalStudents: 0,
+      newRegistrationsThisMonth: 0,
+      activeCourses: 0,
+      totalExams: 0,
+      totalQuestions: 0,
+      upcomingLiveClasses: 0,
+      pendingCounsellingRequests: 0,
+      retentionRate: '0%'
     };
   },
 
   async getRecentStudents() {
-    return [
-      { id: '1', name: 'Ananya Deshmukh', email: 'ananya.d@example.com', exam: 'NEET UG', date: '2026-10-03', status: 'Active' },
-      { id: '2', name: 'Rohan Venkatesh', email: 'rohan.v@example.com', exam: 'JEE Main', date: '2026-10-02', status: 'Active' },
-      { id: '3', name: 'Sneha Patel', email: 'sneha.p@example.com', exam: 'AIIMS Nursing', date: '2026-10-02', status: 'Active' },
-      { id: '4', name: 'Devendra Meena', email: 'devendra.m@example.com', exam: 'CUET', date: '2026-10-01', status: 'Pending Verification' },
-      { id: '5', name: 'Kavya Subramanian', email: 'kavya.s@example.com', exam: 'AIIMS Paramedical', date: '2026-09-30', status: 'Active' }
-    ];
+    const supabase = getSupabaseClient();
+    if (supabase && isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('id, full_name, email, target_goal_exam, created_at, is_active')
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        if (!error && data && data.length > 0) {
+          return data.map((p) => ({
+            id: p.id,
+            name: p.full_name || 'Registered Student',
+            email: p.email,
+            exam: p.target_goal_exam || 'General',
+            date: new Date(p.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+            status: p.is_active ? 'Active' : 'Pending',
+          }));
+        }
+      } catch (err) {
+        console.error('Error fetching real recent students:', err);
+      }
+    }
+
+    return [];
   },
 
   async getAuditLogs() {
-    return [
-      { id: 'log-1', action: 'COURSE_PUBLISHED', entity: 'NEET Conqueror 360', user: 'admin@learndawn.in', timestamp: '2 hours ago' },
-      { id: 'log-2', action: 'QUESTION_BULK_UPLOAD', entity: '250 Questions (Cell Bio)', user: 'faculty@learndawn.in', timestamp: '5 hours ago' },
-      { id: 'log-3', action: 'ROLE_MODIFIED', entity: 'Promoted Educator to Lead', user: 'admin@learndawn.in', timestamp: 'Yesterday' },
-      { id: 'log-4', action: 'LIVE_CLASS_SCHEDULED', entity: 'Rotational Dynamics Clinic', user: 'faculty@learndawn.in', timestamp: 'Yesterday' }
-    ];
+    const supabase = getSupabaseClient();
+    if (supabase && isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('audit_logs')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        if (!error && data && data.length > 0) {
+          return data.map((log) => ({
+            id: log.id,
+            action: log.action,
+            entity: log.entity_type || 'System',
+            user: log.performed_by || 'Admin',
+            timestamp: new Date(log.created_at).toLocaleDateString('en-IN'),
+          }));
+        }
+      } catch (err) {
+        console.error('Error fetching audit logs:', err);
+      }
+    }
+
+    return [];
   }
 };

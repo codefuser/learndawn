@@ -27,7 +27,7 @@ import {
 
 export default function StudentDashboardPage() {
   const { user } = useAuth();
-  const studentName = user?.full_name?.split(' ')[0] || 'Arjun';
+  const studentName = user?.full_name?.split(' ')[0] || 'Scholar';
 
   return (
     <div className="space-y-8 animate-in fade-in duration-200">

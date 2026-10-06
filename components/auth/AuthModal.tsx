@@ -31,7 +31,7 @@ export const AuthModal: React.FC = () => {
     try {
       if (mode === 'signin') {
         const identifier = authMethod === 'email' ? email : `${mobile}@learner.learndawn.in`;
-        const res = await signIn(identifier, password || 'studentPass123');
+        const res = await signIn(identifier, password);
         if (res.success) {
           showToast('Welcome back to Learndawn India!', 'success');
         } else {
@@ -43,7 +43,7 @@ export const AuthModal: React.FC = () => {
           email: authMethod === 'email' ? email : `${mobile}@learner.learndawn.in`,
           mobile,
           targetExam,
-          password: password || 'studentPass123',
+          password,
         });
         if (res.success) {
           showToast('Account created successfully! Welcome aboard.', 'success');
