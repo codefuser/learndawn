@@ -6,6 +6,7 @@ import { AuthProvider } from '@/lib/auth/context';
 import { ToastProvider } from '@/components/ui/Toast';
 import { AuthModal } from '@/components/auth/AuthModal';
 import { SearchProvider } from '@/components/search/SearchContext';
+import { ThemeProvider } from '@/lib/theme/context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,11 @@ export const metadata: Metadata = {
     siteName: 'Learndawn India',
     type: 'website',
   },
+  icons: {
+    icon: '/logos/learndawn-emblem.png',
+    shortcut: '/logos/learndawn-emblem.png',
+    apple: '/logos/learndawn-emblem.png',
+  },
 };
 
 export default function RootLayout({
@@ -42,23 +48,25 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
       suppressHydrationWarning
     >
       <body
         className="min-h-full flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100"
         suppressHydrationWarning
       >
-        <I18nProvider>
-          <AuthProvider>
-            <ToastProvider>
-              <SearchProvider>
-                {children}
-                <AuthModal />
-              </SearchProvider>
-            </ToastProvider>
-          </AuthProvider>
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <AuthProvider>
+              <ToastProvider>
+                <SearchProvider>
+                  {children}
+                  <AuthModal />
+                </SearchProvider>
+              </ToastProvider>
+            </AuthProvider>
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -6,11 +6,14 @@ import { usePathname } from 'next/navigation';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuth } from '@/lib/auth/context';
 import { useLanguage, SupportedLanguage } from '@/lib/i18n/context';
+import { useTheme } from '@/lib/theme/context';
 import { 
   Menu, 
   X, 
   ChevronDown, 
   Globe, 
+  Sun,
+  Moon,
   User, 
   LayoutDashboard, 
   ShieldAlert, 
@@ -31,6 +34,7 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   
   // Navigation Dropdown states for Desktop / Laptop
   const [programsOpen, setProgramsOpen] = useState(false);
@@ -350,8 +354,23 @@ export const Navbar: React.FC = () => {
 
           </nav>
 
-          {/* Right Action Stack: Language, Profile/Auth */}
-          <div className="flex items-center gap-2 xl:gap-3 shrink-0">
+          {/* Right Action Stack: Language, Theme Toggle, Profile/Auth */}
+          <div className="flex items-center gap-1.5 sm:gap-2 xl:gap-3 shrink-0">
+
+            {/* Dark / Light Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition border border-transparent hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer flex items-center justify-center shrink-0"
+              aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform" />
+              ) : (
+                <Moon className="w-4 h-4 text-blue-600 hover:-rotate-12 transition-transform" />
+              )}
+            </button>
 
             {/* Language Switcher */}
             <div className="relative shrink-0">
@@ -582,6 +601,28 @@ export const Navbar: React.FC = () => {
                 Contact & Admissions
               </Link>
             </nav>
+
+            {/* Mobile Theme Toggle */}
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Interface Theme</span>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <Sun className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Light Mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Dark Mode</span>
+                  </>
+                )}
+              </button>
+            </div>
 
             {!user && (
               <div className="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-3">
