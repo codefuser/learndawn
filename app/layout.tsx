@@ -5,6 +5,7 @@ import { I18nProvider } from '@/lib/i18n/context';
 import { AuthProvider } from '@/lib/auth/context';
 import { ToastProvider } from '@/components/ui/Toast';
 import { AuthModal } from '@/components/auth/AuthModal';
+import { SearchProvider } from '@/components/search/SearchContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -51,8 +52,10 @@ export default function RootLayout({
         <I18nProvider>
           <AuthProvider>
             <ToastProvider>
-              {children}
-              <AuthModal />
+              <SearchProvider>
+                {children}
+                <AuthModal />
+              </SearchProvider>
             </ToastProvider>
           </AuthProvider>
         </I18nProvider>

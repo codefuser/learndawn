@@ -17,12 +17,15 @@ import {
   ShieldCheck,
   Stethoscope,
   Cpu,
-  Award
+  Award,
+  Search
 } from 'lucide-react';
+import { useSearch } from '@/components/search/SearchContext';
 
 export const Hero: React.FC = () => {
   const { openAuthModal, user } = useAuth();
   const { t } = useLanguage();
+  const { openSearch } = useSearch();
 
   return (
     <section className="relative overflow-hidden min-h-[calc(100vh-4.25rem)] lg:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between py-6 sm:py-8 lg:py-8 xl:py-10 bg-gradient-to-b from-blue-950/20 via-slate-950 to-slate-950 text-slate-100">
@@ -32,15 +35,39 @@ export const Hero: React.FC = () => {
 
       {/* Main Expansive Content Container */}
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 my-auto">
+        {/* Top Header Row in Hero: Accreditation Badge (Left) & Prominent Search Bar (Top Right Corner) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8 pt-1">
+          {/* National Accreditation Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-semibold shadow-sm self-start">
+            <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+            <span>Digital Learning Academy of India • Synchronized CBT Ecosystem</span>
+          </div>
+
+          {/* Hero Section Top Right Corner Search Bar */}
+          <button
+            type="button"
+            onClick={openSearch}
+            className="group flex items-center justify-between gap-3 px-4 py-2 sm:py-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 hover:border-blue-500/60 shadow-lg shadow-black/30 text-slate-300 hover:text-white transition-all cursor-pointer w-full sm:w-auto sm:min-w-[320px] md:min-w-[360px] backdrop-blur-md"
+            aria-label="Open search engine"
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="p-1 rounded-lg bg-blue-500/10 text-blue-400 group-hover:bg-blue-500/20 group-hover:scale-105 transition">
+                <Search className="w-4 h-4" />
+              </div>
+              <span className="text-xs sm:text-sm text-slate-400 group-hover:text-slate-200 transition">
+                Search exams, courses, notes...
+              </span>
+            </div>
+            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-800/90 border border-slate-700 text-slate-400 group-hover:text-blue-300 group-hover:border-blue-500/50 transition">
+              Ctrl+K
+            </kbd>
+          </button>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           
           {/* Left Column: Bold Hero Headlines, CTAs & Accreditation */}
           <div className="lg:col-span-7 space-y-5 lg:space-y-6 text-left">
-            {/* National Accreditation Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-blue-300 text-xs font-semibold shadow-sm">
-              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>Digital Learning Academy of India • Synchronized CBT Ecosystem</span>
-            </div>
 
             {/* Main Grand Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] 2xl:text-[4.25rem] font-black text-white tracking-tight leading-[1.08]">

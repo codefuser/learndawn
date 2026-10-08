@@ -7,7 +7,6 @@ import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuth } from '@/lib/auth/context';
 import { useLanguage, SupportedLanguage } from '@/lib/i18n/context';
 import { 
-  Search, 
   Menu, 
   X, 
   ChevronDown, 
@@ -26,12 +25,10 @@ import {
   Stethoscope,
   Cpu
 } from 'lucide-react';
-import { GlobalSearchModal } from '@/components/search/GlobalSearchModal';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   
@@ -111,14 +108,14 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop & Laptop Navigation (Visible on lg: 1024px+ screens) */}
-          <nav className="hidden lg:flex items-center justify-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium flex-1 mx-4">
+          <nav className="hidden lg:flex items-center justify-center gap-1 xl:gap-2 text-xs xl:text-sm font-semibold flex-1 mx-4">
             
             {/* Home */}
             <Link
               href="/"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname === '/'
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -136,7 +133,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setProgramsOpen(!programsOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isProgramsActive || programsOpen
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -227,7 +224,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setLearningOpen(!learningOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isLearningActive || learningOpen
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -285,7 +282,7 @@ export const Navbar: React.FC = () => {
               href="/mentorship"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/mentorship')
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -297,7 +294,7 @@ export const Navbar: React.FC = () => {
               href="/resources"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/resources')
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -315,7 +312,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setAboutOpen(!aboutOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isAboutActive || aboutOpen
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
+                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -353,21 +350,8 @@ export const Navbar: React.FC = () => {
 
           </nav>
 
-          {/* Right Action Stack: Search, Language, Profile/Auth */}
-          <div className="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0">
-            
-            {/* Quick Search Button */}
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 xl:px-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700/80 text-slate-500 dark:text-slate-400 text-xs transition border border-slate-200/60 dark:border-slate-700/60 cursor-pointer shrink-0 whitespace-nowrap"
-              aria-label="Open search engine"
-            >
-              <Search className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden xl:inline">Search...</span>
-              <kbd className="hidden 2xl:inline text-[10px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-400">
-                Ctrl+K
-              </kbd>
-            </button>
+          {/* Right Action Stack: Language, Profile/Auth */}
+          <div className="flex items-center gap-2 xl:gap-3 shrink-0">
 
             {/* Language Switcher */}
             <div className="relative shrink-0">
@@ -620,9 +604,6 @@ export const Navbar: React.FC = () => {
           </div>
         )}
       </header>
-
-      {/* Global Search Engine Modal */}
-      <GlobalSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 };
