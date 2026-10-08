@@ -37,19 +37,19 @@ export default function AdminMaterialsPage() {
               <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-900">
                 {mat.material_type.replace('_', ' ')}
               </span>
-              <span className="text-emerald-400 font-semibold">{mat.download_count} Downloads</span>
+              <span className="text-red-400 font-semibold">{mat.download_count} Downloads</span>
             </div>
 
             <h3 className="text-base font-bold text-white">{mat.title}</h3>
             <p className="text-xs text-slate-400">{mat.subject_name} • {mat.file_size} • {mat.page_count} Pages</p>
 
             <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-              <span className="flex items-center gap-1 text-[11px] text-emerald-400">
+              <span className="flex items-center gap-1 text-[11px] text-red-400">
                 <ShieldCheck className="w-3.5 h-3.5" /> Gated Storage
               </span>
               <button
                 onClick={() => showToast(`Regenerating signed URL for ${mat.title}`, 'info')}
-                className="hover:underline text-blue-400"
+                className="hover:underline text-red-400"
               >
                 Inspect Token
               </button>

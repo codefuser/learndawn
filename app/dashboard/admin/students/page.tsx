@@ -60,7 +60,7 @@ export default function AdminStudentsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-2.5">
-            <Users className="w-6 h-6 text-blue-400" />
+            <Users className="w-6 h-6 text-red-400" />
             <span>Student Roster Management</span>
           </h1>
           <p className="text-xs text-slate-400">
@@ -93,7 +93,7 @@ export default function AdminStudentsPage() {
       <div className="rounded-3xl bg-slate-950 border border-slate-800 shadow-xl overflow-hidden">
         {loading ? (
           <div className="p-12 text-center text-xs text-slate-500">
-            <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+            <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
             <span>Loading registered students from database...</span>
           </div>
         ) : filtered.length === 0 ? (
@@ -129,12 +129,12 @@ export default function AdminStudentsPage() {
                     <td className="py-3 px-4 text-slate-400 font-mono">
                       {st.mobile || '—'}
                     </td>
-                    <td className="py-3 px-4 font-medium text-blue-400">{st.exam}</td>
+                    <td className="py-3 px-4 font-medium text-red-400">{st.exam}</td>
                     <td className="py-3 px-4 text-slate-400">{st.date}</td>
                     <td className="py-3 px-4">
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${
                         st.status.includes('Active')
-                          ? 'bg-emerald-950/60 text-emerald-400 border-emerald-900'
+                          ? 'bg-red-950/60 text-red-400 border-red-900'
                           : 'bg-rose-950/60 text-rose-400 border-rose-900'
                       }`}>
                         {st.status}

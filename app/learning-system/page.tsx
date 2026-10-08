@@ -22,12 +22,12 @@ export const metadata = {
 export default function LearningSystemPage() {
   const systemFeatures = [
     {
-      icon: <Video className="w-6 h-6 text-blue-500" />,
+      icon: <Video className="w-6 h-6 text-red-500" />,
       title: 'Adaptive Video Streaming',
       desc: 'Smart bitrate switching ensures buffer-free lectures even on low-speed 3G/4G connections across rural and semi-urban India.',
     },
     {
-      icon: <FileText className="w-6 h-6 text-emerald-500" />,
+      icon: <FileText className="w-6 h-6 text-red-500" />,
       title: 'Synchronized Smart Notes',
       desc: 'Read annotated formulas, diagram callouts, and instructor whiteboard snapshots in real-time alongside playback.',
     },
@@ -48,9 +48,9 @@ export default function LearningSystemPage() {
       <Navbar />
 
       <main className="flex-1 pb-20">
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
+        <section className="py-14 sm:py-20 bg-gradient-to-b from-red-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
           <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               <span>Technology & Pedagogy</span>
             </span>

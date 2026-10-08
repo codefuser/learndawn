@@ -83,7 +83,7 @@ export default function AdminDashboardLayout({
             <Link href="/" className="hover:text-white transition">
               ← Return Home
             </Link>
-            <Link href="/dashboard/student" className="text-blue-400 hover:underline">
+            <Link href="/dashboard/student" className="text-red-400 hover:underline">
               Student Dashboard →
             </Link>
           </div>
@@ -181,7 +181,7 @@ export default function AdminDashboardLayout({
           {/* Quick Switch to Student for Review */}
           <button
             onClick={() => switchDemoRole('student')}
-            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-blue-950/60 border border-blue-900/60 text-blue-300 text-xs font-semibold hover:bg-blue-900/80 transition"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-red-950/60 border border-red-900/60 text-red-300 text-xs font-semibold hover:bg-red-900/80 transition"
           >
             <span>Switch to Student View</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -206,7 +206,7 @@ export default function AdminDashboardLayout({
           </div>
 
           <div className="flex items-center gap-4 text-xs">
-            <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+            <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-mono">
               ● Supabase PostgreSQL Online
             </span>
             <Link href="/" className="text-slate-400 hover:text-white transition">

@@ -56,7 +56,7 @@ export default function StudentDashboardLayout({
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-red-600 border-t-transparent rounded-full animate-spin" />
           <p className="text-xs font-semibold text-slate-500">Loading student dashboard...</p>
         </div>
       </div>
@@ -68,12 +68,12 @@ export default function StudentDashboardLayout({
     return (
       <div className="min-h-screen flex items-center justify-center p-6 bg-slate-950 text-white">
         <div className="max-w-md w-full p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl text-center space-y-6">
-          <div className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center mx-auto">
+          <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center mx-auto">
             <GraduationCap className="w-8 h-8" />
           </div>
 
           <div className="space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
               Authentication Required
             </span>
             <h1 className="text-2xl font-black tracking-tight text-white">
@@ -87,7 +87,7 @@ export default function StudentDashboardLayout({
           <div className="pt-2 space-y-3">
             <button
               onClick={() => openAuthModal('/dashboard/student')}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
             >
               <UserCheck className="w-4 h-4" />
               <span>Sign In with Registered Account</span>
@@ -147,14 +147,14 @@ export default function StudentDashboardLayout({
 
           {/* Student Profile Card */}
           <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center shrink-0 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-red-600 text-white font-bold flex items-center justify-center shrink-0 shadow-md">
               {user?.full_name?.charAt(0) || 'S'}
             </div>
             <div className="min-w-0 flex-1">
               <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                 {user?.full_name || 'Arjun Sharma'}
               </h4>
-              <p className="text-[11px] text-blue-600 dark:text-blue-400 font-medium truncate">
+              <p className="text-[11px] text-red-600 dark:text-red-400 font-medium truncate">
                 Goal: {user?.target_goal_exam || 'NEET UG 2025'}
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function StudentDashboardLayout({
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-sm'
+                      ? 'bg-red-600 text-white shadow-sm'
                       : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
@@ -235,7 +235,7 @@ export default function StudentDashboardLayout({
 
             <Link
               href="/"
-              className="text-xs font-semibold text-slate-500 hover:text-blue-600 transition"
+              className="text-xs font-semibold text-slate-500 hover:text-red-600 transition"
             >
               Public Website ↗
             </Link>

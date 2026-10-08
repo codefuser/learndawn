@@ -4,13 +4,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #000000;
 }
 
 html.dark,
 .dark {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -55,7 +55,7 @@ body.dark *,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.6);
+  background: rgba(239, 68, 68, 0.6);
 }
 
 /* Dark Mode Scrollbar Styling */
@@ -66,5 +66,5 @@ html.dark ::-webkit-scrollbar-thumb {
 
 .dark ::-webkit-scrollbar-thumb:hover,
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(96, 165, 250, 0.7);
+  background: rgba(248, 113, 113, 0.7);
 }

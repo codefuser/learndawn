@@ -38,11 +38,11 @@ export default function AdminResourcesPage() {
             </span>
             <h3 className="text-base font-bold text-white">{item.title}</h3>
             <p className="text-xs text-slate-400">{item.subject_name} • {item.page_count} Pages</p>
-            <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-emerald-400">
+            <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-red-400">
               <span>Published Live</span>
               <button
                 onClick={() => showToast(`Modifying ${item.title}`, 'info')}
-                className="text-blue-400 hover:underline"
+                className="text-red-400 hover:underline"
               >
                 Edit Content
               </button>

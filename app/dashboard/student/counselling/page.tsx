@@ -54,7 +54,7 @@ export default function StudentCounsellingPage() {
       <div className="max-w-2xl bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
         {submitted ? (
           <div className="py-8 text-center space-y-3">
-            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto" />
+            <CheckCircle2 className="w-12 h-12 text-red-500 mx-auto" />
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">
               Counselling Request Logged
             </h3>
@@ -80,7 +80,7 @@ export default function StudentCounsellingPage() {
               <select
                 value={targetExam}
                 onChange={(e) => setTargetExam(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="NEET UG">NEET UG (Medical Admissions)</option>
                 <option value="JEE Main">JEE Main / JoSAA Choice Filling</option>
@@ -97,7 +97,7 @@ export default function StudentCounsellingPage() {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="College & Quota Guidance">College & Quota Guidance (State vs AIQ)</option>
                 <option value="Preparation Strategy & Drop Year Planning">Preparation Strategy & Drop Year Planning</option>
@@ -116,14 +116,14 @@ export default function StudentCounsellingPage() {
                 placeholder="Share your current score range, state domicile, or queries you wish to discuss..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
+              className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
             >
               {loading ? (
                 <>

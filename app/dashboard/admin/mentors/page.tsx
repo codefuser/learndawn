@@ -46,10 +46,10 @@ export default function AdminMentorsPage() {
             <p className="text-xs text-slate-400 leading-relaxed">{mentor.headline}</p>
 
             <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500">
-              <span className="text-emerald-400 font-semibold">● Verified Faculty</span>
+              <span className="text-red-400 font-semibold">● Verified Faculty</span>
               <button
                 onClick={() => showToast(`Opening schedule manager for ${mentor.name}`, 'info')}
-                className="hover:underline text-blue-400"
+                className="hover:underline text-red-400"
               >
                 Manage Slots
               </button>

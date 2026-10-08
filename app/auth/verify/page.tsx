@@ -62,7 +62,7 @@ export default function VerifyPage() {
                   maxLength={1}
                   value={digit}
                   onChange={(e) => handleOtpChange(e.target.value, idx)}
-                  className="w-12 h-14 text-center font-black text-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-12 h-14 text-center font-black text-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               ))}
             </div>
@@ -70,7 +70,7 @@ export default function VerifyPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? <span>Verifying...</span> : <span>Confirm & Open Dashboard</span>}
             </button>
@@ -81,7 +81,7 @@ export default function VerifyPage() {
             <button
               type="button"
               onClick={() => showToast('A fresh OTP has been dispatched to your number.', 'info')}
-              className="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1"
+              className="text-red-600 dark:text-red-400 font-semibold hover:underline flex items-center gap-1"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Resend OTP</span>

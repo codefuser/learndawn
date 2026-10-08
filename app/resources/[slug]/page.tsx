@@ -71,7 +71,7 @@ export default async function ResourceDetailPage({
               </div>
               <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <span className="text-xs text-slate-400 block">Downloads</span>
-                <span className="text-base font-bold text-emerald-600">{material.download_count.toLocaleString()}</span>
+                <span className="text-base font-bold text-red-600">{material.download_count.toLocaleString()}</span>
               </div>
             </div>
 
@@ -79,15 +79,15 @@ export default async function ResourceDetailPage({
               <h4 className="font-bold text-slate-900 dark:text-white">Document Inclusions:</h4>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-red-500 shrink-0" />
                   <span>Line-by-line NCERT statement mapping</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-red-500 shrink-0" />
                   <span>High-frequency formula quick reference table</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-red-500 shrink-0" />
                   <span>Exemplar diagrams with labeled anatomical and physical markers</span>
                 </li>
               </ul>
@@ -95,7 +95,7 @@ export default async function ResourceDetailPage({
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-xs text-slate-500">
-                <ShieldCheck className="w-4 h-4 text-blue-500" />
+                <ShieldCheck className="w-4 h-4 text-red-500" />
                 <span>Protected by Learndawn Verified Academic Security</span>
               </div>
               <Link

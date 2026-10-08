@@ -28,17 +28,17 @@ export const Hero: React.FC = () => {
   const { openSearch } = useSearch();
 
   return (
-    <section className="relative overflow-hidden min-h-[calc(100vh-4.25rem)] lg:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between py-6 sm:py-8 lg:py-8 xl:py-10 bg-gradient-to-b from-blue-50/60 via-slate-50 to-white dark:from-blue-950/20 dark:via-slate-950 dark:to-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <section className="relative overflow-hidden min-h-[calc(100vh-4.25rem)] lg:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between py-6 sm:py-8 lg:py-8 xl:py-10 bg-gradient-to-b from-red-50/60 via-slate-50 to-white dark:from-red-950/20 dark:via-slate-950 dark:to-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       {/* Background Dawn Radiant Atmospheric Glows */}
-      <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-blue-400/10 via-indigo-400/5 to-transparent dark:from-blue-600/15 dark:via-indigo-600/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/4 right-0 w-[600px] h-[500px] bg-gradient-to-bl from-amber-400/10 via-blue-400/5 to-transparent dark:from-amber-500/10 dark:via-blue-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-br from-red-400/10 via-red-400/5 to-transparent dark:from-red-600/15 dark:via-red-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[600px] h-[500px] bg-gradient-to-bl from-amber-400/10 via-red-400/5 to-transparent dark:from-amber-500/10 dark:via-red-500/10 blur-3xl pointer-events-none" />
 
       {/* Main Expansive Content Container */}
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 my-auto">
         {/* Top Header Row in Hero: Accreditation Badge (Left) & Prominent Search Bar (Top Right Corner) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8 pt-1">
           {/* National Accreditation Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-500/30 text-blue-700 dark:text-blue-300 text-xs font-semibold shadow-sm self-start">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-50/90 dark:bg-red-950/80 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-300 text-xs font-semibold shadow-sm self-start">
             <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400 shrink-0" />
             <span>Digital Learning Academy of India • Synchronized CBT Ecosystem</span>
           </div>
@@ -47,18 +47,18 @@ export const Hero: React.FC = () => {
           <button
             type="button"
             onClick={openSearch}
-            className="group flex items-center justify-between gap-3 px-4 py-2 sm:py-2.5 rounded-2xl bg-white/95 dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-850 border border-slate-200/90 dark:border-slate-700/80 hover:border-blue-400 dark:hover:border-blue-500/60 shadow-lg shadow-slate-200/50 dark:shadow-black/30 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer w-full sm:w-auto sm:min-w-[320px] md:min-w-[360px] backdrop-blur-md"
+            className="group flex items-center justify-between gap-3 px-4 py-2 sm:py-2.5 rounded-2xl bg-white/95 dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-850 border border-slate-200/90 dark:border-slate-700/80 hover:border-red-400 dark:hover:border-red-500/60 shadow-lg shadow-slate-200/50 dark:shadow-black/30 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer w-full sm:w-auto sm:min-w-[320px] md:min-w-[360px] backdrop-blur-md"
             aria-label="Open search engine"
           >
             <div className="flex items-center gap-2.5">
-              <div className="p-1 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 group-hover:bg-blue-500/20 group-hover:scale-105 transition">
+              <div className="p-1 rounded-lg bg-red-500/10 text-red-600 dark:text-red-400 group-hover:bg-red-500/20 group-hover:scale-105 transition">
                 <Search className="w-4 h-4" />
               </div>
               <span className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition">
                 Search exams, courses, notes...
               </span>
             </div>
-            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition">
+            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 group-hover:text-red-600 dark:group-hover:text-red-300 transition">
               Ctrl+K
             </kbd>
           </button>
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             {/* Main Grand Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4rem] 2xl:text-[4.25rem] font-black text-slate-900 dark:text-white tracking-tight leading-[1.08]">
               Learn Today.{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 dark:from-blue-400 dark:via-indigo-400 dark:to-amber-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-600 via-red-600 to-amber-500 dark:from-red-400 dark:via-red-400 dark:to-amber-400 bg-clip-text text-transparent">
                 Build Your Tomorrow.
               </span>
             </h1>
@@ -92,7 +92,7 @@ export const Hero: React.FC = () => {
                     openAuthModal('/dashboard/student');
                   }
                 }}
-                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold text-sm sm:text-base shadow-xl shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
+                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold text-sm sm:text-base shadow-xl shadow-red-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer"
               >
                 <span>{user ? 'Open Student Portal' : 'Start Learning Free'}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -102,7 +102,7 @@ export const Hero: React.FC = () => {
                 href="/exams"
                 className="px-7 py-4 rounded-2xl bg-white dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-white border border-slate-200 dark:border-slate-700 font-bold text-sm sm:text-base transition-all shadow-sm flex items-center justify-center gap-2"
               >
-                <GraduationCap className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <GraduationCap className="w-4 h-4 text-red-600 dark:text-red-400" />
                 <span>Explore Goal Exams</span>
               </Link>
 
@@ -118,7 +118,7 @@ export const Hero: React.FC = () => {
             {/* 3 Prominent Trust Highlights */}
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-200 dark:border-slate-800">
               <div className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-sm flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+                <div className="p-1.5 rounded-lg bg-red-500/10 text-red-600 dark:text-red-400 shrink-0">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -128,7 +128,7 @@ export const Hero: React.FC = () => {
               </div>
 
               <div className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-sm flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 shrink-0">
+                <div className="p-1.5 rounded-lg bg-red-500/10 text-red-600 dark:text-red-400 shrink-0">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -159,7 +159,7 @@ export const Hero: React.FC = () => {
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-red-600 flex items-center justify-center text-white shadow-md">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <div>
@@ -177,7 +177,7 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* Simulated Active Class Banner */}
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-100 via-blue-50/50 to-indigo-50/40 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white space-y-3">
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-100 via-red-50/50 to-red-50/40 dark:from-slate-950 dark:via-slate-900 dark:to-red-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white space-y-3">
                   <div className="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
                     <BookOpen className="w-3.5 h-3.5" /> High-Yield NEET Special
                   </div>
@@ -186,12 +186,12 @@ export const Hero: React.FC = () => {
                   </h5>
                   <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-300 pt-0.5">
                     <span>Dr. Aarav Sharma (AIIMS)</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">942 Learners Online</span>
+                    <span className="text-red-600 dark:text-red-400 font-semibold">942 Learners Online</span>
                   </div>
 
                   {/* Progress Bar */}
                   <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-gradient-to-r from-amber-500 via-blue-500 to-emerald-500 h-1.5 rounded-full w-3/4" />
+                    <div className="bg-gradient-to-r from-amber-500 via-red-500 to-red-500 h-1.5 rounded-full w-3/4" />
                   </div>
                 </div>
 
@@ -199,7 +199,7 @@ export const Hero: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
                     <div className="flex items-center gap-1.5 mb-1">
-                      <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                      <TrendingUp className="w-4 h-4 text-red-600 dark:text-red-400" />
                       <span className="text-sm font-bold text-slate-900 dark:text-white">98.4%</span>
                     </div>
                     <span className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight block">
@@ -209,7 +209,7 @@ export const Hero: React.FC = () => {
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800">
                     <div className="flex items-center gap-1.5 mb-1">
-                      <Users className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      <Users className="w-4 h-4 text-red-600 dark:text-red-400" />
                       <span className="text-sm font-bold text-slate-900 dark:text-white">1:1 Mentorship</span>
                     </div>
                     <span className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight block">
@@ -221,7 +221,7 @@ export const Hero: React.FC = () => {
                 {/* Join Classroom CTA */}
                 <Link
                   href="/exams/neet-ug"
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition shadow-md"
+                  className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs flex items-center justify-center gap-2 transition shadow-md"
                 >
                   <span>Explore NEET UG Live Classroom</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -244,16 +244,16 @@ export const Hero: React.FC = () => {
           <div className="flex items-center gap-2 font-medium">
             <span className="text-slate-800 dark:text-slate-200 font-semibold">Active Pathways:</span>
             <div className="flex flex-wrap items-center gap-1.5">
-              <Link href="/exams/neet-ug" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
-                <Stethoscope className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> NEET UG
+              <Link href="/exams/neet-ug" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
+                <Stethoscope className="w-3 h-3 text-red-600 dark:text-red-400" /> NEET UG
               </Link>
-              <Link href="/exams/jee-main" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
-                <Cpu className="w-3 h-3 text-blue-600 dark:text-blue-400" /> JEE Main
+              <Link href="/exams/jee-main" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
+                <Cpu className="w-3 h-3 text-red-600 dark:text-red-400" /> JEE Main
               </Link>
-              <Link href="/exams/cuet" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
+              <Link href="/exams/cuet" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
                 <Award className="w-3 h-3 text-purple-600 dark:text-purple-400" /> CUET (UG)
               </Link>
-              <Link href="/academics" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
+              <Link href="/academics" className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-500 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">
                 <BookOpen className="w-3 h-3 text-amber-600 dark:text-amber-400" /> CBSE Class 9-12
               </Link>
             </div>
@@ -261,7 +261,7 @@ export const Hero: React.FC = () => {
 
           <a
             href="#select-goal"
-            className="inline-flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-semibold transition cursor-pointer"
           >
             <span>Select Your Goal Exam Below</span>
             <ChevronDown className="w-3.5 h-3.5 animate-bounce" />

@@ -66,10 +66,10 @@ export default function AdminOverviewPage() {
 
         <div className="flex items-center gap-2 text-xs">
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300">
-            <Database className="w-3.5 h-3.5 text-blue-400" />
+            <Database className="w-3.5 h-3.5 text-red-400" />
             <span>RLS Active</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/60 border border-emerald-900 text-emerald-400 font-semibold">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-950/60 border border-red-900 text-red-400 font-semibold">
             <TrendingUp className="w-3.5 h-3.5" />
             <span>Retention {metrics?.retentionRate || '96.4%'}</span>
           </div>
@@ -81,12 +81,12 @@ export default function AdminOverviewPage() {
         <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Students</span>
-            <Users className="w-4 h-4 text-blue-400" />
+            <Users className="w-4 h-4 text-red-400" />
           </div>
           <div className="text-2xl font-black text-white">
             {metrics ? metrics.totalStudents.toLocaleString() : '...'}
           </div>
-          <span className="text-[10px] text-emerald-400 font-semibold block">
+          <span className="text-[10px] text-red-400 font-semibold block">
             +{metrics?.newRegistrationsThisMonth} this month
           </span>
         </div>
@@ -94,7 +94,7 @@ export default function AdminOverviewPage() {
         <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Courses</span>
-            <BookOpen className="w-4 h-4 text-emerald-400" />
+            <BookOpen className="w-4 h-4 text-red-400" />
           </div>
           <div className="text-2xl font-black text-white">
             {metrics ? metrics.activeCourses : '...'}
@@ -105,7 +105,7 @@ export default function AdminOverviewPage() {
         <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Goal Exams</span>
-            <GraduationCap className="w-4 h-4 text-indigo-400" />
+            <GraduationCap className="w-4 h-4 text-red-400" />
           </div>
           <div className="text-2xl font-black text-white">
             {metrics ? metrics.totalExams : '...'}
@@ -153,10 +153,10 @@ export default function AdminOverviewPage() {
         <div className="lg:col-span-7 p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Users className="w-4 h-4 text-blue-400" />
+              <Users className="w-4 h-4 text-red-400" />
               <span>Recent Student Registrations</span>
             </h3>
-            <Link href="/dashboard/admin/students" className="text-xs text-blue-400 hover:underline">
+            <Link href="/dashboard/admin/students" className="text-xs text-red-400 hover:underline">
               View All Students →
             </Link>
           </div>
@@ -188,7 +188,7 @@ export default function AdminOverviewPage() {
                       <td className="py-3 px-3">{st.exam}</td>
                       <td className="py-3 px-3 text-slate-400">{st.date}</td>
                       <td className="py-3 px-3">
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-900">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-950/60 text-red-400 border border-red-900">
                           {st.status}
                         </span>
                       </td>
@@ -204,10 +204,10 @@ export default function AdminOverviewPage() {
         <div className="lg:col-span-5 p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 text-red-400" />
               <span>Institutional Audit Log</span>
             </h3>
-            <Link href="/dashboard/admin/audit-logs" className="text-xs text-blue-400 hover:underline">
+            <Link href="/dashboard/admin/audit-logs" className="text-xs text-red-400 hover:underline">
               Full Logs →
             </Link>
           </div>

@@ -11,7 +11,7 @@ export default function StudentNotificationsPage() {
       message: 'High-Yield Organic Reaction Mechanisms with Dr. Aarav Sharma begins at 6:00 PM IST.',
       time: '25m ago',
       unread: true,
-      icon: <Video className="w-4 h-4 text-blue-500" />,
+      icon: <Video className="w-4 h-4 text-red-500" />,
     },
     {
       id: '2',
@@ -27,7 +27,7 @@ export default function StudentNotificationsPage() {
       message: 'Dr. Siddharth Rao has accepted your strategy call request for tomorrow at 4:00 PM.',
       time: 'Yesterday',
       unread: false,
-      icon: <CheckCircle2 className="w-4 h-4 text-emerald-500" />,
+      icon: <CheckCircle2 className="w-4 h-4 text-red-500" />,
     },
   ];
 
@@ -48,7 +48,7 @@ export default function StudentNotificationsPage() {
             key={n.id}
             className={`p-4 rounded-2xl border transition flex items-start gap-4 ${
               n.unread
-                ? 'bg-blue-50/50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900/60'
+                ? 'bg-red-50/50 dark:bg-red-950/30 border-red-200 dark:border-red-900/60'
                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
             }`}
           >

@@ -55,8 +55,8 @@ export default function StudentTestsPage() {
                   test.status === 'Live'
                     ? 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 font-bold'
                     : test.status === 'Reviewed'
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400'
-                    : 'bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-400'
+                    ? 'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-400'
+                    : 'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-400'
                 }`}>
                   {test.status}
                 </span>
@@ -85,7 +85,7 @@ export default function StudentTestsPage() {
               ) : (
                 <Link
                   href="/dashboard/student/practice"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-1.5"
+                  className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-1.5"
                 >
                   <Play className="w-3.5 h-3.5 fill-white" />
                   <span>Start Test Engine</span>

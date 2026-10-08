@@ -84,13 +84,13 @@ export default function MentorshipPage() {
       title: 'Engineering & Computing (IIT, NIT, IIIT)',
       exam: 'JEE Main & Advanced',
       pathway: '10+2 (PCM) → JEE Main → JoSAA Counselling / JEE Advanced → 4 Years B.Tech / Dual Degree',
-      icon: <Cpu className="w-5 h-5 text-blue-500" />,
+      icon: <Cpu className="w-5 h-5 text-red-500" />,
     },
     {
       title: 'Premier Nursing Care (AIIMS, JIPMER)',
       exam: 'AIIMS B.Sc Nursing',
       pathway: '10+2 (PCB Female) → AIIMS Entrance → 4 Years B.Sc (Hons) Nursing + Clinical Internship',
-      icon: <HeartPulse className="w-5 h-5 text-emerald-500" />,
+      icon: <HeartPulse className="w-5 h-5 text-red-500" />,
     },
     {
       title: 'Clinical Paramedical & Diagnostic Sciences',
@@ -112,10 +112,10 @@ export default function MentorshipPage() {
 
       <main className="flex-1 pb-20">
         {/* Hero Section */}
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
+        <section className="py-14 sm:py-20 bg-gradient-to-b from-red-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
           <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-              <HeartHandshake className="w-3.5 h-3.5 text-blue-500" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider">
+              <HeartHandshake className="w-3.5 h-3.5 text-red-500" />
               <span>Personalized Guidance</span>
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -144,15 +144,15 @@ export default function MentorshipPage() {
                 <div
                   key={mentor.id}
                   id={mentor.id}
-                  className="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-blue-500/40 transition group"
+                  className="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-red-500/40 transition group"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-xl flex items-center justify-center shadow-md">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-red-600 to-red-600 text-white font-bold text-xl flex items-center justify-center shadow-md">
                         {mentor.name.charAt(0)}
                       </div>
                       <div>
-                        <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                        <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition">
                           {mentor.name}
                         </h3>
                         <div className="flex items-center gap-1 text-xs text-amber-500 font-semibold mt-0.5">
@@ -162,7 +162,7 @@ export default function MentorshipPage() {
                       </div>
                     </div>
 
-                    <p className="text-xs font-medium text-blue-600 dark:text-blue-400 line-clamp-1">
+                    <p className="text-xs font-medium text-red-600 dark:text-red-400 line-clamp-1">
                       {mentor.headline}
                     </p>
 
@@ -191,7 +191,7 @@ export default function MentorshipPage() {
 
                     <button
                       onClick={() => handleBookSession(mentor.name)}
-                      className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Calendar className="w-3.5 h-3.5" />
                       <span>Book 1:1 Strategy Call</span>
@@ -204,10 +204,10 @@ export default function MentorshipPage() {
 
           {/* Section 2: Book Counselling Session */}
           <section id="counselling" className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white border border-slate-800 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="max-w-3xl space-y-6 relative z-10">
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">
                 Institutional Guidance
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -219,7 +219,7 @@ export default function MentorshipPage() {
 
               {counsellingSubmitted ? (
                 <div className="p-6 rounded-2xl bg-white/10 border border-white/20 text-center space-y-2">
-                  <CheckCircle className="w-8 h-8 text-emerald-400 mx-auto" />
+                  <CheckCircle className="w-8 h-8 text-red-400 mx-auto" />
                   <h4 className="text-base font-bold text-white">Counselling Session Scheduled</h4>
                   <p className="text-xs text-slate-300">
                     Our lead counselor will connect with your registered contact within 24 hours to conduct your personalized assessment.
@@ -235,7 +235,7 @@ export default function MentorshipPage() {
                       <select
                         value={counsellingCategory}
                         onChange={(e) => setCounsellingCategory(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:ring-2 focus:ring-red-500"
                       >
                         <option value="career_guidance" className="bg-slate-900">Career Pathway & Stream Guidance</option>
                         <option value="exam_strategy" className="bg-slate-900">Entrance Strategy & Score Booster</option>
@@ -254,7 +254,7 @@ export default function MentorshipPage() {
                         value={targetEntrance}
                         onChange={(e) => setTargetEntrance(e.target.value)}
                         placeholder="e.g. NEET UG 2025 or Class 12 Boards"
-                        className="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500"
                       />
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default function MentorshipPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
+                    className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
                   >
                     <span>{isSubmitting ? 'Recording Request...' : 'Request Academic Counselling'}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -296,7 +296,7 @@ export default function MentorshipPage() {
                     <h3 className="text-base font-bold text-slate-900 dark:text-white">
                       {career.title}
                     </h3>
-                    <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                    <div className="text-xs font-semibold text-red-600 dark:text-red-400">
                       Gateway Exam: {career.exam}
                     </div>
                     <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -306,7 +306,7 @@ export default function MentorshipPage() {
 
                   <button
                     onClick={() => handleBookSession('Career Guidance Counselor')}
-                    className="pt-3 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center justify-between"
+                    className="pt-3 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-red-600 dark:text-red-400 hover:underline flex items-center justify-between"
                   >
                     <span>Discuss Pathway with Expert</span>
                     <ArrowRight className="w-3.5 h-3.5" />

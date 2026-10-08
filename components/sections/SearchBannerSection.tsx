@@ -8,13 +8,13 @@ export const SearchBannerSection: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className="py-12 bg-gradient-to-r from-blue-50/90 via-indigo-50/70 to-slate-50 dark:from-slate-950 dark:via-indigo-950/60 dark:to-slate-950 text-slate-900 dark:text-white border-y border-slate-200/80 dark:border-slate-800 relative overflow-hidden transition-colors">
+    <section className="py-12 bg-gradient-to-r from-red-50/90 via-red-50/70 to-slate-50 dark:from-slate-950 dark:via-red-950/60 dark:to-slate-950 text-slate-900 dark:text-white border-y border-slate-200/80 dark:border-slate-800 relative overflow-hidden transition-colors">
       {/* Background accent wave */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-transparent dark:from-blue-900/40 dark:via-indigo-900/40 dark:to-slate-950 pointer-events-none" />
-      <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-red-500/5 to-transparent dark:from-red-900/40 dark:via-red-900/40 dark:to-slate-950 pointer-events-none" />
+      <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-3 border border-blue-200 dark:border-blue-500/30 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 text-xs font-semibold mb-3 border border-red-200 dark:border-red-500/30 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
           <span>Universal Knowledge Discovery</span>
         </div>
@@ -30,10 +30,10 @@ export const SearchBannerSection: React.FC = () => {
         <div className="mt-6 max-w-2xl mx-auto">
           <button
             onClick={() => setModalOpen(true)}
-            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-white/10 hover:bg-slate-50 dark:hover:bg-white/15 border border-slate-200 dark:border-white/20 backdrop-blur-md shadow-xl shadow-blue-500/5 dark:shadow-2xl transition group text-left cursor-pointer"
+            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-white/10 hover:bg-slate-50 dark:hover:bg-white/15 border border-slate-200 dark:border-white/20 backdrop-blur-md shadow-xl shadow-red-500/5 dark:shadow-2xl transition group text-left cursor-pointer"
           >
             <div className="flex items-center gap-3">
-              <Search className="w-5 h-5 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
+              <Search className="w-5 h-5 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform" />
               <span className="text-sm text-slate-600 dark:text-slate-300">
                 Search exams, subjects, formulas or courses...
               </span>
@@ -42,7 +42,7 @@ export const SearchBannerSection: React.FC = () => {
               <kbd className="hidden sm:inline-block px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/15 font-mono">
                 Ctrl + K
               </kbd>
-              <div className="p-1.5 rounded-lg bg-blue-600 text-white group-hover:bg-blue-700 transition">
+              <div className="p-1.5 rounded-lg bg-red-600 text-white group-hover:bg-red-700 transition">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>

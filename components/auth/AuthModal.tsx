@@ -82,7 +82,7 @@ export const AuthModal: React.FC = () => {
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             {intendedDestination ? (
-              <span className="text-blue-600 dark:text-blue-400 font-medium">
+              <span className="text-red-600 dark:text-red-400 font-medium">
                 Log in to unlock access to your requested learning module.
               </span>
             ) : (
@@ -101,7 +101,7 @@ export const AuthModal: React.FC = () => {
             }}
             className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition cursor-pointer ${
               mode === 'signin'
-                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm'
+                ? 'bg-white dark:bg-slate-900 text-red-600 dark:text-red-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -115,7 +115,7 @@ export const AuthModal: React.FC = () => {
             }}
             className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition cursor-pointer ${
               mode === 'signup'
-                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm'
+                ? 'bg-white dark:bg-slate-900 text-red-600 dark:text-red-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
@@ -144,7 +144,7 @@ export const AuthModal: React.FC = () => {
                   placeholder="e.g. Arjun Sharma"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -163,7 +163,7 @@ export const AuthModal: React.FC = () => {
                   placeholder="student@example.com or +91 98765 43210"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@ export const AuthModal: React.FC = () => {
                     placeholder="student@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -198,7 +198,7 @@ export const AuthModal: React.FC = () => {
                     placeholder="+91 98765 43210"
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export const AuthModal: React.FC = () => {
                 <select
                   value={targetExam}
                   onChange={(e) => setTargetExam(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
                   <option value="NEET UG">NEET UG (Medical Entrance)</option>
                   <option value="JEE Main">JEE Main (Engineering)</option>
@@ -235,7 +235,7 @@ export const AuthModal: React.FC = () => {
                     closeAuthModal();
                     router.push('/auth/forgot-password');
                   }}
-                  className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-xs text-red-600 dark:text-red-400 hover:underline"
                 >
                   Forgot password?
                 </button>
@@ -249,7 +249,7 @@ export const AuthModal: React.FC = () => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
           </div>
@@ -257,7 +257,7 @@ export const AuthModal: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-red-600 via-red-600 to-red-700 hover:from-red-700 hover:to-red-700 text-white font-semibold text-sm shadow-lg shadow-red-500/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
           >
             {loading ? (
               <span>Connecting database...</span>
@@ -273,11 +273,11 @@ export const AuthModal: React.FC = () => {
         {/* Demo Credentials Helper Pill */}
         <div className="mt-4 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
           <div className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-red-500" />
             <span>Quick Test Credentials (Pre-seeded in DB):</span>
           </div>
           <div className="flex justify-between items-center text-[10px]">
-            <span>Student: <code className="text-blue-600 dark:text-blue-400">student@learndawn.com</code> (Student@123)</span>
+            <span>Student: <code className="text-red-600 dark:text-red-400">student@learndawn.com</code> (Student@123)</span>
           </div>
           <div className="flex justify-between items-center text-[10px]">
             <span>Admin: <code className="text-amber-600 dark:text-amber-400">admin@learndawn.com</code> (Admin@123)</span>
@@ -286,7 +286,7 @@ export const AuthModal: React.FC = () => {
 
         {/* Security badge */}
         <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+          <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
           <span>Role-Based Access Control • Encrypted Session Protocol</span>
         </div>
       </div>

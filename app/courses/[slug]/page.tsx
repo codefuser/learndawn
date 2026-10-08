@@ -49,11 +49,11 @@ export default async function CourseDetailPage({
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <Link href="/courses" className="hover:text-white">Courses</Link>
               <span>/</span>
-              <span className="text-blue-400 font-semibold">{course.difficulty_level}</span>
+              <span className="text-red-400 font-semibold">{course.difficulty_level}</span>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30">
+              <span className="px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-xs font-bold uppercase tracking-wider border border-red-500/30">
                 {course.difficulty_level} Batch
               </span>
               <span className="text-xs text-slate-400 font-medium">{course.language}</span>
@@ -74,15 +74,15 @@ export default async function CourseDetailPage({
 
             <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-slate-300">
               <div className="flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-blue-400" />
+                <GraduationCap className="w-4 h-4 text-red-400" />
                 <span>Lead Faculty: <strong>{course.instructor_name}</strong></span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-blue-400" />
+                <Clock className="w-4 h-4 text-red-400" />
                 <span>{course.duration_hours} Total Hours</span>
               </div>
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-blue-400" />
+                <BookOpen className="w-4 h-4 text-red-400" />
                 <span>{course.total_lectures} Lessons & Exercises</span>
               </div>
             </div>
@@ -117,19 +117,19 @@ export default async function CourseDetailPage({
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-600 dark:text-slate-300">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
                     <span>Complete NCERT statement annotations</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
                     <span>Previous 15-year entrance paper drills</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
                     <span>Weekly timed CBT full-length test series</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
                     <span>Personalized 1:1 strategy & doubt clearing</span>
                   </div>
                 </div>
@@ -142,14 +142,14 @@ export default async function CourseDetailPage({
                 Lead Educator
               </h4>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-lg">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-red-600 text-white font-bold flex items-center justify-center text-lg">
                   {course.instructor_name.charAt(0)}
                 </div>
                 <div>
                   <h5 className="text-sm font-bold text-slate-900 dark:text-white">
                     {course.instructor_name}
                   </h5>
-                  <span className="text-[11px] text-blue-600 dark:text-blue-400 font-semibold">
+                  <span className="text-[11px] text-red-600 dark:text-red-400 font-semibold">
                     Master Faculty
                   </span>
                 </div>
@@ -158,7 +158,7 @@ export default async function CourseDetailPage({
                 {course.instructor_bio || 'Distinguished academic leader with over a decade of experience guiding competitive aspirants to AIR top ranks.'}
               </p>
               <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <ShieldCheck className="w-4 h-4 text-red-500" />
                 <span>Verified Learndawn Instructor</span>
               </div>
             </div>

@@ -47,7 +47,7 @@ export default function AdminQuestionsPage() {
               <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800">
                 Item #{idx + 1} • {q.difficulty}
               </span>
-              <span className="text-xs font-semibold text-blue-400">
+              <span className="text-xs font-semibold text-red-400">
                 {q.is_pyq ? `PYQ ${q.year_asked}` : 'Practice Model'}
               </span>
             </div>
@@ -60,7 +60,7 @@ export default function AdminQuestionsPage() {
                   key={opt.id}
                   className={`p-2.5 rounded-xl border ${
                     opt.is_correct
-                      ? 'border-emerald-700 bg-emerald-950/40 text-emerald-300 font-semibold'
+                      ? 'border-red-700 bg-red-950/40 text-red-300 font-semibold'
                       : 'border-slate-800 bg-slate-900 text-slate-400'
                   }`}
                 >

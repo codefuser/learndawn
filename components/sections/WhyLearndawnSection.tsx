@@ -13,13 +13,13 @@ export const WhyLearndawnSection: React.FC = () => {
     },
     {
       feature: 'Mentorship Access',
-      icon: <Users className="w-4 h-4 text-blue-500" />,
+      icon: <Users className="w-4 h-4 text-red-500" />,
       learndawn: 'Dedicated 1:1 strategy & mental wellness calls scheduled on demand with real mentors',
       others: 'Automated chatbots or delayed generic ticket queues',
     },
     {
       feature: 'Curriculum Depth',
-      icon: <BookOpen className="w-4 h-4 text-indigo-500" />,
+      icon: <BookOpen className="w-4 h-4 text-red-500" />,
       learndawn: 'NCERT line-by-line decoding with integrated exemplar and previous 15-year question links',
       others: 'Superficial slides with overwhelming text and shallow derivations',
     },
@@ -31,7 +31,7 @@ export const WhyLearndawnSection: React.FC = () => {
     },
     {
       feature: 'Student Experience',
-      icon: <HeartHandshake className="w-4 h-4 text-emerald-500" />,
+      icon: <HeartHandshake className="w-4 h-4 text-red-500" />,
       learndawn: 'Distraction-free learning interface with zero popups, zero spam, and focused micro-modules',
       others: 'Cluttered feeds overloaded with marketing banners and promotional sales calls',
     },
@@ -79,9 +79,9 @@ export const WhyLearndawnSection: React.FC = () => {
               </div>
 
               {/* Learndawn Side (Highlighted Card) */}
-              <div className="rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/70 dark:from-blue-950/40 dark:to-indigo-950/30 border border-blue-200/80 dark:border-blue-800/60 p-3 space-y-1">
-                <div className="flex items-center gap-1.5 text-blue-700 dark:text-blue-300 font-semibold text-xs">
-                  <div className="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center">
+              <div className="rounded-xl bg-gradient-to-r from-red-50/90 to-red-50/70 dark:from-red-950/40 dark:to-red-950/30 border border-red-200/80 dark:border-red-800/60 p-3 space-y-1">
+                <div className="flex items-center gap-1.5 text-red-700 dark:text-red-300 font-semibold text-xs">
+                  <div className="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center">
                     <Check className="w-3 h-3 stroke-[3]" />
                   </div>
                   <span>Learndawn Advantage</span>
@@ -114,7 +114,7 @@ export const WhyLearndawnSection: React.FC = () => {
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 text-xs font-bold uppercase tracking-wider">
                   <th className="py-4 px-6 text-slate-500 w-1/4">Core Metric</th>
-                  <th className="py-4 px-6 text-blue-600 dark:text-blue-400 bg-blue-50/70 dark:bg-blue-950/50 w-5/12 border-x border-blue-100 dark:border-blue-900/40">
+                  <th className="py-4 px-6 text-red-600 dark:text-red-400 bg-red-50/70 dark:bg-red-950/50 w-5/12 border-x border-red-100 dark:border-red-900/40">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4" /> 
                       <span>Learndawn Academy</span>
@@ -134,9 +134,9 @@ export const WhyLearndawnSection: React.FC = () => {
                         <span>{item.feature}</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-slate-900 dark:text-white bg-blue-50/30 dark:bg-blue-950/20 font-medium border-x border-blue-100/60 dark:border-blue-900/30">
+                    <td className="py-4 px-6 text-slate-900 dark:text-white bg-red-50/30 dark:bg-red-950/20 font-medium border-x border-red-100/60 dark:border-red-900/30">
                       <div className="flex items-start gap-2.5">
-                        <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-5 h-5 rounded-full bg-red-100 dark:bg-red-950/80 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0 mt-0.5">
                           <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                         </div>
                         <span className="leading-snug">{item.learndawn}</span>

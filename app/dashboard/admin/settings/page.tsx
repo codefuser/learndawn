@@ -29,12 +29,12 @@ export default function AdminSettingsPage() {
       <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Database className="w-5 h-5 text-blue-400" />
+            <Database className="w-5 h-5 text-red-400" />
             <h3 className="text-base font-bold text-white">Database Connectivity Status</h3>
           </div>
           <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
             isSupabaseConfigured
-              ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-900'
+              ? 'bg-red-950/60 text-red-400 border border-red-900'
               : 'bg-amber-950/60 text-amber-400 border border-amber-900'
           }`}>
             {isSupabaseConfigured ? '● Supabase Cloud Connected' : '● Demo / Preview Mock Mode'}

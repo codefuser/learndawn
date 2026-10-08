@@ -33,7 +33,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     const ImageContent = (
       <div className={`relative inline-flex items-center select-none ${className}`}>
         <Image
-          src="/logos/learndawn-logo-full.png"
+          src="/logos/LOGO.png"
           alt="Learndawn Tamil Logo"
           width={180}
           height={60}
@@ -45,7 +45,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
     if (href) {
       return (
-        <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-xl p-0.5">
+        <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-red-500/50 rounded-xl p-0.5">
           {ImageContent}
         </Link>
       );
@@ -59,7 +59,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       <div className={`relative inline-flex items-center gap-3 select-none ${className}`}>
         <div className="w-10 h-10 rounded-xl overflow-hidden bg-white p-1 border border-slate-200 dark:border-slate-800 shadow-sm shrink-0 flex items-center justify-center">
           <Image
-            src="/logos/learndawn-emblem-white.png"
+            src="/logos/LOGO.png"
             alt="Learndawn Logo"
             width={40}
             height={40}
@@ -70,9 +70,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         <div className="flex flex-col leading-none">
           <div className="flex items-center gap-1.5">
             <span className={`font-black tracking-tight text-lg uppercase ${isLight ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
-              LEARN<span className="text-emerald-500">DAWN</span>
+              LEARN<span className="text-red-500">DAWN</span>
             </span>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-500/30">
+            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-red-500/10 text-red-600 dark:bg-red-500/20 dark:text-red-400 border border-red-500/30">
               TAMIL
             </span>
           </div>
@@ -85,7 +85,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
     if (href) {
       return (
-        <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-xl p-0.5">
+        <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-red-500/50 rounded-xl p-0.5">
           {WhiteBgContent}
         </Link>
       );
@@ -96,14 +96,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   // Default & Standard: Transparent Victory Graduate Emblem + Dynamic Typography
   const LogoContent = (
     <div className={`flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
-      {/* Official Emerald Victory Graduate Emblem */}
-      <div className={`relative flex items-center justify-center ${currentSize.box} rounded-xl bg-gradient-to-br from-emerald-500/15 via-teal-500/10 to-emerald-600/20 border border-emerald-500/30 p-1 shadow-md shadow-emerald-500/10 shrink-0 group-hover:scale-105 transition-transform`}>
+      {/* Official red Victory Graduate Emblem */}
+      <div className={`relative flex items-center justify-center ${currentSize.box} rounded-xl bg-gradient-to-br from-red-500/15 via-red-500/10 to-red-600/20 border border-red-500/30 p-1 shadow-md shadow-red-500/10 shrink-0 group-hover:scale-105 transition-transform`}>
         <Image
-          src="/logos/learndawn-emblem.png"
+          src="/logos/LOGO.png"
           alt="Learndawn Emblem"
           width={currentSize.img}
           height={currentSize.img}
-          className="w-full h-full object-contain filter drop-shadow-[0_2px_6px_rgba(16,185,129,0.3)]"
+          className="w-full h-full object-contain filter drop-shadow-[0_2px_6px_rgba(239,68,68,0.3)]"
           priority
         />
       </div>
@@ -116,9 +116,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
                 isLight ? 'text-white' : 'text-slate-900 dark:text-white'
               }`}
             >
-              LEARN<span className="text-emerald-500 dark:text-emerald-400">DAWN</span>
+              LEARN<span className="text-red-500 dark:text-red-400">DAWN</span>
             </span>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-500/30">
+            <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-red-500/10 text-red-600 dark:bg-red-500/20 dark:text-red-400 border border-red-500/30">
               TAMIL
             </span>
           </div>
@@ -134,7 +134,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
   if (href) {
     return (
-      <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500/50 rounded-xl p-0.5 group">
+      <Link href={href} className="inline-flex items-center focus:outline-none focus:ring-2 focus:ring-red-500/50 rounded-xl p-0.5 group">
         {LogoContent}
       </Link>
     );

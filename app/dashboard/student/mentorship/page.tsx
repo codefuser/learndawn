@@ -20,12 +20,12 @@ export default function StudentMentorshipPage() {
       </div>
 
       {/* Active Upcoming Session Card */}
-      <div className="p-6 rounded-3xl bg-gradient-to-r from-blue-900 to-indigo-950 text-white shadow-xl space-y-4">
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-red-900 to-red-950 text-white shadow-xl space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">
             Confirmed Upcoming Session
           </span>
-          <span className="text-xs text-blue-200">Tomorrow at 4:00 PM IST</span>
+          <span className="text-xs text-red-200">Tomorrow at 4:00 PM IST</span>
         </div>
 
         <div className="flex items-center gap-4">
@@ -40,7 +40,7 @@ export default function StudentMentorshipPage() {
 
         <button
           onClick={() => showToast('Connecting to secure encrypted meeting room...', 'info')}
-          className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-md transition flex items-center gap-2"
+          className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs shadow-md transition flex items-center gap-2"
         >
           <Video className="w-3.5 h-3.5" />
           <span>Join Meeting Room (Opens 10m Prior)</span>
@@ -60,7 +60,7 @@ export default function StudentMentorshipPage() {
             >
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 font-bold flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 font-bold flex items-center justify-center">
                     {mentor.name.charAt(0)}
                   </div>
                   <div>
@@ -73,7 +73,7 @@ export default function StudentMentorshipPage() {
 
               <button
                 onClick={() => showToast(`Requested 1:1 call with ${mentor.name}.`, 'success')}
-                className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-800 dark:text-slate-200 font-semibold text-xs transition"
+                className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-red-600 hover:text-white text-slate-800 dark:text-slate-200 font-semibold text-xs transition"
               >
                 Request 45-Min Session
               </button>

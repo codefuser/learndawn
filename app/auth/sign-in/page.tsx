@@ -77,7 +77,7 @@ export default function SignInPage() {
                   placeholder="student@example.com or +91 98765 43210"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function SignInPage() {
                 </label>
                 <Link
                   href="/auth/forgot-password"
-                  className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-xs text-red-600 dark:text-red-400 hover:underline"
                 >
                   Forgot password?
                 </Link>
@@ -102,7 +102,7 @@ export default function SignInPage() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function SignInPage() {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                className="w-4 h-4 text-red-600 border-slate-300 rounded focus:ring-red-500"
               />
               <label htmlFor="remember-me" className="ml-2 block text-xs text-slate-600 dark:text-slate-400">
                 Remember my session on this device
@@ -123,7 +123,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? (
                 <span>Verifying credentials...</span>
@@ -145,7 +145,7 @@ export default function SignInPage() {
               <button
                 type="button"
                 onClick={() => handleQuickDemo('student')}
-                className="py-2 px-3 rounded-xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold text-xs flex items-center justify-center gap-1.5 hover:bg-blue-100 transition"
+                className="py-2 px-3 rounded-xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 font-semibold text-xs flex items-center justify-center gap-1.5 hover:bg-red-100 transition"
               >
                 <UserCheck className="w-3.5 h-3.5" />
                 <span>Demo Student</span>
@@ -163,7 +163,7 @@ export default function SignInPage() {
 
           <div className="text-center text-xs text-slate-500">
             Don&apos;t have a student account yet?{' '}
-            <Link href="/auth/sign-up" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+            <Link href="/auth/sign-up" className="text-red-600 dark:text-red-400 font-semibold hover:underline">
               Create an account
             </Link>
           </div>

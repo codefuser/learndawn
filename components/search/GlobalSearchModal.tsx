@@ -123,11 +123,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Exams':
-        return <GraduationCap className="w-4 h-4 text-blue-500" />;
+        return <GraduationCap className="w-4 h-4 text-red-500" />;
       case 'Courses':
         return <BookOpen className="w-4 h-4 text-amber-500" />;
       case 'Subjects':
-        return <Layers className="w-4 h-4 text-emerald-500" />;
+        return <Layers className="w-4 h-4 text-red-500" />;
       case 'Study Materials':
         return <FileText className="w-4 h-4 text-purple-500" />;
       default:
@@ -146,7 +146,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
       >
         {/* Search Input Bar */}
         <div className="relative flex items-center px-4 py-1 border-b border-slate-200 dark:border-slate-800 gap-2">
-          <Search className="w-5 h-5 text-blue-500 dark:text-blue-400 shrink-0" />
+          <Search className="w-5 h-5 text-red-500 dark:text-red-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -192,7 +192,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-full font-medium transition whitespace-nowrap ${
                 selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-red-600 text-white shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
@@ -215,7 +215,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                   <button
                     key={term}
                     onClick={() => setQuery(term)}
-                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 transition"
+                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-red-50 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 transition"
                   >
                     <span>{term}</span>
                   </button>
@@ -231,12 +231,12 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                     <button
                       key={exam.id}
                       onClick={() => handleSelect(`/exams/${exam.slug}`, exam.title)}
-                      className="flex items-center justify-between p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-blue-500/50 hover:bg-blue-50/50 dark:hover:bg-slate-800/50 text-left transition group"
+                      className="flex items-center justify-between p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-red-500/50 hover:bg-red-50/50 dark:hover:bg-slate-800/50 text-left transition group"
                     >
                       <div className="flex items-center gap-2.5">
-                        <GraduationCap className="w-4 h-4 text-blue-500 shrink-0" />
+                        <GraduationCap className="w-4 h-4 text-red-500 shrink-0" />
                         <div>
-                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                          <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-red-600 dark:group-hover:text-red-400">
                             {exam.title}
                           </div>
                           <div className="text-xs text-slate-500 truncate max-w-[180px]">
@@ -244,7 +244,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                           </div>
                         </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-blue-500 transition" />
+                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-red-500 transition" />
                     </button>
                   ))}
                 </div>
@@ -269,7 +269,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                        <span className="text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-red-600 dark:group-hover:text-red-400">
                           {item.title}
                         </span>
                         {item.badge && (
@@ -283,7 +283,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-blue-500 transition shrink-0 ml-2" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-red-500 transition shrink-0 ml-2" />
                 </button>
               ))}
             </div>

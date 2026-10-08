@@ -41,7 +41,7 @@ export const ContactTeaserSection: React.FC = () => {
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left info banner */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-blue-700 via-indigo-800 to-slate-900 text-white p-8 sm:p-10 flex flex-col justify-between space-y-8">
+          <div className="lg:col-span-5 bg-gradient-to-br from-red-700 via-red-800 to-slate-900 text-white p-8 sm:p-10 flex flex-col justify-between space-y-8">
             <div className="space-y-4">
               <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/20 border border-white/20">
                 Academic Helpline
@@ -49,12 +49,12 @@ export const ContactTeaserSection: React.FC = () => {
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
                 Reach Out to Us
               </h3>
-              <p className="text-xs sm:text-sm text-blue-100 leading-relaxed">
+              <p className="text-xs sm:text-sm text-red-100 leading-relaxed">
                 Have questions about exam eligibility, batch schedules, faculty, or 1:1 counselling? Speak directly with our academic guidance counselors.
               </p>
             </div>
 
-            <div className="space-y-4 text-xs text-blue-100">
+            <div className="space-y-4 text-xs text-red-100">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-xl bg-white/10 shrink-0">
                   <Phone className="w-4 h-4 text-amber-300" />
@@ -86,7 +86,7 @@ export const ContactTeaserSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/15 text-[11px] text-blue-200">
+            <div className="pt-4 border-t border-white/15 text-[11px] text-red-200">
               Operating Hours: Monday – Saturday (8:00 AM – 9:00 PM IST)
             </div>
           </div>
@@ -95,7 +95,7 @@ export const ContactTeaserSection: React.FC = () => {
           <div className="lg:col-span-7 p-8 sm:p-10">
             {submitted ? (
               <div className="py-12 text-center space-y-3">
-                <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+                <div className="w-14 h-14 rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white">
@@ -133,7 +133,7 @@ export const ContactTeaserSection: React.FC = () => {
                       placeholder="e.g. Arjun Sharma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </div>
                   <div>
@@ -146,7 +146,7 @@ export const ContactTeaserSection: React.FC = () => {
                       placeholder="student@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export const ContactTeaserSection: React.FC = () => {
                       placeholder="+91 98765 43210"
                       value={formData.mobile}
                       onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </div>
                   <div>
@@ -172,7 +172,7 @@ export const ContactTeaserSection: React.FC = () => {
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     >
                       <option value="NEET UG Medical Admissions">NEET UG Medical Admissions</option>
                       <option value="JEE Main Engineering Prep">JEE Main Engineering Prep</option>
@@ -194,14 +194,14 @@ export const ContactTeaserSection: React.FC = () => {
                     placeholder="Tell us about your current academic class, your goal exam, or any specific guidance you need..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
                   <span>{loading ? 'Submitting...' : 'Submit Admission Inquiry'}</span>

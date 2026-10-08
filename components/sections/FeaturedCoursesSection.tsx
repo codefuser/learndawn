@@ -22,7 +22,7 @@ export const FeaturedCoursesSection: React.FC = () => {
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 text-xs font-bold uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5" /> Start Learning Today
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -35,7 +35,7 @@ export const FeaturedCoursesSection: React.FC = () => {
 
           <Link
             href="/courses"
-            className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
+            className="inline-flex items-center gap-2 text-xs font-bold text-red-600 dark:text-red-400 hover:underline"
           >
             <span>View All Courses & Batches</span>
             <ArrowRight className="w-4 h-4" />
@@ -46,11 +46,11 @@ export const FeaturedCoursesSection: React.FC = () => {
           {COURSES_DATA.map((course) => (
             <div
               key={course.id}
-              className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-blue-500/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-red-500/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Course Banner Accent */}
-                <div className="h-36 bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-900 p-5 relative flex flex-col justify-between text-white">
+                <div className="h-36 bg-gradient-to-br from-slate-900 via-red-950 to-red-900 p-5 relative flex flex-col justify-between text-white">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20">
                       {course.difficulty_level}
@@ -63,7 +63,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <span className="text-xs text-blue-300 font-medium">{course.language}</span>
+                    <span className="text-xs text-red-300 font-medium">{course.language}</span>
                     <h4 className="text-base font-bold text-white line-clamp-1 group-hover:text-amber-300 transition-colors">
                       {course.title}
                     </h4>
@@ -77,7 +77,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                   </p>
 
                   <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                    <GraduationCap className="w-4 h-4 text-blue-500 shrink-0" />
+                    <GraduationCap className="w-4 h-4 text-red-500 shrink-0" />
                     <span>Faculty: <strong className="text-slate-700 dark:text-slate-200">{course.instructor_name}</strong></span>
                   </div>
 
@@ -105,7 +105,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                       ₹{course.original_price.toLocaleString('en-IN')}
                     </span>
                   )}
-                  <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/60 px-1.5 py-0.5 rounded">
                     Save {Math.round(((course.original_price! - course.price) / course.original_price!) * 100)}%
                   </span>
                 </div>
@@ -119,7 +119,7 @@ export const FeaturedCoursesSection: React.FC = () => {
                   </Link>
                   <button
                     onClick={() => openAuthModal(`/courses/${course.slug}`)}
-                    className="py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md transition flex items-center justify-center gap-1 cursor-pointer"
+                    className="py-2.5 px-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-semibold shadow-md transition flex items-center justify-center gap-1 cursor-pointer"
                   >
                     <span>Enroll Now</span>
                     <ArrowRight className="w-3.5 h-3.5" />

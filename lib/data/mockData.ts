@@ -159,7 +159,7 @@ export const ACADEMIC_PROGRAMS_DATA: AcademicProgram[] = [
     title: 'State Board Class 12',
     board: 'State Board',
     class_level: 'Class 12',
-    description: 'Extensive textbook derivation mastery, blue-print question models, and previous decade paper drills.',
+    description: 'Extensive textbook derivation mastery, red-print question models, and previous decade paper drills.',
     badge_label: 'State Finals',
     display_order: 6
   }
@@ -319,7 +319,7 @@ export const COURSES_DATA: Course[] = [
     slug: 'aiims-nursing-accelerator',
     exam_id: 'exam-aiims-nursing',
     title: 'AIIMS B.Sc Nursing Special Focus Batch',
-    subtitle: 'The definitive blueprint for clearing AIIMS B.Sc Nursing entrance examination.',
+    subtitle: 'The definitive redprint for clearing AIIMS B.Sc Nursing entrance examination.',
     description: 'Designed exclusively for female nursing aspirants. Features complete Biology, Chemistry, Physics plus high-scoring General Knowledge and Nursing Aptitude modules.',
     instructor_name: 'Sister Priya Menon & Medical Faculty',
     instructor_bio: 'Senior Nursing Officer at AIIMS & Clinical Nurse Educator.',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { I18nProvider } from '@/lib/i18n/context';
@@ -34,9 +35,9 @@ export const metadata: Metadata = {
     type: 'website',
   },
   icons: {
-    icon: '/logos/learndawn-emblem.png',
-    shortcut: '/logos/learndawn-emblem.png',
-    apple: '/logos/learndawn-emblem.png',
+    icon: '/logos/LOGO.png',
+    shortcut: '/logos/LOGO.png',
+    apple: '/logos/LOGO.png',
   },
 };
 
@@ -51,8 +52,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script
+      <head />
+      <body
+        className="min-h-full flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100"
+        suppressHydrationWarning
+      >
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -72,11 +79,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body
-        className="min-h-full flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100"
-        suppressHydrationWarning
-      >
         <ThemeProvider>
           <I18nProvider>
             <AuthProvider>

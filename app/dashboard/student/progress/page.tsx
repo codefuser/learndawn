@@ -5,8 +5,8 @@ import { BarChart2, TrendingUp, Award, CheckCircle, AlertTriangle } from 'lucide
 
 export default function StudentProgressPage() {
   const subjectProgress = [
-    { subject: 'Biology (Botany & Zoology)', score: '91%', progress: 91, status: 'Strong', color: 'bg-emerald-500' },
-    { subject: 'Chemistry (Physical & Organic)', score: '78%', progress: 78, status: 'On Track', color: 'bg-blue-500' },
+    { subject: 'Biology (Botany & Zoology)', score: '91%', progress: 91, status: 'Strong', color: 'bg-red-500' },
+    { subject: 'Chemistry (Physical & Organic)', score: '78%', progress: 78, status: 'On Track', color: 'bg-red-500' },
     { subject: 'Physics (Mechanics & Electrodynamics)', score: '62%', progress: 62, status: 'Needs Practice', color: 'bg-amber-500' },
   ];
 
@@ -24,8 +24,8 @@ export default function StudentProgressPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
           <span className="text-xs text-slate-500">All-India Predicted Percentile</span>
-          <div className="text-3xl font-black text-blue-600">98.42 %ile</div>
-          <span className="text-xs text-emerald-600 font-semibold">↑ +2.1% from last month</span>
+          <div className="text-3xl font-black text-red-600">98.42 %ile</div>
+          <span className="text-xs text-red-600 font-semibold">↑ +2.1% from last month</span>
         </div>
 
         <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
@@ -36,7 +36,7 @@ export default function StudentProgressPage() {
 
         <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
           <span className="text-xs text-slate-500">Negative Marks Eliminated</span>
-          <div className="text-3xl font-black text-emerald-600">-64 Marks</div>
+          <div className="text-3xl font-black text-red-600">-64 Marks</div>
           <span className="text-xs text-slate-400">Avoided through guess-work caution</span>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function StudentExamsPage() {
             className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-300">
                 Primary Goal
               </span>
               <span className="text-xs font-mono font-bold text-slate-400">{exam.short_code}</span>
@@ -45,7 +45,7 @@ export default function StudentExamsPage() {
               </div>
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
                 <span className="text-slate-400 block text-[10px]">Current Predicted AIR</span>
-                <span className="font-bold text-emerald-600">Top 1,200</span>
+                <span className="font-bold text-red-600">Top 1,200</span>
               </div>
             </div>
 

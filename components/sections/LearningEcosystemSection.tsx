@@ -16,21 +16,21 @@ export const LearningEcosystemSection: React.FC = () => {
   const steps = [
     {
       num: '01',
-      icon: <Compass className="w-5 h-5 text-blue-500" />,
+      icon: <Compass className="w-5 h-5 text-red-500" />,
       title: 'Goal Discovery',
       description: 'Pinpoint target competitive exam (NEET, JEE, CUET, AIIMS) or academic board with diagnostic baseline.',
       href: '/exams',
     },
     {
       num: '02',
-      icon: <BookOpen className="w-5 h-5 text-indigo-500" />,
+      icon: <BookOpen className="w-5 h-5 text-red-500" />,
       title: 'Interactive Studio',
       description: 'Live interactive classrooms, curated NCERT notes, and high-definition concept lectures.',
       href: '/learning-system',
     },
     {
       num: '03',
-      icon: <Layers className="w-5 h-5 text-emerald-500" />,
+      icon: <Layers className="w-5 h-5 text-red-500" />,
       title: 'Daily Practice Vault',
       description: 'Over 20,000+ chapter-wise questions with instant step-by-step video & text solutions.',
       href: '/resources#question-bank',
@@ -69,8 +69,8 @@ export const LearningEcosystemSection: React.FC = () => {
     <section className="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800">
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 text-xs font-bold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-red-500" />
             <span>Structured Pedagogy</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -87,7 +87,7 @@ export const LearningEcosystemSection: React.FC = () => {
             <Link
               key={step.num}
               href={step.href}
-              className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-blue-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between group"
+              className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-red-500/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -98,7 +98,7 @@ export const LearningEcosystemSection: React.FC = () => {
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
@@ -106,7 +106,7 @@ export const LearningEcosystemSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-blue-600 dark:text-blue-400">
+              <div className="mt-5 pt-3 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs font-semibold text-red-600 dark:text-red-400">
                 <span>Explore Phase</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </div>

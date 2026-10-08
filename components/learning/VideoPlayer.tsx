@@ -62,7 +62,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
             {courseTitle}
           </span>
           <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
@@ -74,11 +74,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onClick={handleToggleComplete}
           className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border transition ${
             isCompleted
-              ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border-emerald-300'
+              ? 'bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 border-red-300'
               : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100'
           }`}
         >
-          <CheckCircle className="w-4 h-4 text-emerald-500" />
+          <CheckCircle className="w-4 h-4 text-red-500" />
           <span>{isCompleted ? 'Completed' : 'Mark Completed'}</span>
         </button>
       </div>
@@ -97,8 +97,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             <div className="absolute inset-0 flex items-center justify-center">
               {isPlaying ? (
                 <div className="text-center space-y-2 animate-in fade-in">
-                  <div className="w-16 h-16 rounded-full bg-blue-600/30 border border-blue-400/40 flex items-center justify-center mx-auto text-blue-400 animate-pulse">
-                    <Play className="w-8 h-8 fill-blue-400 ml-1" />
+                  <div className="w-16 h-16 rounded-full bg-red-600/30 border border-red-400/40 flex items-center justify-center mx-auto text-red-400 animate-pulse">
+                    <Play className="w-8 h-8 fill-red-400 ml-1" />
                   </div>
                   <p className="text-xs text-slate-300 font-mono">
                     Streaming HLS Secure Encrypted Feed (1080p 60fps)
@@ -108,7 +108,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 <div className="text-center space-y-3">
                   <button
                     onClick={handleTogglePlay}
-                    className="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-xl shadow-blue-500/30 transition transform hover:scale-105 mx-auto"
+                    className="w-16 h-16 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shadow-xl shadow-red-500/30 transition transform hover:scale-105 mx-auto"
                     aria-label="Play video lesson"
                   >
                     <Play className="w-7 h-7 fill-white ml-1" />
@@ -137,7 +137,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-600/30 text-blue-300 border border-blue-400/30">
+                <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-red-600/30 text-red-300 border border-red-400/30">
                   HD 1080p
                 </span>
                 <button className="p-1.5 rounded-lg hover:bg-white/10 transition" aria-label="Fullscreen">
@@ -150,7 +150,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           {/* Secure Video Provider Tag */}
           <div className="flex items-center justify-between text-[11px] text-slate-400 px-2">
             <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
               <span>DRM Encrypted Feed via Learndawn Private Edge CDN</span>
             </div>
             <span>Playback Speed: 1.0x</span>
@@ -165,7 +165,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               onClick={() => setActiveTab('notes')}
               className={`py-3 text-center transition ${
                 activeTab === 'notes'
-                  ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                  ? 'border-b-2 border-red-600 text-red-600 dark:text-red-400 bg-white dark:bg-slate-900'
                   : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -175,7 +175,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               onClick={() => setActiveTab('curriculum')}
               className={`py-3 text-center transition ${
                 activeTab === 'curriculum'
-                  ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                  ? 'border-b-2 border-red-600 text-red-600 dark:text-red-400 bg-white dark:bg-slate-900'
                   : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -185,7 +185,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               onClick={() => setActiveTab('resources')}
               className={`py-3 text-center transition ${
                 activeTab === 'resources'
-                  ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                  ? 'border-b-2 border-red-600 text-red-600 dark:text-red-400 bg-white dark:bg-slate-900'
                   : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -197,11 +197,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           {activeTab === 'notes' && (
             <div className="p-5 flex-1 overflow-y-auto text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
               <div className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                <FileText className="w-4 h-4 text-blue-500" />
+                <FileText className="w-4 h-4 text-red-500" />
                 <span>Instructor Synopsis & Formulas</span>
               </div>
               <p>{currentLesson.notes_content}</p>
-              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-900 text-xs text-blue-900 dark:text-blue-200">
+              <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 text-xs text-red-900 dark:text-red-200">
                 <strong>Memory Trick:</strong> Phospholipids are amphipathic. Polar heads face outer aqueous phases while fatty acid tails form the hydrophobic core.
               </div>
             </div>
@@ -233,15 +233,15 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                       onClick={() => setCurrentLesson(les)}
                       className={`w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition ${
                         currentLesson.id === les.id
-                          ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-semibold'
+                          ? 'bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 font-semibold'
                           : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                       }`}
                     >
                       <div className="flex items-center gap-2">
                         {les.is_completed ? (
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                          <CheckCircle className="w-3.5 h-3.5 text-red-500 shrink-0" />
                         ) : les.is_preview_allowed ? (
-                          <Play className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                          <Play className="w-3.5 h-3.5 text-red-500 shrink-0" />
                         ) : (
                           <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                         )}
@@ -280,7 +280,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                   </div>
                   <button
                     onClick={() => showToast(`Downloading ${res.name}`, 'info')}
-                    className="p-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-blue-600 hover:text-white transition"
+                    className="p-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-600 hover:text-white transition"
                     aria-label="Download attachment"
                   >
                     <Download className="w-3.5 h-3.5" />

@@ -4,13 +4,13 @@ import { Users, BookCheck, ShieldCheck, Trophy, Sparkles } from 'lucide-react';
 export const StatisticsSection: React.FC = () => {
   const stats = [
     {
-      icon: <Users className="w-6 h-6 text-blue-500" />,
+      icon: <Users className="w-6 h-6 text-red-500" />,
       value: '50,000+',
       label: 'Registered Aspirants',
       sublabel: 'Active Pan-India community across 28 states',
     },
     {
-      icon: <BookCheck className="w-6 h-6 text-emerald-500" />,
+      icon: <BookCheck className="w-6 h-6 text-red-500" />,
       value: '2,500+',
       label: 'Verified Video Modules',
       sublabel: 'Structured NCERT and entrance aligned lectures',
@@ -22,7 +22,7 @@ export const StatisticsSection: React.FC = () => {
       sublabel: 'Measured across daily practice & revision milestones',
     },
     {
-      icon: <ShieldCheck className="w-6 h-6 text-indigo-500" />,
+      icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
       value: '100+',
       label: 'Senior Doctor & IIT Mentors',
       sublabel: 'Verified academic faculty & ranker counselors',
@@ -32,7 +32,7 @@ export const StatisticsSection: React.FC = () => {
   return (
     <section className="py-16 bg-slate-50/70 dark:bg-slate-900 text-slate-900 dark:text-white border-y border-slate-200/80 dark:border-slate-800 relative overflow-hidden transition-colors">
       {/* Background glow elements */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 dark:bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/5 dark:bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
@@ -53,7 +53,7 @@ export const StatisticsSection: React.FC = () => {
           {stats.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-none hover:border-blue-500/50 hover:shadow-xl dark:hover:bg-slate-800 transition-all duration-300 group text-center flex flex-col items-center justify-center"
+              className="p-6 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-none hover:border-red-500/50 hover:shadow-xl dark:hover:bg-slate-800 transition-all duration-300 group text-center flex flex-col items-center justify-center"
             >
               <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/80 mb-3 group-hover:scale-110 transition-transform">
                 {item.icon}

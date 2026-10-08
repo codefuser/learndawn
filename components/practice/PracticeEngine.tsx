@@ -138,7 +138,7 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
       {/* Top Header & Scoreboard Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
             {title}
           </span>
           <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -149,16 +149,16 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
         {/* Real-time stats */}
         <div className="flex items-center gap-4 text-xs font-semibold">
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-            <Timer className="w-3.5 h-3.5 text-blue-500" />
+            <Timer className="w-3.5 h-3.5 text-red-500" />
             <span>{Math.floor(seconds / 60)}:{(seconds % 60).toString().padStart(2, '0')}</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 border border-red-200/60 dark:border-red-800/60">
             <Trophy className="w-3.5 h-3.5" />
             <span>{userScore.correct} / {userScore.totalAttempted}</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 border border-red-200/60 dark:border-red-800/60">
             <BarChart2 className="w-3.5 h-3.5" />
             <span>{accuracyRate}% Accuracy</span>
           </div>
@@ -171,9 +171,9 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
           <div className="flex items-center gap-2">
             <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${
               currentQ.difficulty === 'easy'
-                ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400'
+                ? 'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-400'
                 : currentQ.difficulty === 'medium'
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-400'
+                ? 'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-400'
                 : 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400'
             }`}>
               {currentQ.difficulty} Difficulty
@@ -207,18 +207,18 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
         <div className="space-y-3">
           {currentQ.options.map((option) => {
             const isSelected = selectedOptionId === option.id;
-            let optionStyle = 'border-slate-200 dark:border-slate-800 hover:border-blue-400 bg-slate-50 dark:bg-slate-800/40 text-slate-800 dark:text-slate-200';
+            let optionStyle = 'border-slate-200 dark:border-slate-800 hover:border-red-400 bg-slate-50 dark:bg-slate-800/40 text-slate-800 dark:text-slate-200';
 
             if (isSubmitted) {
               if (option.is_correct) {
-                optionStyle = 'border-emerald-500 bg-emerald-50/80 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-100 ring-2 ring-emerald-500/20';
+                optionStyle = 'border-red-500 bg-red-50/80 dark:bg-red-950/50 text-red-900 dark:text-red-100 ring-2 ring-red-500/20';
               } else if (isSelected && !option.is_correct) {
                 optionStyle = 'border-rose-500 bg-rose-50/80 dark:bg-rose-950/50 text-rose-900 dark:text-rose-100 ring-2 ring-rose-500/20';
               } else {
                 optionStyle = 'opacity-50 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900';
               }
             } else if (isSelected) {
-              optionStyle = 'border-blue-600 bg-blue-50/60 dark:bg-blue-950/40 text-blue-900 dark:text-blue-100 ring-2 ring-blue-500/30';
+              optionStyle = 'border-red-600 bg-red-50/60 dark:bg-red-950/40 text-red-900 dark:text-red-100 ring-2 ring-red-500/30';
             }
 
             return (
@@ -230,7 +230,7 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
               >
                 <div className="flex items-center gap-3.5">
                   <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                    isSelected ? 'bg-red-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
                   }`}>
                     {option.option_key}
                   </span>
@@ -238,7 +238,7 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
                 </div>
 
                 {isSubmitted && option.is_correct && (
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
+                  <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 ml-2" />
                 )}
                 {isSubmitted && isSelected && !option.is_correct && (
                   <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
@@ -262,14 +262,14 @@ export const PracticeEngine: React.FC<PracticeEngineProps> = ({
             <button
               onClick={handleSubmit}
               disabled={!selectedOptionId}
-              className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-semibold text-xs shadow-md transition"
+              className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white font-semibold text-xs shadow-md transition"
             >
               Submit Answer
             </button>
           ) : (
             <button
               onClick={handleNext}
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-1.5"
+              className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs shadow-md transition flex items-center gap-1.5"
             >
               <span>{currentIndex < questions.length - 1 ? 'Next Question' : 'Complete Practice'}</span>
               <ArrowRight className="w-4 h-4" />

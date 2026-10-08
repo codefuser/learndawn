@@ -24,7 +24,7 @@ export default function AdminAnalyticsPage() {
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-2">
           <span className="text-xs text-slate-400">Monthly Active Students</span>
           <div className="text-3xl font-black text-white">38,420</div>
-          <span className="text-xs text-emerald-400 font-semibold">↑ +14.8% Month-over-Month</span>
+          <span className="text-xs text-red-400 font-semibold">↑ +14.8% Month-over-Month</span>
         </div>
 
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-2">
@@ -35,7 +35,7 @@ export default function AdminAnalyticsPage() {
 
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-2">
           <span className="text-xs text-slate-400">Total Practice Attempts Logged</span>
-          <div className="text-3xl font-black text-blue-400">1,480,000+</div>
+          <div className="text-3xl font-black text-red-400">1,480,000+</div>
           <span className="text-xs text-slate-400">Stored in public.question_attempts</span>
         </div>
       </div>

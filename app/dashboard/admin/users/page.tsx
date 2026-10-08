@@ -62,13 +62,13 @@ export default function AdminUsersPage() {
                       u.role === 'admin'
                         ? 'bg-amber-950/60 text-amber-400 border border-amber-900'
                         : u.role === 'educator'
-                        ? 'bg-blue-950/60 text-blue-400 border border-blue-900'
-                        : 'bg-emerald-950/60 text-emerald-400 border border-emerald-900'
+                        ? 'bg-red-950/60 text-red-400 border border-red-900'
+                        : 'bg-red-950/60 text-red-400 border border-red-900'
                     }`}>
                       {u.role}
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-emerald-400 font-semibold">
+                  <td className="py-3 px-4 text-red-400 font-semibold">
                     ● Enforced by Postgres RLS
                   </td>
                   <td className="py-3 px-4 text-right">

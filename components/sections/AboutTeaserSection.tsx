@@ -9,8 +9,8 @@ export const AboutTeaserSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Vision & Philosophy */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-              <Compass className="w-3.5 h-3.5 text-blue-500" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider">
+              <Compass className="w-3.5 h-3.5 text-red-500" />
               <span>About Learndawn India</span>
             </div>
 
@@ -51,7 +51,7 @@ export const AboutTeaserSection: React.FC = () => {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition"
+                className="inline-flex items-center gap-2 text-sm font-bold text-red-600 dark:text-red-400 hover:text-red-700 transition"
               >
                 <span>Read Our Complete Founding Story & Academic Charter</span>
                 <ArrowRight className="w-4 h-4" />
@@ -61,7 +61,7 @@ export const AboutTeaserSection: React.FC = () => {
 
           {/* Right Column: Values Graphic */}
           <div className="lg:col-span-5">
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50/90 via-indigo-50/70 to-slate-100/90 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-950 text-slate-900 dark:text-white border border-blue-200/70 dark:border-slate-800 shadow-xl space-y-6 relative overflow-hidden transition-colors">
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-red-50/90 via-red-50/70 to-slate-100/90 dark:from-slate-900 dark:via-red-950 dark:to-slate-950 text-slate-900 dark:text-white border border-red-200/70 dark:border-slate-800 shadow-xl space-y-6 relative overflow-hidden transition-colors">
               <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center gap-3">
@@ -91,7 +91,7 @@ export const AboutTeaserSection: React.FC = () => {
 
               <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                 <span>Pan-India Digital Academy</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">ISO 9001 Certified Pedagogy</span>
+                <span className="text-red-600 dark:text-red-400 font-semibold">ISO 9001 Certified Pedagogy</span>
               </div>
             </div>
           </div>

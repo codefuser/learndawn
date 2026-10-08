@@ -40,7 +40,7 @@ export default function ForgotPasswordPage() {
         <div className="bg-white dark:bg-slate-900 py-8 px-6 sm:px-10 shadow-xl border border-slate-200 dark:border-slate-800 rounded-3xl space-y-6">
           {submitted ? (
             <div className="text-center space-y-4 py-4">
-              <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+              <div className="w-14 h-14 rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Check Your Inbox</h3>
@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
               </p>
               <Link
                 href="/auth/sign-in"
-                className="mt-4 inline-block px-6 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs shadow-md"
+                className="mt-4 inline-block px-6 py-2.5 rounded-xl bg-red-600 text-white font-semibold text-xs shadow-md"
               >
                 Return to Sign In
               </Link>
@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
                     placeholder="student@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {loading ? <span>Sending recovery email...</span> : <span>Send Recovery Link</span>}
               </button>
@@ -85,7 +85,7 @@ export default function ForgotPasswordPage() {
 
           <div className="text-center text-xs text-slate-500">
             Remember your credentials?{' '}
-            <Link href="/auth/sign-in" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+            <Link href="/auth/sign-in" className="text-red-600 dark:text-red-400 font-semibold hover:underline">
               Sign in here
             </Link>
           </div>

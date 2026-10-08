@@ -103,7 +103,7 @@ export default function SignUpPage() {
                   placeholder="e.g. Arjun Sharma"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function SignUpPage() {
                     placeholder="student@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function SignUpPage() {
                     placeholder="+91 98765 43210"
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function SignUpPage() {
                 <select
                   value={targetExam}
                   onChange={(e) => setTargetExam(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
                   <option value="NEET UG">NEET UG</option>
                   <option value="JEE Main">JEE Main</option>
@@ -171,7 +171,7 @@ export default function SignUpPage() {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value as 'en' | 'hi' | 'ta')}
-                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
                   <option value="en">English</option>
                   <option value="hi">हिन्दी (Hindi)</option>
@@ -192,7 +192,7 @@ export default function SignUpPage() {
                   placeholder="At least 6 characters"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -203,20 +203,20 @@ export default function SignUpPage() {
                 type="checkbox"
                 checked={agreeTerms}
                 onChange={(e) => setAgreeTerms(e.target.checked)}
-                className="w-4 h-4 mt-0.5 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                className="w-4 h-4 mt-0.5 text-red-600 border-slate-300 rounded focus:ring-red-500"
               />
               <label htmlFor="terms" className="ml-2 block text-xs text-slate-600 dark:text-slate-400 leading-tight">
                 I agree to the Learndawn{' '}
-                <Link href="/about#terms" className="text-blue-600 underline">Terms of Service</Link>{' '}
+                <Link href="/about#terms" className="text-red-600 underline">Terms of Service</Link>{' '}
                 and{' '}
-                <Link href="/about#privacy" className="text-blue-600 underline">Privacy Policy</Link>.
+                <Link href="/about#privacy" className="text-red-600 underline">Privacy Policy</Link>.
               </label>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? (
                 <span>Setting up student profile...</span>
@@ -231,7 +231,7 @@ export default function SignUpPage() {
 
           <div className="text-center text-xs text-slate-500">
             Already have an account?{' '}
-            <Link href="/auth/sign-in" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+            <Link href="/auth/sign-in" className="text-red-600 dark:text-red-400 font-semibold hover:underline">
               Sign in here
             </Link>
           </div>

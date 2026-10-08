@@ -18,9 +18,9 @@ export default async function ExamsPage() {
 
       <main className="flex-1 pb-20">
         {/* Header */}
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
+        <section className="py-14 sm:py-20 bg-gradient-to-b from-red-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
           <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               <span>National Examination Pathways</span>
             </span>
@@ -39,11 +39,11 @@ export default async function ExamsPage() {
             {exams.map((exam) => (
               <div
                 key={exam.id}
-                className="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 flex flex-col justify-between hover:border-blue-500/50 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group"
+                className="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 flex flex-col justify-between hover:border-red-500/50 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800">
                       {exam.badge_label}
                     </span>
                     <span className="text-xs font-mono font-bold text-slate-400">
@@ -51,7 +51,7 @@ export default async function ExamsPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     {exam.title}
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -60,11 +60,11 @@ export default async function ExamsPage() {
 
                   <div className="pt-3 border-t border-slate-200 dark:border-slate-800 space-y-2 text-xs text-slate-500">
                     <div className="flex items-center gap-2">
-                      <Layers className="w-4 h-4 text-blue-500" />
+                      <Layers className="w-4 h-4 text-red-500" />
                       <span>{exam.subjects_count} Core Subjects</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-emerald-500" />
+                      <BookOpen className="w-4 h-4 text-red-500" />
                       <span>{exam.mock_tests_count} CBT Mock Tests</span>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ export default async function ExamsPage() {
                   </span>
                   <Link
                     href={`/exams/${exam.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md transition"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-xs shadow-md transition"
                   >
                     <span>View Curriculum</span>
                     <ArrowRight className="w-3.5 h-3.5" />

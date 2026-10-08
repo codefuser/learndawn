@@ -25,12 +25,12 @@ export default function AboutPage() {
       desc: 'We discard superficial tricks and rote memorization in favor of deep conceptual mastery that survives exam day stress.',
     },
     {
-      icon: <Users className="w-6 h-6 text-blue-500" />,
+      icon: <Users className="w-6 h-6 text-red-500" />,
       title: 'Top Ranker Mentorship',
       desc: 'Our academic guidance council consists of AIIMS doctors and IITians who understand the psychological journey of aspirants.',
     },
     {
-      icon: <ShieldCheck className="w-6 h-6 text-emerald-500" />,
+      icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
       title: 'Student-First Integrity',
       desc: 'Transparent pricing, zero spam telemarketing, and complete data privacy protection under Indian data governance standards.',
     },
@@ -47,10 +47,10 @@ export default function AboutPage() {
 
       <main className="flex-1 pb-20">
         {/* Header */}
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
+        <section className="py-14 sm:py-20 bg-gradient-to-b from-red-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
           <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-              <Compass className="w-3.5 h-3.5 text-blue-500" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider">
+              <Compass className="w-3.5 h-3.5 text-red-500" />
               <span>Our Academic Charter</span>
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -88,7 +88,7 @@ export default function AboutPage() {
               </p>
               <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
                 <span>Founded in India</span>
-                <span className="text-blue-400 font-semibold">Pan-India Digital Academy</span>
+                <span className="text-red-400 font-semibold">Pan-India Digital Academy</span>
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@ export default function AdminCoursesPage() {
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-300">
                   {course.difficulty_level}
                 </span>
-                <span className="text-xs font-bold text-emerald-400">● Published</span>
+                <span className="text-xs font-bold text-red-400">● Published</span>
               </div>
               <h3 className="text-base font-bold text-white line-clamp-1">{course.title}</h3>
               <p className="text-xs text-slate-400 line-clamp-2">{course.subtitle}</p>

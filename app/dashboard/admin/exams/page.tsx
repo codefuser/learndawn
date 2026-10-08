@@ -14,7 +14,7 @@ export default function AdminExamsPage() {
         <div>
           <h1 className="text-2xl font-bold text-white">Goal Exams Configuration</h1>
           <p className="text-xs text-slate-400">
-            Define eligibility parameters, exam blueprints, and syllabus scopes.
+            Define eligibility parameters, exam redprints, and syllabus scopes.
           </p>
         </div>
 
@@ -34,10 +34,10 @@ export default function AdminExamsPage() {
             className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-4 shadow-xl"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-900">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-900">
                 {exam.short_code}
               </span>
-              <span className="text-xs text-emerald-400 font-semibold">Active Catalog</span>
+              <span className="text-xs text-red-400 font-semibold">Active Catalog</span>
             </div>
 
             <h3 className="text-lg font-bold text-white">{exam.title}</h3>
