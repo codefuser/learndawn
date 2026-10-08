@@ -113,7 +113,7 @@ export default function AdminDashboardLayout({
     <div className="min-h-screen bg-slate-900 flex flex-col lg:flex-row text-slate-100">
       {/* Mobile Top Bar */}
       <div className="lg:hidden flex items-center justify-between p-4 bg-slate-950 border-b border-slate-800 sticky top-0 z-40">
-        <BrandLogo variant="mobile" theme="light" />
+        <BrandLogo variant="mobile" theme="dark" />
         <div className="flex items-center gap-2">
           <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
             ADMIN
@@ -136,7 +136,7 @@ export default function AdminDashboardLayout({
       >
         <div className="space-y-6">
           <div className="flex items-center justify-between px-2 pt-2">
-            <BrandLogo variant="full" theme="light" />
+            <BrandLogo variant="full" theme="dark" />
             <button
               onClick={() => setSidebarOpen(false)}
               className="lg:hidden p-1 text-slate-400 hover:text-white"
