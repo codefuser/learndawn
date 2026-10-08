@@ -34,7 +34,7 @@ export default function StudentDashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
-  const { user, signOut, switchDemoRole } = useAuth();
+  const { user, isLoading, signOut, switchDemoRole, openAuthModal } = useAuth();
 
   const navItems = [
     { label: 'Overview', href: '/dashboard/student', icon: <LayoutDashboard className="w-4 h-4" /> },
@@ -51,6 +51,66 @@ export default function StudentDashboardLayout({
     { label: 'Notifications', href: '/dashboard/student/notifications', icon: <Bell className="w-4 h-4" /> },
     { label: 'Account Settings', href: '/dashboard/student/settings', icon: <Settings className="w-4 h-4" /> },
   ];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs font-semibold text-slate-500">Loading student dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // RBAC Access Gate: Only registered users with valid records can access
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-6 bg-slate-950 text-white">
+        <div className="max-w-md w-full p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl text-center space-y-6">
+          <div className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center mx-auto">
+            <GraduationCap className="w-8 h-8" />
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              Authentication Required
+            </span>
+            <h1 className="text-2xl font-black tracking-tight text-white">
+              Student Portal Access
+            </h1>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Please sign in with your registered student credentials or create a new student profile to access your lessons, mock tests, and live classrooms.
+            </p>
+          </div>
+
+          <div className="pt-2 space-y-3">
+            <button
+              onClick={() => openAuthModal('/dashboard/student')}
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <UserCheck className="w-4 h-4" />
+              <span>Sign In with Registered Account</span>
+            </button>
+
+            <Link
+              href="/auth/sign-up"
+              className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-xs transition flex items-center justify-center gap-2"
+            >
+              <span>Register New Student Account</span>
+            </Link>
+
+            <Link
+              href="/"
+              className="block text-xs text-slate-500 hover:text-slate-300 transition pt-1"
+            >
+              ← Return to Academy Homepage
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col lg:flex-row text-slate-900 dark:text-slate-100">

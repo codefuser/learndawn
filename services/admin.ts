@@ -60,6 +60,18 @@ export const AdminService = {
   },
 
   async getRecentStudents() {
+    try {
+      const res = await fetch('/api/auth/students', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.students && data.students.length > 0) {
+          return data.students;
+        }
+      }
+    } catch {
+      // fallback
+    }
+
     const supabase = getSupabaseClient();
     if (supabase && isSupabaseConfigured) {
       try {

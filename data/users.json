@@ -1,0 +1,47 @@
+[
+  {
+    "id": "usr-admin-0001",
+    "email": "admin@learndawn.com",
+    "mobile": "+919999900001",
+    "passwordHash": "8829370504ffd523484941219f0a1d20d3aca8755d29306fa1189bba12244e7800dc64a20e258114f7ce3fff30f3e82aa6c275842fa848fc89c81fe3692afb2e",
+    "salt": "3c259139593cd7cf673c8df2b7889d7f",
+    "fullName": "Learndawn Administrator",
+    "role": "admin",
+    "targetGoalExam": "All Exams Governance",
+    "academicClass": "Faculty & Admin",
+    "preferredLanguage": "en",
+    "isActive": true,
+    "createdAt": "2026-10-08T11:27:37.203Z",
+    "updatedAt": "2026-10-08T11:27:37.203Z"
+  },
+  {
+    "id": "usr-student-0001",
+    "email": "student@learndawn.com",
+    "mobile": "+919876543210",
+    "passwordHash": "537a6564b966094a3f5566ce2bb8a4f41e4d8bc5c4362c5cff4fa58f3d11dd89a9cdc74573cf1cfa3ac8d27ee6ded1874806fb1e38b58915938ae66773ae174e",
+    "salt": "87f8b22d18833ef2f67aa331a22dc66c",
+    "fullName": "Arjun Sharma",
+    "role": "student",
+    "targetGoalExam": "NEET UG 2025",
+    "academicClass": "Class 12",
+    "preferredLanguage": "en",
+    "isActive": true,
+    "createdAt": "2026-10-08T11:27:37.230Z",
+    "updatedAt": "2026-10-08T11:27:37.230Z"
+  },
+  {
+    "id": "usr-8e924b40-6471-491c-8a2d-ae1b3f830125",
+    "email": "josephsamuvel1310@gmail.com",
+    "mobile": "7894561230",
+    "passwordHash": "28f20896458f6ea2fa3156e1b895e7575fc75e6a6ef079fa8d74e8c9ad7eed030a8b1f7be5ebc2d92288d28850248f350cc537a74e136ccb75ca403685c7924c",
+    "salt": "54bb3120b94c7b298a7f63ad0ab6a9c0",
+    "fullName": "Joseph S",
+    "role": "student",
+    "targetGoalExam": "NEET UG",
+    "academicClass": "Class 12",
+    "preferredLanguage": "en",
+    "isActive": true,
+    "createdAt": "2026-10-08T11:27:37.267Z",
+    "updatedAt": "2026-10-08T11:27:37.267Z"
+  }
+]

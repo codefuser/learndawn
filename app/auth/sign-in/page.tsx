@@ -67,14 +67,14 @@ export default function SignInPage() {
           <form onSubmit={handleSignIn} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                Email Address
+                Email Address or Mobile Number
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
                 <input
-                  type="email"
+                  type="text"
                   required
-                  placeholder="student@example.com"
+                  placeholder="student@example.com or +91 98765 43210"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"

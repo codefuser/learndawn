@@ -103,20 +103,20 @@ export const Navbar: React.FC = () => {
             : 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-slate-800/40 py-3 sm:py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           
           {/* Brand Logo */}
-          <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-6 shrink-0">
             <BrandLogo variant="full" />
           </div>
 
           {/* Desktop & Laptop Navigation (Visible on lg: 1024px+ screens) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 text-sm font-medium">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 text-xs xl:text-sm font-medium shrink-0">
             
             {/* Home */}
             <Link
               href="/"
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname === '/'
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
@@ -127,21 +127,22 @@ export const Navbar: React.FC = () => {
 
             {/* Programs & Exams Dropdown */}
             <div 
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={handleProgramsEnter}
               onMouseLeave={handleProgramsLeave}
             >
               <button
                 type="button"
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isProgramsActive || programsOpen
                     ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <span>Programs & Exams</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${programsOpen ? 'rotate-180' : ''}`} />
+                <span className="hidden xl:inline">Programs & Exams</span>
+                <span className="xl:hidden">Programs</span>
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${programsOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {programsOpen && (
@@ -217,21 +218,22 @@ export const Navbar: React.FC = () => {
 
             {/* Courses & System Dropdown */}
             <div 
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={handleLearningEnter}
               onMouseLeave={handleLearningLeave}
             >
               <button
                 type="button"
                 onClick={() => setLearningOpen(!learningOpen)}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isLearningActive || learningOpen
                     ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <span>Courses & System</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${learningOpen ? 'rotate-180' : ''}`} />
+                <span className="hidden xl:inline">Courses & System</span>
+                <span className="xl:hidden">Courses</span>
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${learningOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {learningOpen && (
@@ -281,7 +283,7 @@ export const Navbar: React.FC = () => {
             {/* Mentorship */}
             <Link
               href="/mentorship"
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/mentorship')
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
@@ -293,7 +295,7 @@ export const Navbar: React.FC = () => {
             {/* Resources */}
             <Link
               href="/resources"
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/resources')
                   ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
@@ -304,21 +306,22 @@ export const Navbar: React.FC = () => {
 
             {/* About & Contact Dropdown */}
             <div 
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={handleAboutEnter}
               onMouseLeave={handleAboutLeave}
             >
               <button
                 type="button"
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isAboutActive || aboutOpen
                     ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-950/40 font-semibold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <span>About & Contact</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
+                <span className="hidden xl:inline">About & Contact</span>
+                <span className="xl:hidden">About</span>
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {aboutOpen && (
@@ -351,15 +354,15 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Right Action Stack: Search, Language, Profile/Auth */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0">
             
             {/* Quick Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700/80 text-slate-500 dark:text-slate-400 text-xs transition border border-slate-200/60 dark:border-slate-700/60 cursor-pointer"
+              className="flex items-center gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 xl:px-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700/80 text-slate-500 dark:text-slate-400 text-xs transition border border-slate-200/60 dark:border-slate-700/60 cursor-pointer shrink-0 whitespace-nowrap"
               aria-label="Open search engine"
             >
-              <Search className="w-3.5 h-3.5" />
+              <Search className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden xl:inline">Search...</span>
               <kbd className="hidden 2xl:inline text-[10px] font-mono px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-400">
                 Ctrl+K
@@ -367,7 +370,7 @@ export const Navbar: React.FC = () => {
             </button>
 
             {/* Language Switcher */}
-            <div className="relative">
+            <div className="relative shrink-0">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition border border-transparent hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer"
@@ -498,16 +501,16 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href="/auth/sign-in"
-                  className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+                  className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition whitespace-nowrap shrink-0"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold shadow-sm shadow-blue-500/20 transition flex items-center gap-1.5"
+                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-semibold shadow-xs shadow-blue-500/20 transition flex items-center gap-1.5 whitespace-nowrap shrink-0"
                 >
                   <span>{t('nav.signUp')}</span>
                   <ArrowRight className="w-3 h-3" />

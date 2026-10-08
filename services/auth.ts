@@ -3,17 +3,32 @@ import { UserProfile, UserRole } from '@/types';
 
 export const AuthService = {
   /**
-   * Get currently authenticated user profile directly from Supabase
+   * Get currently authenticated user profile from persistent database session
    */
   async getCurrentProfile(): Promise<UserProfile | null> {
-    const supabase = getSupabaseClient();
+    try {
+      // 1. Check server database session via /api/auth/me
+      const res = await fetch('/api/auth/me', {
+        method: 'GET',
+        cache: 'no-store',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.user) {
+          return data.user as UserProfile;
+        }
+      }
+    } catch (e) {
+      console.warn('[AuthService] /api/auth/me check note:', e);
+    }
 
+    // 2. Fallback to Supabase client session if available
+    const supabase = getSupabaseClient();
     if (supabase && isSupabaseConfigured) {
       try {
         const { data: { session }, error } = await supabase.auth.getSession();
         if (error || !session) return null;
 
-        // Fetch user profile from database
         const { data: profile } = await supabase
           .from('profiles')
           .select(`*, user_roles(roles(name))`)
@@ -36,41 +51,8 @@ export const AuthService = {
             created_at: profile.created_at,
           };
         }
-
-        // If profile row doesn't exist yet, construct from session user metadata
-        const userMeta = session.user.user_metadata || {};
-        const fallbackProfile: UserProfile = {
-          id: session.user.id,
-          email: session.user.email || '',
-          full_name: userMeta.full_name || 'Student',
-          mobile: userMeta.mobile || '',
-          preferred_language: userMeta.preferred_language || 'en',
-          target_goal_exam: userMeta.target_goal_exam || 'NEET UG',
-          academic_class: 'Class 12',
-          role: 'student',
-          is_active: true,
-          created_at: session.user.created_at || new Date().toISOString(),
-        };
-
-        // Self-heal: upsert row into public.profiles
-        try {
-          await supabase.from('profiles').upsert({
-            id: fallbackProfile.id,
-            email: fallbackProfile.email,
-            full_name: fallbackProfile.full_name,
-            mobile: fallbackProfile.mobile,
-            target_goal_exam: fallbackProfile.target_goal_exam,
-            preferred_language: fallbackProfile.preferred_language,
-            is_active: true,
-            updated_at: new Date().toISOString(),
-          });
-        } catch {
-          // ignore
-        }
-
-        return fallbackProfile;
       } catch (err) {
-        console.error('[AuthService] Error fetching Supabase profile:', err);
+        console.warn('[AuthService] Supabase fallback profile error:', err);
       }
     }
 
@@ -78,41 +60,49 @@ export const AuthService = {
   },
 
   /**
-   * Sign In with Email & Password via Supabase Auth
+   * Sign In with Email/Mobile & Password via Database
    */
-  async signIn(email: string, password?: string): Promise<{ user: UserProfile | null; error: string | null }> {
-    const supabase = getSupabaseClient();
-
-    if (!supabase || !isSupabaseConfigured) {
-      return { 
-        user: null, 
-        error: 'Supabase database is not configured. Please verify your environment keys in Vercel or .env.local.' 
-      };
+  async signIn(identifier: string, password?: string): Promise<{ user: UserProfile | null; error: string | null }> {
+    if (!identifier || !identifier.trim()) {
+      return { user: null, error: 'Email or mobile number is required.' };
     }
 
     if (!password) {
       return { user: null, error: 'Password is required to authenticate.' };
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ identifier, password }),
+      });
 
-    if (error) {
-      return { user: null, error: error.message };
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        return {
+          user: null,
+          error: data.error || 'Authentication failed. Please check your credentials.',
+        };
+      }
+
+      // If Supabase is configured and email is provided, trigger background sign in
+      const supabase = getSupabaseClient();
+      if (supabase && isSupabaseConfigured && identifier.includes('@')) {
+        supabase.auth.signInWithPassword({ email: identifier, password }).catch(() => {
+          // ignore unconfirmed email errors in background
+        });
+      }
+
+      return { user: data.user, error: null };
+    } catch (err: any) {
+      return { user: null, error: err?.message || 'Network error during sign in.' };
     }
-
-    if (data.user) {
-      const profile = await this.getCurrentProfile();
-      return { user: profile, error: null };
-    }
-
-    return { user: null, error: 'Authentication failed. Please verify your credentials.' };
   },
 
   /**
-   * Sign Up student in Supabase Auth and database tables
+   * Sign Up student in Database and Supabase
    */
   async signUp(payload: {
     fullName: string;
@@ -121,109 +111,88 @@ export const AuthService = {
     targetExam: string;
     password?: string;
     language?: 'en' | 'hi' | 'ta';
+    role?: UserRole;
   }): Promise<{ user: UserProfile | null; error: string | null }> {
-    const supabase = getSupabaseClient();
+    if (!payload.fullName || !payload.fullName.trim()) {
+      return { user: null, error: 'Full name is required.' };
+    }
 
-    if (!supabase || !isSupabaseConfigured) {
-      return { 
-        user: null, 
-        error: 'Supabase database is not configured. Please verify your environment keys in Vercel or .env.local.' 
-      };
+    if (!payload.email || !payload.email.includes('@')) {
+      return { user: null, error: 'Valid email address is required.' };
     }
 
     if (!payload.password || payload.password.length < 6) {
       return { user: null, error: 'Password must be at least 6 characters long.' };
     }
 
-    // 1. Create User in Supabase Auth
-    const { data, error } = await supabase.auth.signUp({
-      email: payload.email,
-      password: payload.password,
-      options: {
-        data: {
-          full_name: payload.fullName,
-          mobile: payload.mobile,
-          target_goal_exam: payload.targetExam,
-          preferred_language: payload.language || 'en',
-        },
-      },
-    });
-
-    if (error) {
-      return { user: null, error: error.message };
-    }
-
-    if (data.user) {
-      // 2. Immediately upsert the student profile into public.profiles table
-      try {
-        await supabase.from('profiles').upsert({
-          id: data.user.id,
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: payload.fullName,
           email: payload.email,
-          full_name: payload.fullName,
           mobile: payload.mobile,
-          target_goal_exam: payload.targetExam,
-          preferred_language: payload.language || 'en',
-          academic_class: 'Class 12',
-          is_active: true,
-          updated_at: new Date().toISOString(),
-        });
+          targetExam: payload.targetExam,
+          password: payload.password,
+          language: payload.language || 'en',
+          role: payload.role || 'student',
+        }),
+      });
 
-        // 3. Ensure student role is assigned
-        const { data: roleData } = await supabase
-          .from('roles')
-          .select('id')
-          .eq('name', 'student')
-          .maybeSingle();
+      const data = await res.json();
 
-        if (roleData) {
-          await supabase.from('user_roles').upsert({
-            user_id: data.user.id,
-            role_id: roleData.id,
-          });
-        }
-      } catch (insertErr) {
-        console.warn('[AuthService] Profile database save note:', insertErr);
+      if (!res.ok || !data.success) {
+        return {
+          user: null,
+          error: data.error || 'Registration failed.',
+        };
       }
 
-      const profile = await this.getCurrentProfile();
-      if (profile) {
-        return { user: profile, error: null };
+      // Also trigger Supabase signup in background if configured
+      const supabase = getSupabaseClient();
+      if (supabase && isSupabaseConfigured) {
+        supabase.auth
+          .signUp({
+            email: payload.email,
+            password: payload.password,
+            options: {
+              data: {
+                full_name: payload.fullName,
+                mobile: payload.mobile,
+                target_goal_exam: payload.targetExam,
+              },
+            },
+          })
+          .catch(() => {});
       }
 
-      // If email confirmation is pending on Supabase, return authenticated profile representation
-      const registeredUser: UserProfile = {
-        id: data.user.id,
-        email: payload.email,
-        full_name: payload.fullName,
-        mobile: payload.mobile,
-        preferred_language: payload.language || 'en',
-        target_goal_exam: payload.targetExam,
-        academic_class: 'Class 12',
-        role: 'student',
-        is_active: true,
-        created_at: new Date().toISOString(),
-      };
-
-      return { user: registeredUser, error: null };
+      return { user: data.user, error: null };
+    } catch (err: any) {
+      return { user: null, error: err?.message || 'Network error during registration.' };
     }
-
-    return { user: null, error: 'Failed to create student account.' };
   },
 
   /**
    * Sign Out
    */
   async signOut(): Promise<void> {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {
+      // ignore
+    }
+
     const supabase = getSupabaseClient();
     if (supabase && isSupabaseConfigured) {
-      await supabase.auth.signOut();
+      await supabase.auth.signOut().catch(() => {});
     }
   },
 
   /**
-   * Demo role switcher (deprecated, kept for interface compatibility)
+   * Demo role switcher
    */
   setDemoRole(role: UserRole) {
     return null;
-  }
+  },
 };

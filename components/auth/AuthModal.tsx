@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth/context';
 import { BrandLogo } from '@/components/ui/BrandLogo';
-import { X, Mail, Phone, Lock, User, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, Mail, Phone, Lock, User, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
 export const AuthModal: React.FC = () => {
   const router = useRouter();
   const { isAuthModalOpen, closeAuthModal, signIn, signUp, intendedDestination } = useAuth();
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
-  const [authMethod, setAuthMethod] = useState<'email' | 'mobile'>('email');
+  const [identifier, setIdentifier] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
@@ -30,7 +30,6 @@ export const AuthModal: React.FC = () => {
 
     try {
       if (mode === 'signin') {
-        const identifier = authMethod === 'email' ? email : `${mobile}@learner.learndawn.in`;
         const res = await signIn(identifier, password);
         if (res.success) {
           showToast('Welcome back to Learndawn India!', 'success');
@@ -40,7 +39,7 @@ export const AuthModal: React.FC = () => {
       } else {
         const res = await signUp({
           fullName,
-          email: authMethod === 'email' ? email : `${mobile}@learner.learndawn.in`,
+          email,
           mobile,
           targetExam,
           password,
@@ -61,13 +60,13 @@ export const AuthModal: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200">
       <div 
-        className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-8 relative"
+        className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={closeAuthModal}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
           aria-label="Close authentication modal"
         >
           <X className="w-5 h-5" />
@@ -79,7 +78,7 @@ export const AuthModal: React.FC = () => {
             <BrandLogo variant="full" />
           </div>
           <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Continue Your Learning Journey
+            {mode === 'signin' ? 'Sign In to Your Account' : 'Create Free Student Account'}
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             {intendedDestination ? (
@@ -87,34 +86,40 @@ export const AuthModal: React.FC = () => {
                 Log in to unlock access to your requested learning module.
               </span>
             ) : (
-              'Log in or register your student profile to access lessons, mock tests, and live classrooms.'
+              'Store and access your enrolled courses, simulated CBT tests, and mentorship sessions.'
             )}
           </p>
         </div>
 
-        {/* Tabs: Email vs Mobile */}
+        {/* Mode Switch Pills */}
         <div className="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl mb-5 text-xs font-semibold">
           <button
             type="button"
-            onClick={() => setAuthMethod('email')}
-            className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition ${
-              authMethod === 'email'
+            onClick={() => {
+              setMode('signin');
+              setErrorMsg('');
+            }}
+            className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition cursor-pointer ${
+              mode === 'signin'
                 ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
-            <Mail className="w-3.5 h-3.5" /> Continue with Email
+            <span>Sign In</span>
           </button>
           <button
             type="button"
-            onClick={() => setAuthMethod('mobile')}
-            className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition ${
-              authMethod === 'mobile'
+            onClick={() => {
+              setMode('signup');
+              setErrorMsg('');
+            }}
+            className={`py-2 rounded-lg flex items-center justify-center gap-1.5 transition cursor-pointer ${
+              mode === 'signup'
                 ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400'
             }`}
           >
-            <Phone className="w-3.5 h-3.5" /> Continue with Mobile
+            <span>Register New Student</span>
           </button>
         </div>
 
@@ -145,60 +150,77 @@ export const AuthModal: React.FC = () => {
             </div>
           )}
 
-          {authMethod === 'email' ? (
+          {mode === 'signin' ? (
             <div>
               <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Email Address
+                Email Address or Mobile Number
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                 <input
-                  type="email"
+                  type="text"
                   required
-                  placeholder="student@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="student@example.com or +91 98765 43210"
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
           ) : (
-            <div>
-              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Mobile Number
-              </label>
-              <div className="relative">
-                <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                <input
-                  type="tel"
-                  required
-                  placeholder="+91 98765 43210"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+            <>
+              <div>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                  <input
+                    type="email"
+                    required
+                    placeholder="student@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
               </div>
-            </div>
-          )}
 
-          {mode === 'signup' && (
-            <div>
-              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Target Goal Exam
-              </label>
-              <select
-                value={targetExam}
-                onChange={(e) => setTargetExam(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="NEET UG">NEET UG (Medical)</option>
-                <option value="JEE Main">JEE Main (Engineering)</option>
-                <option value="CUET">CUET (UG)</option>
-                <option value="AIIMS Nursing">AIIMS Nursing</option>
-                <option value="AIIMS Paramedical">AIIMS Paramedical</option>
-                <option value="CBSE Class 12">CBSE Class 12</option>
-              </select>
-            </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  Mobile Number
+                </label>
+                <div className="relative">
+                  <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  Target Goal Exam
+                </label>
+                <select
+                  value={targetExam}
+                  onChange={(e) => setTargetExam(e.target.value)}
+                  className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="NEET UG">NEET UG (Medical Entrance)</option>
+                  <option value="JEE Main">JEE Main (Engineering)</option>
+                  <option value="CUET">CUET (UG)</option>
+                  <option value="AIIMS Nursing">AIIMS Nursing</option>
+                  <option value="AIIMS Paramedical">AIIMS Paramedical</option>
+                  <option value="CBSE Class 12">CBSE Class 12</option>
+                </select>
+              </div>
+            </>
           )}
 
           <div>
@@ -238,47 +260,34 @@ export const AuthModal: React.FC = () => {
             className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
           >
             {loading ? (
-              <span>Authenticating...</span>
+              <span>Connecting database...</span>
             ) : (
               <>
-                <span>{mode === 'signin' ? 'Sign In & Continue' : 'Create Free Student Account'}</span>
+                <span>{mode === 'signin' ? 'Sign In & Access Dashboard' : 'Create Free Student Account'}</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
           </button>
         </form>
 
-        {/* Toggle mode */}
-        <div className="mt-5 text-center text-xs text-slate-500">
-          {mode === 'signin' ? (
-            <p>
-              New to Learndawn?{' '}
-              <button
-                type="button"
-                onClick={() => setMode('signup')}
-                className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-              >
-                Create an account
-              </button>
-            </p>
-          ) : (
-            <p>
-              Already registered?{' '}
-              <button
-                type="button"
-                onClick={() => setMode('signin')}
-                className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-              >
-                Sign in to your account
-              </button>
-            </p>
-          )}
+        {/* Demo Credentials Helper Pill */}
+        <div className="mt-4 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+          <div className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+            <span>Quick Test Credentials (Pre-seeded in DB):</span>
+          </div>
+          <div className="flex justify-between items-center text-[10px]">
+            <span>Student: <code className="text-blue-600 dark:text-blue-400">student@learndawn.com</code> (Student@123)</span>
+          </div>
+          <div className="flex justify-between items-center text-[10px]">
+            <span>Admin: <code className="text-amber-600 dark:text-amber-400">admin@learndawn.com</code> (Admin@123)</span>
+          </div>
         </div>
 
         {/* Security badge */}
-        <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-          <span>Encrypted Session • Supabase RLS Authorization Protocol</span>
+          <span>Role-Based Access Control • Encrypted Session Protocol</span>
         </div>
       </div>
     </div>
