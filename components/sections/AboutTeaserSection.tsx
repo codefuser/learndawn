@@ -61,37 +61,37 @@ export const AboutTeaserSection: React.FC = () => {
 
           {/* Right Column: Values Graphic */}
           <div className="lg:col-span-5">
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white shadow-2xl space-y-6 relative overflow-hidden">
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-50/90 via-indigo-50/70 to-slate-100/90 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-950 text-slate-900 dark:text-white border border-blue-200/70 dark:border-slate-800 shadow-xl space-y-6 relative overflow-hidden transition-colors">
               <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center">
                   <Shield className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-white">The Learndawn Promise</h4>
-                  <span className="text-xs text-slate-400">Institutional Commitments</span>
+                  <h4 className="text-base font-bold text-slate-900 dark:text-white">The Learndawn Promise</h4>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Institutional Commitments</span>
                 </div>
               </div>
 
-              <ul className="space-y-4 text-xs text-slate-300">
+              <ul className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
                 <li className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 mt-1.5" />
-                  <span><strong>100% Syllabus Coverage:</strong> Complete adherence to officially prescribed NTA, CBSE, and AIIMS curricula without skipped topics.</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mt-1.5" />
+                  <span><strong className="text-slate-900 dark:text-white">100% Syllabus Coverage:</strong> Complete adherence to officially prescribed NTA, CBSE, and AIIMS curricula without skipped topics.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 mt-1.5" />
-                  <span><strong>Verified Faculty Accountability:</strong> Live lectures conducted strictly by credentialed subject masters.</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mt-1.5" />
+                  <span><strong className="text-slate-900 dark:text-white">Verified Faculty Accountability:</strong> Live lectures conducted strictly by credentialed subject masters.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 mt-1.5" />
-                  <span><strong>Student Data Privacy:</strong> Complete security compliance without data selling or unsolicited telemarketing calls.</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mt-1.5" />
+                  <span><strong className="text-slate-900 dark:text-white">Student Data Privacy:</strong> Complete security compliance without data selling or unsolicited telemarketing calls.</span>
                 </li>
               </ul>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                 <span>Pan-India Digital Academy</span>
-                <span className="text-emerald-400 font-semibold">ISO 9001 Certified Pedagogy</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">ISO 9001 Certified Pedagogy</span>
               </div>
             </div>
           </div>

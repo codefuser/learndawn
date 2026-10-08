@@ -19,7 +19,15 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<ThemeMode>('dark');
+  const [theme, setThemeState] = useState<ThemeMode>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('learndawn-theme') as ThemeMode | null;
+        if (saved === 'light' || saved === 'dark') return saved;
+      } catch {}
+    }
+    return 'dark';
+  });
   const [mounted, setMounted] = useState(false);
 
   const applyTheme = useCallback((targetTheme: ThemeMode) => {
