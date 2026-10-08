@@ -38,7 +38,7 @@ export const ContactTeaserSection: React.FC = () => {
 
   return (
     <section id="contact" className="py-16 sm:py-24 bg-slate-50/50 dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left info banner */}
           <div className="lg:col-span-5 bg-gradient-to-br from-blue-700 via-indigo-800 to-slate-900 text-white p-8 sm:p-10 flex flex-col justify-between space-y-8">

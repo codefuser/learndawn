@@ -103,7 +103,7 @@ export const Navbar: React.FC = () => {
             : 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-slate-800/40 py-3 sm:py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
+        <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2">
           
           {/* Brand Logo */}
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
@@ -111,7 +111,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop & Laptop Navigation (Visible on lg: 1024px+ screens) */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 text-xs xl:text-sm font-medium shrink-0">
+          <nav className="hidden lg:flex items-center justify-center gap-1 xl:gap-2 text-xs xl:text-sm font-medium flex-1 mx-4">
             
             {/* Home */}
             <Link

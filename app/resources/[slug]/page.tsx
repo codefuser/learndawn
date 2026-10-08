@@ -34,7 +34,7 @@ export default async function ResourceDetailPage({
 
       <main className="flex-1 pb-20">
         <section className="py-14 sm:py-20 bg-gradient-to-b from-purple-900 via-slate-900 to-slate-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 space-y-4">
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <Link href="/resources" className="hover:text-white">Resources</Link>
               <span>/</span>

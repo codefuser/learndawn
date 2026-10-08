@@ -52,7 +52,7 @@ export const SpecialtiesSection: React.FC = () => {
 
   return (
     <section className="py-16 sm:py-24 bg-slate-50/50 dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider mb-3">
             <Flame className="w-3.5 h-3.5 text-amber-500" />

@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-1/4 right-0 w-[600px] h-[500px] bg-gradient-to-bl from-amber-500/10 via-blue-500/10 to-transparent blur-3xl pointer-events-none" />
 
       {/* Main Expansive Content Container */}
-      <div className="w-full max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 relative z-10 my-auto">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           
           {/* Left Column: Bold Hero Headlines, CTAs & Accreditation */}

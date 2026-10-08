@@ -61,7 +61,7 @@ export default function ContactPage() {
 
       <main className="flex-1 pb-20">
         <section className="py-14 sm:py-20 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
               <MessageSquare className="w-3.5 h-3.5 text-blue-500" />
               <span>Direct Support & Academic Desk</span>
@@ -75,7 +75,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Left Contact Information */}
             <div className="lg:col-span-5 space-y-6">

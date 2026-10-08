@@ -34,7 +34,7 @@ export default async function AcademicProgramDetailPage({
 
       <main className="flex-1 pb-20">
         <section className="py-14 sm:py-20 bg-gradient-to-b from-indigo-900 via-slate-900 to-slate-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 space-y-4">
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <Link href="/academics" className="hover:text-white">Academics</Link>
               <span>/</span>
@@ -54,7 +54,7 @@ export default async function AcademicProgramDetailPage({
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-8">
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-12 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
               <BookOpen className="w-6 h-6 text-indigo-500" />

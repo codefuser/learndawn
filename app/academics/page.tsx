@@ -18,7 +18,7 @@ export default async function AcademicsPage() {
 
       <main className="flex-1 pb-20">
         <section className="py-14 sm:py-20 bg-gradient-to-b from-indigo-50/50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 border-b border-slate-200/80 dark:border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
               <span>Foundation & Senior Secondary</span>
@@ -32,7 +32,7 @@ export default async function AcademicsPage() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {programs.map((prog) => (
               <div

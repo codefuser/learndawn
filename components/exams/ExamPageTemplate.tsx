@@ -63,7 +63,7 @@ export const ExamPageTemplate: React.FC<ExamPageTemplateProps> = ({
       {/* Hero Banner for this specific Exam */}
       <section className="relative overflow-hidden pt-12 pb-16 bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-950 text-white">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
             <Link href="/" className="text-slate-400 hover:text-white transition">Home</Link>
             <span className="text-slate-600">/</span>
@@ -120,7 +120,7 @@ export const ExamPageTemplate: React.FC<ExamPageTemplateProps> = ({
 
       {/* Navigation Sub-bar */}
       <div className="sticky top-[60px] z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto py-2.5 text-xs font-semibold">
+        <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center gap-2 overflow-x-auto py-2.5 text-xs font-semibold">
           {[
             { id: 'overview', label: 'Overview' },
             { id: 'courses', label: 'Batches & Courses' },
@@ -145,7 +145,7 @@ export const ExamPageTemplate: React.FC<ExamPageTemplateProps> = ({
       </div>
 
       {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 space-y-12">
         {/* SECTION: Overview */}
         {activeSection === 'overview' && (
           <div className="space-y-8 animate-in fade-in">

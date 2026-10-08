@@ -5,7 +5,7 @@ import { Compass, Lightbulb, Heart, Shield, ArrowRight } from 'lucide-react';
 export const AboutTeaserSection: React.FC = () => {
   return (
     <section className="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Vision & Philosophy */}
           <div className="lg:col-span-7 space-y-6">

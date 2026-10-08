@@ -45,7 +45,7 @@ export const WhyLearndawnSection: React.FC = () => {
 
   return (
     <section className="py-14 sm:py-20 lg:py-24 bg-slate-50/50 dark:bg-slate-950/70 border-b border-slate-200/80 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">

@@ -45,7 +45,7 @@ export default async function CourseDetailPage({
       <main className="flex-1 pb-20">
         {/* Course Header Banner */}
         <section className="py-12 bg-slate-900 text-white border-b border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 space-y-4">
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <Link href="/courses" className="hover:text-white">Courses</Link>
               <span>/</span>
@@ -90,7 +90,7 @@ export default async function CourseDetailPage({
         </section>
 
         {/* Video Lesson & Curriculum Preview */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-10 space-y-10">
           <div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
               Sample Lesson Preview & Player
