@@ -172,21 +172,29 @@ export default function AdminOverviewPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
-                {students.map((st) => (
-                  <tr key={st.id} className="hover:bg-slate-900/60">
-                    <td className="py-3 px-3 font-semibold text-white">
-                      {st.name}
-                      <span className="block text-[10px] text-slate-500 font-normal">{st.email}</span>
-                    </td>
-                    <td className="py-3 px-3">{st.exam}</td>
-                    <td className="py-3 px-3 text-slate-400">{st.date}</td>
-                    <td className="py-3 px-3">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-900">
-                        {st.status}
-                      </span>
+                {students.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="py-8 text-center text-xs text-slate-500">
+                      No student accounts registered yet. Real learners will appear here upon registration.
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  students.map((st) => (
+                    <tr key={st.id} className="hover:bg-slate-900/60">
+                      <td className="py-3 px-3 font-semibold text-white">
+                        {st.name}
+                        <span className="block text-[10px] text-slate-500 font-normal">{st.email}</span>
+                      </td>
+                      <td className="py-3 px-3">{st.exam}</td>
+                      <td className="py-3 px-3 text-slate-400">{st.date}</td>
+                      <td className="py-3 px-3">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-900">
+                          {st.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

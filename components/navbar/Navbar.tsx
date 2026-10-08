@@ -450,41 +450,6 @@ export const Navbar: React.FC = () => {
                       <span>{user.role === 'admin' ? 'Admin Dashboard' : 'Student Dashboard'}</span>
                     </Link>
 
-                    {/* Preview Switcher */}
-                    <div className="my-1 border-t border-slate-100 dark:border-slate-800 pt-1">
-                      <div className="px-3 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                        Quick Preview Switch
-                      </div>
-                      <button
-                        onClick={() => {
-                          switchDemoRole('student');
-                          setUserDropdownOpen(false);
-                        }}
-                        className={`w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-left transition cursor-pointer ${
-                          user.role === 'student' ? 'text-blue-600 font-bold' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                        }`}
-                      >
-                        <span className="flex items-center gap-2">
-                          <User className="w-3.5 h-3.5" /> Student View
-                        </span>
-                        {user.role === 'student' && <span className="text-[10px] bg-blue-100 text-blue-700 px-1 rounded">Active</span>}
-                      </button>
-                      <button
-                        onClick={() => {
-                          switchDemoRole('admin');
-                          setUserDropdownOpen(false);
-                        }}
-                        className={`w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-left transition cursor-pointer ${
-                          user.role === 'admin' ? 'text-amber-600 font-bold' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                        }`}
-                      >
-                        <span className="flex items-center gap-2">
-                          <ShieldAlert className="w-3.5 h-3.5" /> Admin View
-                        </span>
-                        {user.role === 'admin' && <span className="text-[10px] bg-amber-100 text-amber-700 px-1 rounded">Active</span>}
-                      </button>
-                    </div>
-
                     <div className="border-t border-slate-100 dark:border-slate-800 pt-1 mt-1">
                       <button
                         onClick={() => {
