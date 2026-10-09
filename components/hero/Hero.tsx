@@ -69,10 +69,10 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 space-y-6 text-left">
 
             {/* Main Grand Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-black text-zinc-950 dark:text-white tracking-tight leading-[1.06]">
-              Learn Today.{' '}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-black text-zinc-950 dark:text-white tracking-tight leading-[1.08]">
+              Where The Dreams{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-500 to-red-600">
-                Build Your Tomorrow.
+                Finds Their Direction.
               </span>
             </h1>
 
