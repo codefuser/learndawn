@@ -8,8 +8,6 @@ import { useAuth } from '@/lib/auth/context';
 import { useLanguage, SupportedLanguage } from '@/lib/i18n/context';
 import { useTheme } from '@/lib/theme/context';
 import { 
-  Menu, 
-  X, 
   ChevronDown, 
   Globe, 
   Sun,
@@ -98,12 +96,19 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-xs border-b border-slate-200/50 dark:border-zinc-900/80 py-2 sm:py-2.5'
-            : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-transparent dark:border-transparent py-2.5 sm:py-3.5'
+            ? 'bg-white/85 dark:bg-[#08080b]/85 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] border-b border-slate-200/60 dark:border-white/[0.06] py-2 sm:py-2.5'
+            : 'bg-white/70 dark:bg-black/60 backdrop-blur-md border-b border-transparent py-2.5 sm:py-3.5'
         }`}
       >
+        {/* Ambient Red Glow Line along bottom of sticky header when scrolled */}
+        <div 
+          className={`absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/35 to-transparent transition-opacity duration-500 pointer-events-none ${
+            scrolled ? 'opacity-100' : 'opacity-0'
+          }`} 
+        />
+
         <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2">
           
           {/* Brand Logo */}
@@ -135,15 +140,15 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isProgramsActive || programsOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">Programs & Exams</span>
                 <span className="xl:hidden">Programs</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${programsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${programsOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
               <div 
@@ -232,15 +237,15 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLearningOpen(!learningOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isLearningActive || learningOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">Courses & System</span>
                 <span className="xl:hidden">Courses</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${learningOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${learningOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
               <div 
@@ -326,15 +331,15 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isAboutActive || aboutOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">About & Contact</span>
                 <span className="xl:hidden">About</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${aboutOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
               <div 
@@ -504,28 +509,56 @@ export const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="hidden md:inline-flex px-3 sm:px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 ring-1 ring-red-400/30 font-bold text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition items-center gap-1.5 whitespace-nowrap shrink-0"
+                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden"
                 >
                   <span>{t('nav.signUp')}</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Link>
               </div>
             )}
 
-            {/* Mobile Hamburger Toggle (Visible on screens < 1024px) */}
+            {/* Animated Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-              aria-label="Toggle navigation menu"
+              className="lg:hidden relative w-9 h-9 rounded-xl flex flex-col items-center justify-center gap-1.5 text-slate-700 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+                  mobileMenuOpen ? 'opacity-0 translate-x-2' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+              />
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full inset-x-0 bg-white dark:bg-[#0c0c0f] border-b border-slate-200 dark:border-zinc-800/80 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[calc(100vh-100%)] overflow-y-auto z-50">
+        {/* Mobile Backdrop Overlay */}
+        <div 
+          onClick={() => setMobileMenuOpen(false)}
+          className={`lg:hidden fixed inset-0 top-[60px] sm:top-[64px] bg-black/60 backdrop-blur-xs transition-opacity duration-300 z-40 ${
+            mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+        />
+
+        {/* Smooth Animated Mobile Navigation Drawer */}
+        <div
+          className={`lg:hidden absolute top-full inset-x-0 bg-white/95 dark:bg-[#0c0c0f]/95 backdrop-blur-2xl border-b border-slate-200/80 dark:border-zinc-800/80 shadow-2xl transition-all duration-300 ease-in-out origin-top z-50 ${
+            mobileMenuOpen 
+              ? 'max-h-[85vh] opacity-100 translate-y-0 pointer-events-auto visible py-5 px-5 overflow-y-auto' 
+              : 'max-h-0 opacity-0 -translate-y-2 pointer-events-none invisible py-0 px-5 border-transparent overflow-hidden'
+          }`}
+        >
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -544,20 +577,22 @@ export const Navbar: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
                   <span>Programs & Exams</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileProgramsOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileProgramsOpen ? 'rotate-180 text-red-500' : ''}`} />
                 </button>
-                {mobileProgramsOpen && (
-                  <div className="pl-4 py-1 space-y-1 border-l-2 border-red-500/30 ml-4 my-1">
-                    <Link href="/exams/neet-ug" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">NEET UG Medical</Link>
-                    <Link href="/exams/jee-main" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">JEE Main Engineering</Link>
-                    <Link href="/exams/cuet" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">CUET & AIIMS Nursing</Link>
-                    <Link href="/academics" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">School Academics (Class 9-12)</Link>
-                    <Link href="/exams" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs font-semibold text-red-600">All Target Exams →</Link>
-                  </div>
-                )}
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-red-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileProgramsOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/exams/neet-ug" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">NEET UG Medical</Link>
+                  <Link href="/exams/jee-main" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">JEE Main Engineering</Link>
+                  <Link href="/exams/cuet" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">CUET & AIIMS Nursing</Link>
+                  <Link href="/academics" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">School Academics (Class 9-12)</Link>
+                  <Link href="/exams" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs font-semibold text-red-600 transition">All Target Exams →</Link>
+                </div>
               </div>
 
               {/* Mobile Accordion: Courses & System */}
@@ -565,18 +600,20 @@ export const Navbar: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileLearningOpen(!mobileLearningOpen)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
                   <span>Courses & System</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileLearningOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileLearningOpen ? 'rotate-180 text-red-500' : ''}`} />
                 </button>
-                {mobileLearningOpen && (
-                  <div className="pl-4 py-1 space-y-1 border-l-2 border-red-500/30 ml-4 my-1">
-                    <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">Video Masterclasses</Link>
-                    <Link href="/learning-system" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">4-Layer Learning Ecosystem</Link>
-                    <Link href="/practice" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">Dawn CBT Practice</Link>
-                  </div>
-                )}
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-red-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileLearningOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Video Masterclasses</Link>
+                  <Link href="/learning-system" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">4-Layer Learning Ecosystem</Link>
+                  <Link href="/practice" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Dawn CBT Practice</Link>
+                </div>
               </div>
 
               <Link
@@ -686,15 +723,17 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/auth/sign-up"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl bg-red-600 hover:bg-red-700 font-semibold text-sm text-white shadow-md shadow-red-500/20 transition"
+                  className="py-2.5 text-center rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 font-semibold text-sm text-white shadow-md shadow-red-500/20 transition"
                 >
                   {t('nav.signUp')}
                 </Link>
               </div>
             )}
           </div>
-        )}
       </header>
+
+      {/* Structural spacer matching fixed header height */}
+      <div className="h-[62px] sm:h-[68px] w-full shrink-0" aria-hidden="true" />
     </>
   );
 };
