@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   keywords: ['NEET UG', 'JEE Main', 'CUET', 'AIIMS Nursing', 'AIIMS Paramedical', 'CBSE Class 12', 'EdTech India'],
   authors: [{ name: 'Learndawn Academic Council' }],
   openGraph: {
-    title: 'Learndawn India - Learn Today. Build Your Tomorrow.',
+    title: 'Learndawn India - Where The Dreams Finds Their Direction',
     description: 'Premier digital academy for NEET, JEE, AIIMS, and Academic Excellence.',
     siteName: 'Learndawn India',
     type: 'website',

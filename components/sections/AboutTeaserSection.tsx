@@ -18,12 +18,12 @@ export const AboutTeaserSection: React.FC = () => {
               A New Dawn in Digital Learning & Aspirant Empowerment
             </h2>
 
-            <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              Learndawn was founded with an unyielding conviction: every Indian student, regardless of geographic location or economic background, deserves access to top-tier medical and engineering guidance without compromise.
+            <p className="text-sm sm:text-base text-zinc-800 dark:text-zinc-200 leading-relaxed font-semibold">
+              LearnDawn India is a standalone digital education and mentorship institution focused on making competitive, academic, and career-oriented education more accessible and affordable.
             </p>
 
             <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              We reject predatory EdTech models that treat education as transactional commerce. Instead, we cultivate an authentic digital academy grounded in scientific pedagogy, active recall, empathetic faculty mentorship, and transparent evaluation.
+              LearnDawn combines teaching, mentorship, counselling, testing, study materials, and student support into one learning ecosystem rather than treating coaching as only classroom teaching.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -88,8 +88,8 @@ export const AboutTeaserSection: React.FC = () => {
               </ul>
 
               <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
-                <span>Pan-India Digital Academy</span>
-                <span className="text-red-500 font-semibold">ISO 9001 Certified Pedagogy</span>
+                <span>Tamil Nadu | Andhra Pradesh</span>
+                <span className="text-emerald-500 font-semibold">24/7 Online Student Support</span>
               </div>
             </div>
           </div>

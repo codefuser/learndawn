@@ -18,9 +18,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 }) => {
   // Height presets maintaining the clean horizontal ratio (1624x498 ~ 3.26:1)
   const sizeMap = {
-    sm: { height: 28, width: 92, className: 'h-7 sm:h-8 w-auto' },
-    md: { height: 38, width: 124, className: 'h-9 sm:h-10 w-auto' },
-    lg: { height: 48, width: 156, className: 'h-11 sm:h-12 w-auto' },
+    sm: { height: 32, width: 105, className: 'h-8 sm:h-9 w-auto' },
+    md: { height: 42, width: 137, className: 'h-10 sm:h-11 md:h-12 w-auto' },
+    lg: { height: 52, width: 170, className: 'h-11 sm:h-12 md:h-14 w-auto' },
   };
 
   const currentSize = sizeMap[size];

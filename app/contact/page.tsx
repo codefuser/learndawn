@@ -87,9 +87,13 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Toll-Free Helpline</span>
-                      <span className="font-bold text-white text-base">+91 1800-LEARN-DAWN</span>
-                      <p className="text-[11px] text-slate-400">Mon - Sat, 8:00 AM to 9:00 PM IST</p>
+                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Toll-Free Student Desk</span>
+                      <a href="tel:+919025362645" className="font-bold text-white text-base hover:text-red-400 transition tracking-wide block">
+                        +91 90253 62645
+                      </a>
+                      <p className="text-[11px] text-emerald-400 font-medium mt-0.5">
+                        24/7 | Every Day • Online Student Support
+                      </p>
                     </div>
                   </div>
 
@@ -97,10 +101,14 @@ export default function ContactPage() {
                     <div className="p-2.5 rounded-xl bg-white/10 shrink-0 text-red-400">
                       <Mail className="w-5 h-5" />
                     </div>
-                    <div>
-                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Admissions & Support</span>
-                      <span className="font-semibold text-white">admissions@learndawn.in</span>
-                      <p className="text-[11px] text-slate-400">Response within 24 hours</p>
+                    <div className="space-y-1">
+                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Email Support</span>
+                      <a href="mailto:learndawn24@gmail.com" className="font-semibold text-white text-sm hover:text-red-400 transition block">
+                        learndawn24@gmail.com
+                      </a>
+                      <a href="mailto:entprepmakers3@gmail.com" className="font-semibold text-white text-sm hover:text-red-400 transition block">
+                        entprepmakers3@gmail.com
+                      </a>
                     </div>
                   </div>
 
@@ -109,8 +117,9 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Headquarters</span>
-                      <span className="font-semibold text-white">Learndawn Tower, Connaught Place, New Delhi 110001</span>
+                      <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Location</span>
+                      <span className="font-semibold text-white text-sm">Tamil Nadu | Andhra Pradesh</span>
+                      <p className="text-[11px] text-slate-400 mt-0.5">Pan-India Digital Learning Ecosystem</p>
                     </div>
                   </div>
                 </div>

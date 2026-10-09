@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
         {/* Top Header Row: Accreditation Badge & Integrated Search Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 sm:mb-10 pt-1">
           {/* Accreditation Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold shadow-sm self-start">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold shadow-sm self-start max-w-full">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>Digital Learning Academy of India • Synchronized CBT Ecosystem</span>
           </div>
@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
           <button
             type="button"
             onClick={openSearch}
-            className="group flex items-center justify-between gap-3 px-4 py-2 sm:py-2.5 rounded-2xl bg-white dark:bg-zinc-900/90 hover:bg-zinc-50 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/50 dark:hover:border-red-500/50 shadow-sm text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all cursor-pointer w-full sm:w-auto sm:min-w-[320px] md:min-w-[360px] backdrop-blur-md"
+            className="group flex items-center justify-between gap-3 px-4 py-2 sm:py-2.5 rounded-2xl bg-white dark:bg-zinc-900/90 hover:bg-zinc-50 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/50 dark:hover:border-red-500/50 shadow-sm text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all cursor-pointer w-full sm:w-auto sm:min-w-[320px] md:min-w-[360px] backdrop-blur-md"
             aria-label="Open search engine"
           >
             <div className="flex items-center gap-2.5">
@@ -69,10 +69,10 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 space-y-6 text-left">
 
             {/* Main Grand Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-black text-zinc-950 dark:text-white tracking-tight leading-[1.06]">
-              Learn Today.{' '}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-black text-zinc-950 dark:text-white tracking-tight leading-[1.08]">
+              Where The Dreams{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-500 to-red-600">
-                Build Your Tomorrow.
+                Finds Their Direction.
               </span>
             </h1>
 
@@ -156,7 +156,7 @@ export const Hero: React.FC = () => {
               <div className="relative z-10 rounded-3xl bg-zinc-50 dark:bg-[#0c0c0f] border border-zinc-200 dark:border-zinc-800/80 shadow-2xl p-6 sm:p-7 backdrop-blur-xl space-y-5 text-zinc-900 dark:text-white">
                 
                 {/* Header */}
-                <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-850 pb-4">
+                <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800/80 pb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-600/30">
                       <GraduationCap className="w-5 h-5" />
@@ -240,7 +240,7 @@ export const Hero: React.FC = () => {
       {/* Integrated Bottom Pathway Ribbon */}
       <div className="w-full border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50/80 dark:bg-black/80 backdrop-blur-md py-3 px-5 sm:px-8 lg:px-12 xl:px-16 relative z-10 transition-colors">
         <div className="max-w-[1536px] mx-auto flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-600 dark:text-zinc-400">
-          <div className="flex items-center gap-2 font-medium">
+          <div className="flex flex-wrap items-center gap-2 font-medium">
             <span className="text-zinc-900 dark:text-zinc-200 font-semibold">Active Pathways:</span>
             <div className="flex flex-wrap items-center gap-1.5">
               <Link href="/exams/neet-ug" className="px-2.5 py-1 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/50 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">

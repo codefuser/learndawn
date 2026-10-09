@@ -20,6 +20,12 @@ html.dark,
   --font-mono: var(--font-geist-mono);
 }
 
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -67,4 +73,45 @@ html.dark ::-webkit-scrollbar-thumb {
 .dark ::-webkit-scrollbar-thumb:hover,
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(248, 113, 113, 0.7);
+}
+
+/* Radiant glow & shimmer micro-animations */
+@keyframes gradientX {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 6s ease infinite;
+}
+
+.animate-shimmer-sweep {
+  animation: shimmerSweep 3s infinite linear;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
 }

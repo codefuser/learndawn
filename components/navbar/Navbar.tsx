@@ -8,8 +8,6 @@ import { useAuth } from '@/lib/auth/context';
 import { useLanguage, SupportedLanguage } from '@/lib/i18n/context';
 import { useTheme } from '@/lib/theme/context';
 import { 
-  Menu, 
-  X, 
   ChevronDown, 
   Globe, 
   Sun,
@@ -98,17 +96,24 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-zinc-850/80 py-2 sm:py-2.5'
-            : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-zinc-850/40 py-3 sm:py-3.5'
+            ? 'bg-white/85 dark:bg-[#08080b]/85 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] border-b border-slate-200/60 dark:border-white/[0.06] py-2 sm:py-2.5'
+            : 'bg-white/70 dark:bg-black/60 backdrop-blur-md border-b border-transparent py-2.5 sm:py-3.5'
         }`}
       >
+        {/* Ambient Red Glow Line along bottom of sticky header when scrolled */}
+        <div 
+          className={`absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/35 to-transparent transition-opacity duration-500 pointer-events-none ${
+            scrolled ? 'opacity-100' : 'opacity-0'
+          }`} 
+        />
+
         <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2">
           
           {/* Brand Logo */}
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
-            <BrandLogo variant="full" />
+            <BrandLogo variant="full" size="lg" />
           </div>
 
           {/* Desktop & Laptop Navigation (Visible on lg: 1024px+ screens) */}
@@ -135,19 +140,25 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isProgramsActive || programsOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">Programs & Exams</span>
                 <span className="xl:hidden">Programs</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${programsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${programsOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
-              {programsOpen && (
-                <div className="absolute left-0 mt-1 w-72 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute left-0 top-full pt-1.5 w-72 z-50 transition-all duration-200 ease-out origin-top ${
+                  programsOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <div className="px-3 py-1.5 font-bold text-[10px] uppercase tracking-wider text-slate-400">
                     Competitive Entrance
                   </div>
@@ -190,7 +201,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="my-1 border-t border-slate-100 dark:border-zinc-850" />
+                  <div className="my-1 border-t border-slate-100 dark:border-zinc-800/60" />
                   
                   <Link
                     href="/academics"
@@ -205,7 +216,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-zinc-850">
+                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-zinc-800/60">
                     <Link
                       href="/exams"
                       className="block px-3 py-1.5 text-center font-semibold text-red-600 dark:text-red-400 hover:underline text-[11px]"
@@ -214,7 +225,7 @@ export const Navbar: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Courses & System Dropdown */}
@@ -226,19 +237,25 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLearningOpen(!learningOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isLearningActive || learningOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">Courses & System</span>
                 <span className="xl:hidden">Courses</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${learningOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${learningOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
-              {learningOpen && (
-                <div className="absolute left-0 mt-1 w-64 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute left-0 top-full pt-1.5 w-64 z-50 transition-all duration-200 ease-out origin-top ${
+                  learningOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/courses"
                     className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -278,7 +295,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Mentorship */}
@@ -314,19 +331,25 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
                   isAboutActive || aboutOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
                 <span className="hidden xl:inline">About & Contact</span>
                 <span className="xl:hidden">About</span>
-                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${aboutOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
-              {aboutOpen && (
-                <div className="absolute right-0 mt-1 w-52 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute right-0 top-full pt-1.5 w-52 z-50 transition-all duration-200 ease-out origin-top ${
+                  aboutOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/about"
                     className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -349,7 +372,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
                 </div>
-              )}
+              </div>
             </div>
 
           </nav>
@@ -372,8 +395,8 @@ export const Navbar: React.FC = () => {
               )}
             </button>
 
-            {/* Language Switcher */}
-            <div className="relative shrink-0">
+            {/* Language Switcher (Visible on sm: 640px+) */}
+            <div className="relative shrink-0 hidden sm:block">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition border border-transparent hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer"
@@ -384,11 +407,15 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className="w-3 h-3 opacity-60" />
               </button>
 
-              {langDropdownOpen && (
-                <div 
-                  className="absolute right-0 mt-2 w-36 bg-white dark:bg-[#0c0c0f] rounded-xl shadow-xl border border-slate-200 dark:border-zinc-850 p-1.5 z-50 text-xs"
-                  onMouseLeave={() => setLangDropdownOpen(false)}
-                >
+              <div 
+                className={`absolute right-0 top-full pt-1.5 w-36 z-50 transition-all duration-200 ease-out origin-top ${
+                  langDropdownOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+                onMouseLeave={() => setLangDropdownOpen(false)}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-1.5 text-xs">
                   {[
                     { code: 'en', label: 'English' },
                     { code: 'hi', label: 'हिन्दी (Hindi)' },
@@ -410,7 +437,7 @@ export const Navbar: React.FC = () => {
                     </button>
                   ))}
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Authenticated User Dropdown OR Sign-in/Sign-up CTAs */}
@@ -418,7 +445,7 @@ export const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-850/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
+                  className="flex items-center gap-1.5 sm:gap-2 pl-1.5 pr-2 sm:pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
                 >
                   <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-red-600 text-white flex items-center justify-center font-bold text-xs">
                     {user.full_name ? user.full_name.charAt(0) : 'U'}
@@ -426,18 +453,22 @@ export const Navbar: React.FC = () => {
                   <span className="font-semibold text-slate-800 dark:text-slate-200 hidden sm:inline max-w-[90px] truncate">
                     {user.full_name?.split(' ')[0] || 'User'}
                   </span>
-                  <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300">
+                  <span className="hidden md:inline-block text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300">
                     {user.role}
                   </span>
                   <ChevronDown className="w-3 h-3 opacity-60" />
                 </button>
 
-                {userDropdownOpen && (
-                  <div 
-                    className="absolute right-0 mt-2 w-56 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs"
-                    onMouseLeave={() => setUserDropdownOpen(false)}
-                  >
-                    <div className="px-3 py-2 border-b border-slate-100 dark:border-zinc-850 mb-1">
+                <div 
+                  className={`absolute right-0 top-full pt-1.5 w-56 z-50 transition-all duration-200 ease-out origin-top ${
+                    userDropdownOpen
+                      ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                      : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                  }`}
+                  onMouseLeave={() => setUserDropdownOpen(false)}
+                >
+                  <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
+                    <div className="px-3 py-2 border-b border-slate-100 dark:border-zinc-800/60 mb-1">
                       <p className="font-semibold text-slate-900 dark:text-slate-100 truncate">
                         {user.full_name || 'Learndawn User'}
                       </p>
@@ -453,7 +484,7 @@ export const Navbar: React.FC = () => {
                       <span>{user.role === 'admin' ? 'Admin Dashboard' : 'Student Dashboard'}</span>
                     </Link>
 
-                    <div className="border-t border-slate-100 dark:border-zinc-850 pt-1 mt-1">
+                    <div className="border-t border-slate-100 dark:border-zinc-800/60 pt-1 mt-1">
                       <button
                         onClick={() => {
                           signOut();
@@ -466,40 +497,68 @@ export const Navbar: React.FC = () => {
                       </button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href="/auth/sign-in"
-                  className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
+                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 ring-1 ring-red-400/30 font-bold text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden"
                 >
                   <span>{t('nav.signUp')}</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </Link>
               </div>
             )}
 
-            {/* Mobile Hamburger Toggle (Visible on screens < 1024px) */}
+            {/* Animated Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
-              aria-label="Toggle navigation menu"
+              className="lg:hidden relative w-9 h-9 rounded-xl flex flex-col items-center justify-center gap-1.5 text-slate-700 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+                  mobileMenuOpen ? 'opacity-0 translate-x-2' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+              />
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[60px] bg-white dark:bg-black border-b border-slate-200 dark:border-zinc-850 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto z-50">
+        {/* Mobile Backdrop Overlay */}
+        <div 
+          onClick={() => setMobileMenuOpen(false)}
+          className={`lg:hidden fixed inset-0 top-[60px] sm:top-[64px] bg-black/60 backdrop-blur-xs transition-opacity duration-300 z-40 ${
+            mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+        />
+
+        {/* Smooth Animated Mobile Navigation Drawer */}
+        <div
+          className={`lg:hidden absolute top-full inset-x-0 bg-white/95 dark:bg-[#0c0c0f]/95 backdrop-blur-2xl border-b border-slate-200/80 dark:border-zinc-800/80 shadow-2xl transition-all duration-300 ease-in-out origin-top z-50 ${
+            mobileMenuOpen 
+              ? 'max-h-[85vh] opacity-100 translate-y-0 pointer-events-auto visible py-5 px-5 overflow-y-auto' 
+              : 'max-h-0 opacity-0 -translate-y-2 pointer-events-none invisible py-0 px-5 border-transparent overflow-hidden'
+          }`}
+        >
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -518,20 +577,22 @@ export const Navbar: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
                   <span>Programs & Exams</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileProgramsOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileProgramsOpen ? 'rotate-180 text-red-500' : ''}`} />
                 </button>
-                {mobileProgramsOpen && (
-                  <div className="pl-4 py-1 space-y-1 border-l-2 border-red-500/30 ml-4 my-1">
-                    <Link href="/exams/neet-ug" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">NEET UG Medical</Link>
-                    <Link href="/exams/jee-main" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">JEE Main Engineering</Link>
-                    <Link href="/exams/cuet" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">CUET & AIIMS Nursing</Link>
-                    <Link href="/academics" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">School Academics (Class 9-12)</Link>
-                    <Link href="/exams" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs font-semibold text-red-600">All Target Exams →</Link>
-                  </div>
-                )}
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-red-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileProgramsOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/exams/neet-ug" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">NEET UG Medical</Link>
+                  <Link href="/exams/jee-main" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">JEE Main Engineering</Link>
+                  <Link href="/exams/cuet" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">CUET & AIIMS Nursing</Link>
+                  <Link href="/academics" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">School Academics (Class 9-12)</Link>
+                  <Link href="/exams" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs font-semibold text-red-600 transition">All Target Exams →</Link>
+                </div>
               </div>
 
               {/* Mobile Accordion: Courses & System */}
@@ -539,18 +600,20 @@ export const Navbar: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setMobileLearningOpen(!mobileLearningOpen)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
                   <span>Courses & System</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileLearningOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileLearningOpen ? 'rotate-180 text-red-500' : ''}`} />
                 </button>
-                {mobileLearningOpen && (
-                  <div className="pl-4 py-1 space-y-1 border-l-2 border-red-500/30 ml-4 my-1">
-                    <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">Video Masterclasses</Link>
-                    <Link href="/learning-system" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">4-Layer Learning Ecosystem</Link>
-                    <Link href="/practice" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600">Dawn CBT Practice</Link>
-                  </div>
-                )}
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-red-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileLearningOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Video Masterclasses</Link>
+                  <Link href="/learning-system" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">4-Layer Learning Ecosystem</Link>
+                  <Link href="/practice" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Dawn CBT Practice</Link>
+                </div>
               </div>
 
               <Link
@@ -602,13 +665,37 @@ export const Navbar: React.FC = () => {
               </Link>
             </nav>
 
+            {/* Mobile Language Switcher */}
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-800/80 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-zinc-400">Language</span>
+              <div className="flex items-center gap-1.5">
+                {[
+                  { code: 'en', label: 'English' },
+                  { code: 'hi', label: 'हिन्दी' },
+                  { code: 'ta', label: 'தமிழ்' },
+                ].map((item) => (
+                  <button
+                    key={item.code}
+                    onClick={() => setLanguage(item.code as SupportedLanguage)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border ${
+                      language === item.code
+                        ? 'bg-red-600 border-red-600 text-white shadow-xs'
+                        : 'bg-slate-100 dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-slate-200 dark:hover:bg-zinc-800'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Mobile Theme Toggle */}
-            <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
-              <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Interface Theme</span>
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-800/80 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-zinc-400">Interface Theme</span>
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-zinc-850 text-xs font-semibold text-slate-800 dark:text-slate-200"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-semibold text-slate-800 dark:text-zinc-200 hover:bg-slate-200 dark:hover:bg-zinc-800 transition cursor-pointer"
               >
                 {theme === 'dark' ? (
                   <>
@@ -625,26 +712,28 @@ export const Navbar: React.FC = () => {
             </div>
 
             {!user && (
-              <div className="pt-4 border-t border-slate-200 dark:border-zinc-850 grid grid-cols-2 gap-3">
+              <div className="pt-4 border-t border-slate-200 dark:border-zinc-800/80 grid grid-cols-2 gap-3">
                 <Link
                   href="/auth/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-zinc-800 font-semibold text-sm text-slate-800 dark:text-slate-200"
+                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-zinc-800 font-semibold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-900 transition"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl bg-red-600 hover:bg-red-700 font-semibold text-sm text-white shadow-md shadow-red-500/20"
+                  className="py-2.5 text-center rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 font-semibold text-sm text-white shadow-md shadow-red-500/20 transition"
                 >
                   {t('nav.signUp')}
                 </Link>
               </div>
             )}
           </div>
-        )}
       </header>
+
+      {/* Structural spacer matching fixed header height */}
+      <div className="h-[62px] sm:h-[68px] w-full shrink-0" aria-hidden="true" />
     </>
   );
 };
