@@ -55,39 +55,51 @@ export const ContactTeaserSection: React.FC = () => {
             </div>
 
             <div className="space-y-4 text-xs text-zinc-600 dark:text-zinc-300">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-red-500 shrink-0">
+              <a 
+                href="tel:+919025362645"
+                className="flex items-center gap-3 p-2 -ml-2 rounded-2xl hover:bg-zinc-200/60 dark:hover:bg-zinc-900/60 transition group cursor-pointer"
+              >
+                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-red-500 shrink-0 group-hover:scale-110 transition-transform">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold">Toll Free Student Desk</span>
-                  <span className="font-semibold text-zinc-900 dark:text-white">+91 1800-LEARN-DAWN</span>
+                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold tracking-wider">Toll-Free Student Desk</span>
+                  <span className="font-bold text-zinc-900 dark:text-white text-sm tracking-wide">+91 90253 62645</span>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-red-500 shrink-0">
+              <div className="flex items-start gap-3 p-2 -ml-2">
+                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-red-500 shrink-0 mt-0.5">
                   <Mail className="w-4 h-4" />
                 </div>
-                <div>
-                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold">Email Admissions</span>
-                  <span className="font-semibold text-zinc-900 dark:text-white">counselling@learndawn.in</span>
+                <div className="space-y-1">
+                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold tracking-wider">Email Support</span>
+                  <a href="mailto:learndawn24@gmail.com" className="block font-semibold text-zinc-900 dark:text-white hover:text-red-500 transition">
+                    learndawn24@gmail.com
+                  </a>
+                  <a href="mailto:entprepmakers3@gmail.com" className="block font-semibold text-zinc-900 dark:text-white hover:text-red-500 transition">
+                    entprepmakers3@gmail.com
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-red-500 shrink-0">
+              <div className="flex items-center gap-3 p-2 -ml-2">
+                <div className="p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-amber-500 shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold">Headquarters</span>
-                  <span className="font-semibold text-zinc-900 dark:text-white">Learndawn Tower, New Delhi, India</span>
+                  <span className="block text-zinc-400 dark:text-zinc-500 text-[10px] uppercase font-bold tracking-wider">Location</span>
+                  <span className="font-semibold text-zinc-900 dark:text-white">Tamil Nadu | Andhra Pradesh</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-900 text-[11px] text-zinc-500 dark:text-zinc-400">
-              Operating Hours: Monday – Saturday (8:00 AM – 9:00 PM IST)
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-900 flex items-center gap-2 text-[11px] text-zinc-600 dark:text-zinc-400 font-medium">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>Online Availability: <strong className="text-zinc-900 dark:text-white">24/7 | Every Day</strong> Online Student Support</span>
             </div>
           </div>
 

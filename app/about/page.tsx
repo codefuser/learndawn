@@ -54,10 +54,10 @@ export default function AboutPage() {
               <span>Our Academic Charter</span>
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              About Learndawn India
+              About LearnDawn India
             </h1>
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              A standalone digital learning academy dedicated to competitive exam mastery, academic excellence, clinical foundations, and 1:1 student mentorship.
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              LearnDawn India is a standalone digital education and mentorship institution focused on making competitive, academic, and career-oriented education more accessible and affordable.
             </p>
           </div>
         </section>
@@ -69,11 +69,14 @@ export default function AboutPage() {
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Our Founding Vision
               </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                India is home to the most aspirational student body in the world. Yet, hundreds of thousands of promising young minds in non-metro towns and tier-2/tier-3 cities face insurmountable obstacles: lack of qualified educators, exorbitant coaching fees, predatory loan lock-ins, and overwhelming mental isolation.
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-semibold">
+                LearnDawn India is a standalone digital education and mentorship institution focused on making competitive, academic, and career-oriented education more accessible and affordable.
               </p>
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Learndawn was engineered as a transformative digital sanctuary where world-class education is accessible at a fraction of the cost, delivered directly into the hands of ambitious students through modern web and mobile technology.
+                LearnDawn combines teaching, mentorship, counselling, testing, study materials, and student support into one learning ecosystem rather than treating coaching as only classroom teaching.
+              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                India is home to the most aspirational student body in the world. Learndawn was engineered as a transformative digital sanctuary where world-class education is accessible at a fraction of the cost, delivered directly into the hands of ambitious students through modern web and mobile technology.
               </p>
             </div>
 
@@ -87,8 +90,8 @@ export default function AboutPage() {
                 We believe that clearing examinations like NEET UG, JEE Main, or AIIMS Nursing requires authentic problem-solving grit. We don&apos;t offer shortcuts; we provide unyielding academic support, precise conceptual breakdowns, and continuous accountability until rank day.
               </p>
               <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                <span>Founded in India</span>
-                <span className="text-red-400 font-semibold">Pan-India Digital Academy</span>
+                <span>Tamil Nadu | Andhra Pradesh</span>
+                <span className="text-emerald-400 font-semibold">24/7 Online Student Support</span>
               </div>
             </div>
           </div>

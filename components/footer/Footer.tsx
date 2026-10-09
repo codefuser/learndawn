@@ -273,44 +273,74 @@ export const Footer: React.FC = () => {
                 <span>Where The Dreams Finds Their Direction</span>
               </div>
 
-              <p className="text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-sm">
-                India&apos;s synchronized digital ecosystem for NEET UG, JEE Main, CUET, and School Board Excellence — powered by AIIMS doctors &amp; IITian master faculty.
-              </p>
+              <div className="space-y-2 text-xs sm:text-[13px] leading-relaxed text-zinc-400 max-w-sm">
+                <p>
+                  LearnDawn India is a standalone digital education and mentorship institution focused on making competitive, academic, and career-oriented education more accessible and affordable.
+                </p>
+                <p className="text-zinc-500 text-[11px] leading-relaxed">
+                  LearnDawn combines teaching, mentorship, counselling, testing, study materials, and student support into one learning ecosystem rather than treating coaching as only classroom teaching.
+                </p>
+              </div>
             </div>
 
-            {/* Live Operational Status Beacon */}
+            {/* Live Operational Status: 24/7 Online Student Support */}
             <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 text-xs text-zinc-300">
-              <span className="relative flex h-2.5 w-2.5">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span className="font-medium text-[11px]">All CBT Simulation Engines Online (99.98% SLA)</span>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1.5 text-[11px]">
+                <span className="font-bold text-emerald-400">ONLINE AVAILABILITY:</span>
+                <span className="text-zinc-300">24/7 | Every Day • Online Student Support</span>
+              </div>
             </div>
 
             {/* Interactive Contact Touchpoints */}
             <div className="space-y-2 text-xs">
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition">
-                <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                <span className="text-zinc-300 text-xs leading-snug">
-                  Learndawn Academic Tower, New Delhi • Bengaluru • Chennai
-                </span>
+              {/* Location */}
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition">
+                <MapPin className="w-4 h-4 text-amber-500 shrink-0" />
+                <div className="flex items-center gap-1.5 text-xs">
+                  <span className="text-zinc-500 text-[10px] uppercase font-bold">Location:</span>
+                  <span className="text-zinc-200 font-semibold">Tamil Nadu | Andhra Pradesh</span>
+                </div>
               </div>
 
+              {/* Toll-Free Student Desk */}
+              <a 
+                href="tel:+919025362645"
+                className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-red-500/40 hover:bg-red-950/20 text-zinc-300 hover:text-white transition group cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <Phone className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
+                  <div className="min-w-0">
+                    <span className="block text-[9px] uppercase font-bold text-zinc-500 tracking-wider">Toll-Free Student Desk</span>
+                    <span className="text-xs font-bold text-white tracking-wide">+91 90253 62645</span>
+                  </div>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold shrink-0">
+                  Call Now
+                </span>
+              </a>
+
+              {/* Dual Email Support */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <a 
-                  href="mailto:admissions@learndawn.in"
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-red-500/40 hover:bg-red-950/20 text-zinc-300 hover:text-white transition group cursor-pointer"
+                  href="mailto:learndawn24@gmail.com"
+                  className="flex items-center gap-2 p-2 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-red-500/40 hover:bg-red-950/20 text-zinc-300 hover:text-white transition group cursor-pointer"
+                  title="learndawn24@gmail.com"
                 >
-                  <Mail className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="truncate text-[11px] font-medium">admissions@learndawn.in</span>
+                  <Mail className="w-3.5 h-3.5 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
+                  <span className="truncate text-[11px] font-medium">learndawn24@gmail.com</span>
                 </a>
 
                 <a 
-                  href="tel:18005327632"
-                  className="flex items-center gap-2.5 p-2.5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-red-500/40 hover:bg-red-950/20 text-zinc-300 hover:text-white transition group cursor-pointer"
+                  href="mailto:entprepmakers3@gmail.com"
+                  className="flex items-center gap-2 p-2 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-red-500/40 hover:bg-red-950/20 text-zinc-300 hover:text-white transition group cursor-pointer"
+                  title="entprepmakers3@gmail.com"
                 >
-                  <Phone className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="truncate text-[11px] font-bold">1800-LEARN-DAWN</span>
+                  <Mail className="w-3.5 h-3.5 text-rose-400 group-hover:scale-110 transition-transform shrink-0" />
+                  <span className="truncate text-[11px] font-medium">entprepmakers3@gmail.com</span>
                 </a>
               </div>
             </div>

@@ -8,7 +8,7 @@ import { Settings, Database, ShieldCheck, Save, AlertCircle } from 'lucide-react
 export default function AdminSettingsPage() {
   const { showToast } = useToast();
   const [platformName, setPlatformName] = useState('Learndawn India');
-  const [supportEmail, setSupportEmail] = useState('admissions@learndawn.in');
+  const [supportEmail, setSupportEmail] = useState('learndawn24@gmail.com');
   const [maintenanceMode, setMaintenanceMode] = useState(false);
 
   const handleSave = (e: React.FormEvent) => {
