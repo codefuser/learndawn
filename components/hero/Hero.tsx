@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
         {/* Top Header Row: Accreditation Badge & Integrated Search Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 sm:mb-10 pt-1">
           {/* Accreditation Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold shadow-sm self-start">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold shadow-sm self-start max-w-full">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>Digital Learning Academy of India • Synchronized CBT Ecosystem</span>
           </div>
@@ -240,7 +240,7 @@ export const Hero: React.FC = () => {
       {/* Integrated Bottom Pathway Ribbon */}
       <div className="w-full border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50/80 dark:bg-black/80 backdrop-blur-md py-3 px-5 sm:px-8 lg:px-12 xl:px-16 relative z-10 transition-colors">
         <div className="max-w-[1536px] mx-auto flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-600 dark:text-zinc-400">
-          <div className="flex items-center gap-2 font-medium">
+          <div className="flex flex-wrap items-center gap-2 font-medium">
             <span className="text-zinc-900 dark:text-zinc-200 font-semibold">Active Pathways:</span>
             <div className="flex flex-wrap items-center gap-1.5">
               <Link href="/exams/neet-ug" className="px-2.5 py-1 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/50 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition flex items-center gap-1 shadow-sm">

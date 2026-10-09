@@ -108,7 +108,7 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo */}
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
-            <BrandLogo variant="full" />
+            <BrandLogo variant="full" size="lg" />
           </div>
 
           {/* Desktop & Laptop Navigation (Visible on lg: 1024px+ screens) */}
@@ -372,8 +372,8 @@ export const Navbar: React.FC = () => {
               )}
             </button>
 
-            {/* Language Switcher */}
-            <div className="relative shrink-0">
+            {/* Language Switcher (Visible on sm: 640px+) */}
+            <div className="relative shrink-0 hidden sm:block">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
                 className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition border border-transparent hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer"
@@ -418,7 +418,7 @@ export const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-850/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
+                  className="flex items-center gap-1.5 sm:gap-2 pl-1.5 pr-2 sm:pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-850/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
                 >
                   <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-red-600 text-white flex items-center justify-center font-bold text-xs">
                     {user.full_name ? user.full_name.charAt(0) : 'U'}
@@ -426,7 +426,7 @@ export const Navbar: React.FC = () => {
                   <span className="font-semibold text-slate-800 dark:text-slate-200 hidden sm:inline max-w-[90px] truncate">
                     {user.full_name?.split(' ')[0] || 'User'}
                   </span>
-                  <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300">
+                  <span className="hidden md:inline-block text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300">
                     {user.role}
                   </span>
                   <ChevronDown className="w-3 h-3 opacity-60" />
@@ -472,13 +472,13 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href="/auth/sign-in"
-                  className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
+                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 ring-1 ring-red-400/30 font-bold text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                  className="hidden md:inline-flex px-3 sm:px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 ring-1 ring-red-400/30 font-bold text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition items-center gap-1.5 whitespace-nowrap shrink-0"
                 >
                   <span>{t('nav.signUp')}</span>
                   <ArrowRight className="w-3 h-3" />
@@ -499,7 +499,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[60px] bg-white dark:bg-black border-b border-slate-200 dark:border-zinc-850 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto z-50">
+          <div className="lg:hidden absolute top-full inset-x-0 bg-white dark:bg-black border-b border-slate-200 dark:border-zinc-850 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[calc(100vh-100%)] overflow-y-auto z-50">
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -601,6 +601,30 @@ export const Navbar: React.FC = () => {
                 Contact & Admissions
               </Link>
             </nav>
+
+            {/* Mobile Language Switcher */}
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Language</span>
+              <div className="flex items-center gap-1.5">
+                {[
+                  { code: 'en', label: 'English' },
+                  { code: 'hi', label: 'हिन्दी' },
+                  { code: 'ta', label: 'தமிழ்' },
+                ].map((item) => (
+                  <button
+                    key={item.code}
+                    onClick={() => setLanguage(item.code as SupportedLanguage)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                      language === item.code
+                        ? 'bg-red-600 text-white shadow-xs'
+                        : 'bg-slate-100 dark:bg-zinc-850 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Mobile Theme Toggle */}
             <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
