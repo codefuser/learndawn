@@ -21,9 +21,9 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-slate-50/90 dark:bg-slate-950 text-slate-600 dark:text-slate-300 border-t border-slate-200 dark:border-slate-800/80 pt-12 sm:pt-16 pb-10 sm:pb-12 overflow-hidden relative transition-colors">
-      {/* Subtle background dawn gradient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-28 bg-gradient-to-b from-red-600/10 via-amber-500/5 to-transparent dark:from-red-600/15 dark:via-amber-500/10 blur-3xl pointer-events-none" />
+    <footer className="bg-zinc-50 dark:bg-black text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-900 pt-12 sm:pt-16 pb-10 sm:pb-12 overflow-hidden relative transition-colors">
+      {/* Subtle background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-red-600/[0.04] blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Main Grid: Responsive layout for mobile and desktop */}
@@ -138,7 +138,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Policies Row & Bottom Bar: Fully responsive on mobile */}
-        <div className="pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-850 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 dark:text-slate-400">
+        <div className="pt-6 sm:pt-8 border-t border-zinc-200 dark:border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500 dark:text-zinc-400">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2 text-center md:text-left">
             <Link href="/about#privacy" className="hover:text-red-600 dark:hover:text-slate-300 transition py-1">Privacy Policy</Link>
             <span className="hidden sm:inline text-slate-300 dark:text-slate-700">•</span>
@@ -157,7 +157,7 @@ export const Footer: React.FC = () => {
             <span>© {new Date().getFullYear()} Learndawn India. All rights reserved.</span>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm cursor-pointer"
+              className="p-2 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition border border-zinc-200 dark:border-zinc-800 flex items-center justify-center shadow-sm cursor-pointer"
               aria-label="Scroll back to top"
               title="Back to top"
             >

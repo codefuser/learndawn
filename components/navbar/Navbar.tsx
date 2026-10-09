@@ -100,8 +100,8 @@ export const Navbar: React.FC = () => {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-slate-800/80 py-2 sm:py-2.5'
-            : 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-slate-800/40 py-3 sm:py-3.5'
+            ? 'bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-zinc-850/80 py-2 sm:py-2.5'
+            : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-zinc-850/40 py-3 sm:py-3.5'
         }`}
       >
         <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2">
@@ -119,7 +119,7 @@ export const Navbar: React.FC = () => {
               href="/"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname === '/'
-                  ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setProgramsOpen(!programsOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isProgramsActive || programsOpen
-                    ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -147,7 +147,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               {programsOpen && (
-                <div className="absolute left-0 mt-1 w-72 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute left-0 mt-1 w-72 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
                   <div className="px-3 py-1.5 font-bold text-[10px] uppercase tracking-wider text-slate-400">
                     Competitive Entrance
                   </div>
@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="my-1 border-t border-slate-100 dark:border-slate-800" />
+                  <div className="my-1 border-t border-slate-100 dark:border-zinc-850" />
                   
                   <Link
                     href="/academics"
@@ -205,7 +205,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-slate-800">
+                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-zinc-850">
                     <Link
                       href="/exams"
                       className="block px-3 py-1.5 text-center font-semibold text-red-600 dark:text-red-400 hover:underline text-[11px]"
@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setLearningOpen(!learningOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isLearningActive || learningOpen
-                    ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -238,7 +238,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               {learningOpen && (
-                <div className="absolute left-0 mt-1 w-64 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute left-0 mt-1 w-64 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link
                     href="/courses"
                     className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -286,7 +286,7 @@ export const Navbar: React.FC = () => {
               href="/mentorship"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/mentorship')
-                  ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -298,7 +298,7 @@ export const Navbar: React.FC = () => {
               href="/resources"
               className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                 pathname.startsWith('/resources')
-                  ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -316,7 +316,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setAboutOpen(!aboutOpen)}
                 className={`flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
                   isAboutActive || aboutOpen
-                    ? 'text-red-600 dark:text-red-400 bg-red-50/80 dark:bg-red-950/40'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -326,7 +326,7 @@ export const Navbar: React.FC = () => {
               </button>
 
               {aboutOpen && (
-                <div className="absolute right-0 mt-1 w-52 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute right-0 mt-1 w-52 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link
                     href="/about"
                     className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -386,7 +386,7 @@ export const Navbar: React.FC = () => {
 
               {langDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-2 w-36 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-1.5 z-50 text-xs"
+                  className="absolute right-0 mt-2 w-36 bg-white dark:bg-[#0c0c0f] rounded-xl shadow-xl border border-slate-200 dark:border-zinc-850 p-1.5 z-50 text-xs"
                   onMouseLeave={() => setLangDropdownOpen(false)}
                 >
                   {[
@@ -418,7 +418,7 @@ export const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-slate-700 text-xs cursor-pointer"
+                  className="flex items-center gap-2 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-850/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
                 >
                   <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-red-600 text-white flex items-center justify-center font-bold text-xs">
                     {user.full_name ? user.full_name.charAt(0) : 'U'}
@@ -434,10 +434,10 @@ export const Navbar: React.FC = () => {
 
                 {userDropdownOpen && (
                   <div 
-                    className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 p-2 z-50 text-xs"
+                    className="absolute right-0 mt-2 w-56 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs"
                     onMouseLeave={() => setUserDropdownOpen(false)}
                   >
-                    <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800 mb-1">
+                    <div className="px-3 py-2 border-b border-slate-100 dark:border-zinc-850 mb-1">
                       <p className="font-semibold text-slate-900 dark:text-slate-100 truncate">
                         {user.full_name || 'Learndawn User'}
                       </p>
@@ -453,7 +453,7 @@ export const Navbar: React.FC = () => {
                       <span>{user.role === 'admin' ? 'Admin Dashboard' : 'Student Dashboard'}</span>
                     </Link>
 
-                    <div className="border-t border-slate-100 dark:border-slate-800 pt-1 mt-1">
+                    <div className="border-t border-slate-100 dark:border-zinc-850 pt-1 mt-1">
                       <button
                         onClick={() => {
                           signOut();
@@ -478,7 +478,7 @@ export const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                  className="px-3 sm:px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 ring-1 ring-red-400/30 font-bold text-white text-xs font-semibold shadow-xs shadow-red-500/20 transition flex items-center gap-1.5 whitespace-nowrap shrink-0"
                 >
                   <span>{t('nav.signUp')}</span>
                   <ArrowRight className="w-3 h-3" />
@@ -499,7 +499,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[60px] bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto z-50">
+          <div className="lg:hidden fixed inset-x-0 top-[60px] bg-white dark:bg-black border-b border-slate-200 dark:border-zinc-850 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto z-50">
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -603,12 +603,12 @@ export const Navbar: React.FC = () => {
             </nav>
 
             {/* Mobile Theme Toggle */}
-            <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between px-2">
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
               <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Interface Theme</span>
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-zinc-850 text-xs font-semibold text-slate-800 dark:text-slate-200"
               >
                 {theme === 'dark' ? (
                   <>
@@ -625,11 +625,11 @@ export const Navbar: React.FC = () => {
             </div>
 
             {!user && (
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-3">
+              <div className="pt-4 border-t border-slate-200 dark:border-zinc-850 grid grid-cols-2 gap-3">
                 <Link
                   href="/auth/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-slate-700 font-semibold text-sm text-slate-800 dark:text-slate-200"
+                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-zinc-800 font-semibold text-sm text-slate-800 dark:text-slate-200"
                 >
                   {t('nav.login')}
                 </Link>

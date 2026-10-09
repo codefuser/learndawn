@@ -8,21 +8,20 @@ export const SearchBannerSection: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className="py-12 bg-gradient-to-r from-red-50/90 via-red-50/70 to-slate-50 dark:from-slate-950 dark:via-red-950/60 dark:to-slate-950 text-slate-900 dark:text-white border-y border-slate-200/80 dark:border-slate-800 relative overflow-hidden transition-colors">
-      {/* Background accent wave */}
-      <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-red-500/5 to-transparent dark:from-red-900/40 dark:via-red-900/40 dark:to-slate-950 pointer-events-none" />
-      <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-14 bg-zinc-50 dark:bg-[#070709] text-zinc-900 dark:text-white border-y border-zinc-200 dark:border-zinc-900 relative overflow-hidden transition-colors">
+      {/* Delicate ambient red aura */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-32 bg-red-600/[0.05] blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 text-xs font-semibold mb-3 border border-red-200 dark:border-red-500/30 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 text-xs font-semibold mb-3 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-red-500" />
           <span>Universal Knowledge Discovery</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-950 dark:text-white">
           What would you like to master today?
         </h2>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto mt-2">
+        <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto mt-2">
           Search across 100+ chapters, verified educators, mock tests, revision notes, and video modules.
         </p>
 
@@ -30,19 +29,19 @@ export const SearchBannerSection: React.FC = () => {
         <div className="mt-6 max-w-2xl mx-auto">
           <button
             onClick={() => setModalOpen(true)}
-            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-white/10 hover:bg-slate-50 dark:hover:bg-white/15 border border-slate-200 dark:border-white/20 backdrop-blur-md shadow-xl shadow-red-500/5 dark:shadow-2xl transition group text-left cursor-pointer"
+            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-zinc-900/90 hover:bg-zinc-100/80 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/40 dark:hover:border-red-500/40 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-2xl transition-all group text-left cursor-pointer"
           >
             <div className="flex items-center gap-3">
-              <Search className="w-5 h-5 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform" />
-              <span className="text-sm text-slate-600 dark:text-slate-300">
+              <Search className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm text-zinc-400 dark:text-zinc-400">
                 Search exams, subjects, formulas or courses...
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <kbd className="hidden sm:inline-block px-2 py-1 text-xs rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/15 font-mono">
+              <kbd className="hidden sm:inline-block px-2 py-1 text-xs rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 font-mono">
                 Ctrl + K
               </kbd>
-              <div className="p-1.5 rounded-lg bg-red-600 text-white group-hover:bg-red-700 transition">
+              <div className="p-1.5 rounded-lg bg-red-600 text-white group-hover:bg-red-500 transition">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -50,13 +49,13 @@ export const SearchBannerSection: React.FC = () => {
         </div>
 
         {/* Quick Suggestion Pills */}
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
           <span>Popular searches:</span>
           {['NEET 2025 PYQ', 'Organic Chemistry', 'AIIMS Nursing Mock', 'Physics Mechanics', 'CUET Syllabus'].map((tag) => (
             <button
               key={tag}
               onClick={() => setModalOpen(true)}
-              className="px-2.5 py-1 rounded-full bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 shadow-sm transition cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/40 shadow-sm transition cursor-pointer"
             >
               {tag}
             </button>

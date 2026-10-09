@@ -54,7 +54,7 @@ export default function RootLayout({
     >
       <head />
       <body
-        className="min-h-full flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100"
+        className="min-h-full flex flex-col font-sans bg-white dark:bg-black text-slate-900 dark:text-zinc-100 selection:bg-red-500/20 selection:text-white"
         suppressHydrationWarning
       >
         <Script
