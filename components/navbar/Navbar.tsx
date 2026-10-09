@@ -100,8 +100,8 @@ export const Navbar: React.FC = () => {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-zinc-850/80 py-2 sm:py-2.5'
-            : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-slate-200/40 dark:border-zinc-850/40 py-3 sm:py-3.5'
+            ? 'bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-xs border-b border-slate-200/50 dark:border-zinc-900/80 py-2 sm:py-2.5'
+            : 'bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-transparent dark:border-transparent py-2.5 sm:py-3.5'
         }`}
       >
         <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2">
@@ -146,8 +146,14 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${programsOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {programsOpen && (
-                <div className="absolute left-0 mt-1 w-72 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute left-0 top-full pt-1.5 w-72 z-50 transition-all duration-200 ease-out origin-top ${
+                  programsOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <div className="px-3 py-1.5 font-bold text-[10px] uppercase tracking-wider text-slate-400">
                     Competitive Entrance
                   </div>
@@ -190,7 +196,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="my-1 border-t border-slate-100 dark:border-zinc-850" />
+                  <div className="my-1 border-t border-slate-100 dark:border-zinc-800/60" />
                   
                   <Link
                     href="/academics"
@@ -205,7 +211,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
 
-                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-zinc-850">
+                  <div className="pt-1 mt-1 border-t border-slate-100 dark:border-zinc-800/60">
                     <Link
                       href="/exams"
                       className="block px-3 py-1.5 text-center font-semibold text-red-600 dark:text-red-400 hover:underline text-[11px]"
@@ -214,7 +220,7 @@ export const Navbar: React.FC = () => {
                     </Link>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Courses & System Dropdown */}
@@ -237,8 +243,14 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${learningOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {learningOpen && (
-                <div className="absolute left-0 mt-1 w-64 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute left-0 top-full pt-1.5 w-64 z-50 transition-all duration-200 ease-out origin-top ${
+                  learningOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/courses"
                     className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -278,7 +290,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Mentorship */}
@@ -325,8 +337,14 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {aboutOpen && (
-                <div className="absolute right-0 mt-1 w-52 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-2xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs animate-in fade-in slide-in-from-top-1 duration-150">
+              <div 
+                className={`absolute right-0 top-full pt-1.5 w-52 z-50 transition-all duration-200 ease-out origin-top ${
+                  aboutOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/about"
                     className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
@@ -349,7 +367,7 @@ export const Navbar: React.FC = () => {
                     </div>
                   </Link>
                 </div>
-              )}
+              </div>
             </div>
 
           </nav>
@@ -384,11 +402,15 @@ export const Navbar: React.FC = () => {
                 <ChevronDown className="w-3 h-3 opacity-60" />
               </button>
 
-              {langDropdownOpen && (
-                <div 
-                  className="absolute right-0 mt-2 w-36 bg-white dark:bg-[#0c0c0f] rounded-xl shadow-xl border border-slate-200 dark:border-zinc-850 p-1.5 z-50 text-xs"
-                  onMouseLeave={() => setLangDropdownOpen(false)}
-                >
+              <div 
+                className={`absolute right-0 top-full pt-1.5 w-36 z-50 transition-all duration-200 ease-out origin-top ${
+                  langDropdownOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+                onMouseLeave={() => setLangDropdownOpen(false)}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-1.5 text-xs">
                   {[
                     { code: 'en', label: 'English' },
                     { code: 'hi', label: 'हिन्दी (Hindi)' },
@@ -410,7 +432,7 @@ export const Navbar: React.FC = () => {
                     </button>
                   ))}
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Authenticated User Dropdown OR Sign-in/Sign-up CTAs */}
@@ -418,7 +440,7 @@ export const Navbar: React.FC = () => {
               <div className="relative">
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-1.5 sm:gap-2 pl-1.5 pr-2 sm:pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-850/90 hover:bg-slate-200 dark:hover:bg-slate-700 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
+                  className="flex items-center gap-1.5 sm:gap-2 pl-1.5 pr-2 sm:pr-2.5 py-1 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 transition border border-slate-200 dark:border-zinc-800 text-xs cursor-pointer"
                 >
                   <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-red-600 text-white flex items-center justify-center font-bold text-xs">
                     {user.full_name ? user.full_name.charAt(0) : 'U'}
@@ -432,12 +454,16 @@ export const Navbar: React.FC = () => {
                   <ChevronDown className="w-3 h-3 opacity-60" />
                 </button>
 
-                {userDropdownOpen && (
-                  <div 
-                    className="absolute right-0 mt-2 w-56 bg-white dark:bg-[#0c0c0f] rounded-2xl shadow-xl border border-slate-200 dark:border-zinc-850 p-2 z-50 text-xs"
-                    onMouseLeave={() => setUserDropdownOpen(false)}
-                  >
-                    <div className="px-3 py-2 border-b border-slate-100 dark:border-zinc-850 mb-1">
+                <div 
+                  className={`absolute right-0 top-full pt-1.5 w-56 z-50 transition-all duration-200 ease-out origin-top ${
+                    userDropdownOpen
+                      ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                      : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                  }`}
+                  onMouseLeave={() => setUserDropdownOpen(false)}
+                >
+                  <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
+                    <div className="px-3 py-2 border-b border-slate-100 dark:border-zinc-800/60 mb-1">
                       <p className="font-semibold text-slate-900 dark:text-slate-100 truncate">
                         {user.full_name || 'Learndawn User'}
                       </p>
@@ -453,7 +479,7 @@ export const Navbar: React.FC = () => {
                       <span>{user.role === 'admin' ? 'Admin Dashboard' : 'Student Dashboard'}</span>
                     </Link>
 
-                    <div className="border-t border-slate-100 dark:border-zinc-850 pt-1 mt-1">
+                    <div className="border-t border-slate-100 dark:border-zinc-800/60 pt-1 mt-1">
                       <button
                         onClick={() => {
                           signOut();
@@ -466,7 +492,7 @@ export const Navbar: React.FC = () => {
                       </button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -499,7 +525,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full inset-x-0 bg-white dark:bg-black border-b border-slate-200 dark:border-zinc-850 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[calc(100vh-100%)] overflow-y-auto z-50">
+          <div className="lg:hidden absolute top-full inset-x-0 bg-white dark:bg-[#0c0c0f] border-b border-slate-200 dark:border-zinc-800/80 shadow-2xl p-5 space-y-4 animate-in slide-in-from-top duration-200 max-h-[calc(100vh-100%)] overflow-y-auto z-50">
             <nav className="flex flex-col space-y-1">
               <Link
                 href="/"
@@ -603,8 +629,8 @@ export const Navbar: React.FC = () => {
             </nav>
 
             {/* Mobile Language Switcher */}
-            <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
-              <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Language</span>
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-800/80 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-zinc-400">Language</span>
               <div className="flex items-center gap-1.5">
                 {[
                   { code: 'en', label: 'English' },
@@ -614,10 +640,10 @@ export const Navbar: React.FC = () => {
                   <button
                     key={item.code}
                     onClick={() => setLanguage(item.code as SupportedLanguage)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer border ${
                       language === item.code
-                        ? 'bg-red-600 text-white shadow-xs'
-                        : 'bg-slate-100 dark:bg-zinc-850 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
+                        ? 'bg-red-600 border-red-600 text-white shadow-xs'
+                        : 'bg-slate-100 dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-slate-200 dark:hover:bg-zinc-800'
                     }`}
                   >
                     {item.label}
@@ -627,12 +653,12 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Theme Toggle */}
-            <div className="pt-3 border-t border-slate-200 dark:border-zinc-850 flex items-center justify-between px-2">
-              <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Interface Theme</span>
+            <div className="pt-3 border-t border-slate-200 dark:border-zinc-800/80 flex items-center justify-between px-2">
+              <span className="text-xs font-semibold text-slate-600 dark:text-zinc-400">Interface Theme</span>
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-zinc-850 text-xs font-semibold text-slate-800 dark:text-slate-200"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-semibold text-slate-800 dark:text-zinc-200 hover:bg-slate-200 dark:hover:bg-zinc-800 transition cursor-pointer"
               >
                 {theme === 'dark' ? (
                   <>
@@ -649,18 +675,18 @@ export const Navbar: React.FC = () => {
             </div>
 
             {!user && (
-              <div className="pt-4 border-t border-slate-200 dark:border-zinc-850 grid grid-cols-2 gap-3">
+              <div className="pt-4 border-t border-slate-200 dark:border-zinc-800/80 grid grid-cols-2 gap-3">
                 <Link
                   href="/auth/sign-in"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-zinc-800 font-semibold text-sm text-slate-800 dark:text-slate-200"
+                  className="py-2.5 text-center rounded-xl border border-slate-200 dark:border-zinc-800 font-semibold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-900 transition"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="py-2.5 text-center rounded-xl bg-red-600 hover:bg-red-700 font-semibold text-sm text-white shadow-md shadow-red-500/20"
+                  className="py-2.5 text-center rounded-xl bg-red-600 hover:bg-red-700 font-semibold text-sm text-white shadow-md shadow-red-500/20 transition"
                 >
                   {t('nav.signUp')}
                 </Link>

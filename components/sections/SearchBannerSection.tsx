@@ -29,7 +29,7 @@ export const SearchBannerSection: React.FC = () => {
         <div className="mt-6 max-w-2xl mx-auto">
           <button
             onClick={() => setModalOpen(true)}
-            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-zinc-900/90 hover:bg-zinc-100/80 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/40 dark:hover:border-red-500/40 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-2xl transition-all group text-left cursor-pointer"
+            className="w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-zinc-900/90 hover:bg-zinc-100/80 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 hover:border-red-500/40 dark:hover:border-red-500/40 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-2xl transition-all group text-left cursor-pointer"
           >
             <div className="flex items-center gap-3">
               <Search className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />

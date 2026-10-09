@@ -91,7 +91,7 @@ export const WhyLearndawnSection: React.FC = () => {
               </div>
 
               {/* Traditional EdTech Side */}
-              <div className="rounded-xl bg-zinc-100/60 dark:bg-zinc-950/40 border border-zinc-200/60 dark:border-zinc-850 p-3 space-y-1">
+              <div className="rounded-xl bg-zinc-100/60 dark:bg-zinc-950/40 border border-zinc-200/60 dark:border-zinc-800/80 p-3 space-y-1">
                 <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 font-semibold text-xs">
                   <div className="w-4 h-4 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-500 flex items-center justify-center">
                     <X className="w-3 h-3 stroke-[3]" />
@@ -113,7 +113,7 @@ export const WhyLearndawnSection: React.FC = () => {
               <thead>
                 <tr className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-xs font-bold uppercase tracking-wider">
                   <th className="py-4 px-6 text-zinc-500 dark:text-zinc-400 w-1/4">Core Metric</th>
-                  <th className="py-4 px-6 text-zinc-950 dark:text-white bg-white dark:bg-zinc-850 w-5/12 border-x border-zinc-200 dark:border-zinc-800">
+                  <th className="py-4 px-6 text-zinc-950 dark:text-white bg-white dark:bg-zinc-900 w-5/12 border-x border-zinc-200 dark:border-zinc-800">
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4 text-red-500" /> 
                       <span>Learndawn Academy</span>
@@ -124,7 +124,7 @@ export const WhyLearndawnSection: React.FC = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-850 text-xs sm:text-sm">
+              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800 text-xs sm:text-sm">
                 {comparisonItems.map((item, idx) => (
                   <tr key={idx} className="hover:bg-zinc-100/60 dark:hover:bg-zinc-900/40 transition">
                     <td className="py-4 px-6 font-semibold text-zinc-800 dark:text-zinc-200">
