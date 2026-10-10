@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Navbar } from '@/components/navbar/Navbar';
 import { Footer } from '@/components/footer/Footer';
+import { StudentOutcomesSection } from '@/components/sections/StudentOutcomesSection';
 import { 
   Compass, 
   Lightbulb, 
@@ -10,22 +12,24 @@ import {
   Users, 
   BookOpen, 
   Award, 
-  ArrowRight,
-  Target,
-  Sparkles,
-  CheckCircle2,
-  UserCheck,
-  LineChart,
-  GraduationCap,
-  HeartHandshake,
-  MessagesSquare,
-  Building2,
-  Share2
+  ArrowRight, 
+  Target, 
+  Sparkles, 
+  CheckCircle2, 
+  UserCheck, 
+  LineChart, 
+  GraduationCap, 
+  HeartHandshake, 
+  MessagesSquare, 
+  Building2, 
+  Share2,
+  FolderGit2,
+  FileCheck2
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'About Us | Reaching The Unreached | LearnDawn India',
-  description: 'LearnDawn India is a digital education, mentorship and counselling institution built to take meaningful education and guidance beyond conventional boundaries.',
+  title: 'About Us | Welcome to LearnDawn India | Reaching The Unreached',
+  description: 'LearnDawn India is a standalone online digital institution providing affordable, competitive and academic education, along with counselling and mentorship.',
 };
 
 export default function AboutPage() {
@@ -35,20 +39,46 @@ export default function AboutPage() {
 
       <main className="flex-1 pb-24">
         {/* ========================================================= */}
-        {/* 1. HERO / REACHING THE UNREACHED                          */}
+        {/* 1A. INSTITUTIONAL INTRODUCTION / WELCOME                  */}
         {/* ========================================================= */}
-        <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden border-b border-slate-200/80 dark:border-zinc-800/80 bg-gradient-to-b from-red-50/40 via-white to-slate-50/50 dark:from-red-950/10 dark:via-[#09090d] dark:to-[#07070a]">
+        <section className="relative pt-24 sm:pt-32 pb-12 overflow-hidden border-b border-slate-200/80 dark:border-zinc-800/80 bg-gradient-to-b from-blue-50/40 via-white to-slate-50/50 dark:from-blue-950/20 dark:via-[#09090d] dark:to-[#07070a]">
+          <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-blue-500 animate-pulse" />
+              <span>HEARTILY WELCOME</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight uppercase max-w-4xl mx-auto leading-tight">
+              WELCOME TO LEARNDAWN INDIA
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed pt-2">
+              LearnDawn India is a standalone online digital institution providing affordable, competitive and academic education, along with counselling and mentorship.
+            </p>
+            <p className="text-sm sm:text-base text-slate-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed font-medium">
+              For the past three years, LearnDawn has focused on making quality education accessible while guiding students with the right direction, support and opportunities to move confidently towards their goals.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+              Our mission is to make structured learning, academic guidance, mentorship and educational opportunities more accessible to students. The institution brings together personalised mentorship, collaborative learning, assessments, study materials, academic support and career guidance in one learning ecosystem.
+            </p>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 1B. HERO / REACHING THE UNREACHED                         */}
+        {/* ========================================================= */}
+        <section className="relative py-14 sm:py-20 overflow-hidden border-b border-slate-200/80 dark:border-zinc-800/80 bg-gradient-to-b from-red-50/30 via-white to-slate-50/50 dark:from-red-950/10 dark:via-[#09090d] dark:to-[#07070a]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 max-w-4xl h-48 bg-red-500/[0.08] blur-[120px] pointer-events-none" />
 
           <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 space-y-6 text-center">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-100 dark:bg-red-950/60 border border-red-200 dark:border-red-800/60 text-red-700 dark:text-red-300 text-xs font-bold uppercase tracking-wider shadow-xs">
               <Compass className="w-3.5 h-3.5 text-red-500 animate-pulse" />
-              <span>About LearnDawn India</span>
+              <span>Foundation Vision</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight uppercase max-w-4xl mx-auto leading-tight">
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight uppercase max-w-4xl mx-auto leading-tight">
               REACHING THE UNREACHED
-            </h1>
+            </h2>
 
             <p className="text-base sm:text-xl font-semibold text-red-600 dark:text-red-400 max-w-2xl mx-auto">
               Education should not be limited by where a student comes from.
@@ -307,38 +337,178 @@ export default function AboutPage() {
         </section>
 
         {/* ========================================================= */}
-        {/* 4. COLLABORATORS SECTION                                  */}
+        {/* 4. STUDENT ACHIEVEMENTS & EDUCATIONAL OUTCOMES            */}
+        {/* ========================================================= */}
+        <StudentOutcomesSection />
+
+        {/* ========================================================= */}
+        {/* 5. ASSOCIATIONS OF LEARNDAWN                              */}
         {/* ========================================================= */}
         <section id="collaborators" className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 border-t border-slate-200 dark:border-zinc-800/80">
-          <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 space-y-6">
+          <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 space-y-8">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20">
-                <Building2 className="w-5 h-5" />
+              <div className="p-2.5 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20">
+                <Building2 className="w-6 h-6" />
               </div>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase">
-                Collaborators & Academic Council
-              </h2>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-red-500">Official Partnerships</span>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight uppercase">
+                  ASSOCIATIONS OF LEARNDAWN
+                </h2>
+              </div>
             </div>
-            
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-              LearnDawn collaborates with certified medical professionals, experienced educators, senior mentors, and institutional partners across India to develop, review, and maintain academic standards. All collaborator engagements adhere strictly to ethical verification guidelines.
-            </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-950/70 border border-slate-200 dark:border-zinc-800/80 space-y-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-red-500">Academic Faculty</span>
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">Senior Medical & Engineering Educators</h3>
-                <p className="text-xs text-slate-500">Collaborating on curriculum design, NCERT mapping, and examination question banks.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* MSAI */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 flex flex-col justify-between hover:border-blue-500/40 transition-all shadow-xs">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                      2024
+                    </span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Mentor Support</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    Medical Student Association of India (MSAI)
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                    LearnDawn India is officially collaborating with the Medical Student Association of India (MSAI) to strengthen its Mentor Support System, providing students with structured guidance, academic mentorship, career counselling and continuous support from medical student mentors.
+                  </p>
+                </div>
               </div>
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-950/70 border border-slate-200 dark:border-zinc-800/80 space-y-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-500">Mentorship Network</span>
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">Medical & Professional Mentors</h3>
-                <p className="text-xs text-slate-500">Providing continuous 1:1 guidance, progress reviews, and exam temperament training.</p>
+
+              {/* Med Prep Makers Association */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 flex flex-col justify-between hover:border-emerald-500/40 transition-all shadow-xs">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                      2024
+                    </span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Medical Initiative</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    Med Prep Makers Association (MPMA)
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                    LearnDawn India&apos;s Med Prep Makers Association (MPMA) is an exclusive initiative dedicated to medical student support, mentorship, academic guidance and peer learning.
+                  </p>
+                </div>
               </div>
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-950/70 border border-slate-200 dark:border-zinc-800/80 space-y-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-500">Institutional Access</span>
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">Community & Regional Outreach</h3>
-                <p className="text-xs text-slate-500">Connecting first-generation learners and rural aspirants with premier digital resources.</p>
+
+              {/* NEET Flies */}
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800/80 flex flex-col justify-between hover:border-amber-500/40 transition-all shadow-xs">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                      2025
+                    </span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Notes & Coordination</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    NEET Flies
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                    LearnDawn India is collaborating with NEET Flies for academic notes development and student coordination, strengthening accessible and student-focused learning support.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* 6. OUR PROJECTS                                           */}
+        {/* ========================================================= */}
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 border-t border-slate-200 dark:border-zinc-800/80">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-3 border border-indigo-200 dark:border-indigo-900/40">
+              <FolderGit2 className="w-3.5 h-3.5 text-indigo-500" />
+              <span>Higher Education &amp; Student Affairs</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase">
+              OUR PROJECTS
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2 leading-relaxed">
+              LearnDawn&apos;s Higher Education and Student Affairs initiatives bring together different educational projects designed to support learners across relevant academic and learning contexts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Project 1: Learndawn Tamil */}
+            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 space-y-4 hover:border-red-500/40 hover:-translate-y-1 transition-all shadow-xs flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-zinc-950 p-2 border border-slate-200 dark:border-zinc-800 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/logos/LearnDawn Tamil Education Logo.png"
+                    alt="Learndawn Tamil Logo"
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                  Learndawn Tamil
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  Regional bilingual learning initiative providing Tamil-language concept explanations, NCERT translation support, and state-board bridge programmes.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-slate-200 dark:border-zinc-800 text-[11px] font-semibold text-slate-500">
+                Language-Sensitive Education
+              </div>
+            </div>
+
+            {/* Project 2: Learndawn CBSE */}
+            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 space-y-4 hover:border-blue-500/40 hover:-translate-y-1 transition-all shadow-xs flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/60 p-2 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-xl">
+                  CBSE
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                  Learndawn CBSE
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  Dedicated school academics initiative covering Class 9–12 foundation curriculum, exemplar solutions, and board examination excellence.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-slate-200 dark:border-zinc-800 text-[11px] font-semibold text-slate-500">
+                School Academics Project
+              </div>
+            </div>
+
+            {/* Project 3: Learndawn Telugu */}
+            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 space-y-4 hover:border-emerald-500/40 hover:-translate-y-1 transition-all shadow-xs flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 p-2 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-black text-xl">
+                  తెలుగు
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                  Learndawn Telugu
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  Regional outreach project supporting Andhra Pradesh &amp; Telangana state aspirants with bilingual resources and examination guidance.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-slate-200 dark:border-zinc-800 text-[11px] font-semibold text-slate-500">
+                Regional Outreach Project
+              </div>
+            </div>
+
+            {/* Project 4: Dawn Med */}
+            <div className="p-6 rounded-3xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 space-y-4 hover:border-purple-500/40 hover:-translate-y-1 transition-all shadow-xs flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/60 p-2 border border-purple-200 dark:border-purple-800 flex items-center justify-center text-purple-600 dark:text-purple-400 font-black text-xl">
+                  MED
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                  Dawn Med
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  Specialized healthcare mentorship division connecting NEET medical aspirants with medical students, doctors, and clinical faculty.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-slate-200 dark:border-zinc-800 text-[11px] font-semibold text-slate-500">
+                Medical Mentorship Division
               </div>
             </div>
           </div>

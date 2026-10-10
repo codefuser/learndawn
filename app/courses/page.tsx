@@ -48,15 +48,90 @@ export default function CoursesPage() {
                 <button
                   key={diff}
                   onClick={() => setSelectedDifficulty(diff)}
-                  className={`px-4 py-2 rounded-xl transition ${
+                  className={`px-4 py-2 rounded-xl transition cursor-pointer ${
                     selectedDifficulty === diff
                       ? 'bg-red-600 text-white shadow-md'
-                      : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
+                      : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >
                   {diff} {diff !== 'All' ? 'Batches' : 'Levels'}
                 </button>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* BATCHES FOR NEET (ORIENTATION SESSION)                    */}
+        {/* ========================================================= */}
+        <section className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-12 pb-6">
+          <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-red-500">
+                Flagship Medical Batches
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight uppercase">
+                Batches For NEET
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
+                LearnDawn India NEET Batches are structured programmes for Freshers, Repeaters, and Partial Droppers, combining expert teaching, group learning, OnePod mentorship, regular assessments, study materials, and continuous academic support.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed font-medium">
+                Our approach brings together individual guidance and collaborative learning, helping students learn consistently, stay accountable, and progress together throughout their NEET preparation.
+              </p>
+            </div>
+
+            {/* Student Categories */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800 space-y-2 hover:border-red-500/40 transition-all">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Cohort 01</span>
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Freshers</h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  For students beginning their NEET preparation journey. Focuses on foundational concept mastery, NCERT alignment, and structured study habits.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800 space-y-2 hover:border-red-500/40 transition-all">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Cohort 02</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Repeaters</h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  For students preparing again and working to improve their preparation. Focuses on deep error analysis, question solving speed, and test temperament.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800 space-y-2 hover:border-red-500/40 transition-all">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Cohort 03</span>
+                  <span className="w-2 h-2 rounded-full bg-purple-500" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Partial Droppers</h3>
+                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  For students preparing for NEET while continuing another academic programme, where applicable. Optimized time schedules and targeted revision.
+                </p>
+              </div>
+            </div>
+
+            {/* Batch Branding Names */}
+            <div className="pt-4 border-t border-slate-200 dark:border-zinc-800 text-center space-y-4">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                Official Named Batches
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                {['NISSI Batch', 'RUACH', 'JIREH', 'ADONAI'].map((batchName) => (
+                  <div
+                    key={batchName}
+                    className="p-4 rounded-2xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 text-center font-extrabold text-sm text-slate-800 dark:text-slate-200 shadow-xs hover:border-red-500/40 transition"
+                  >
+                    {batchName}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

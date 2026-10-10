@@ -358,31 +358,19 @@ export const Footer: React.FC = () => {
                     name: 'YouTube', 
                     icon: YoutubeIcon, 
                     color: 'hover:text-red-500 hover:border-red-500/50 hover:bg-red-500/10 hover:shadow-red-500/20', 
-                    href: 'https://youtube.com/@learndawn' 
+                    href: 'https://www.youtube.com/@learndawnindia' 
                   },
                   { 
                     name: 'Instagram', 
                     icon: InstagramIcon, 
                     color: 'hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 hover:shadow-pink-500/20', 
-                    href: 'https://instagram.com/learndawn' 
+                    href: 'https://www.instagram.com/learndawnindia?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==' 
                   },
                   { 
                     name: 'LinkedIn', 
                     icon: LinkedinIcon, 
                     color: 'hover:text-blue-400 hover:border-blue-500/50 hover:bg-blue-500/10 hover:shadow-blue-500/20', 
-                    href: 'https://linkedin.com/company/learndawn' 
-                  },
-                  { 
-                    name: 'X (Twitter)', 
-                    icon: XTwitterIcon, 
-                    color: 'hover:text-zinc-200 hover:border-zinc-400/50 hover:bg-zinc-800 hover:shadow-zinc-500/20', 
-                    href: 'https://x.com/learndawn' 
-                  },
-                  { 
-                    name: 'WhatsApp Community', 
-                    icon: WhatsAppIcon, 
-                    color: 'hover:text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:shadow-emerald-500/20', 
-                    href: 'https://whatsapp.com' 
+                    href: 'https://www.linkedin.com/in/learndawn-india-b47466420' 
                   },
                 ].map((social) => {
                   const Icon = social.icon;
@@ -393,7 +381,7 @@ export const Footer: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`w-9 h-9 rounded-xl bg-zinc-900/90 border border-zinc-800 text-zinc-400 flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg active:scale-95 cursor-pointer ${social.color}`}
-                      aria-label={`Follow Learndawn on ${social.name}`}
+                      aria-label={`Visit LearnDawn on ${social.name}`}
                       title={social.name}
                     >
                       <Icon className="w-4 h-4" />

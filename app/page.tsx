@@ -1,10 +1,12 @@
 import { Navbar } from '@/components/navbar/Navbar';
 import { Hero } from '@/components/hero/Hero';
+import { WelcomeSection } from '@/components/sections/WelcomeSection';
 import { GoalSelectionSection } from '@/components/sections/GoalSelectionSection';
 import { SearchBannerSection } from '@/components/sections/SearchBannerSection';
 import { SpecialtiesSection } from '@/components/sections/SpecialtiesSection';
 import { FeaturedCoursesSection } from '@/components/sections/FeaturedCoursesSection';
 import { StatisticsSection } from '@/components/sections/StatisticsSection';
+import { StudentOutcomesSection } from '@/components/sections/StudentOutcomesSection';
 import { LearningEcosystemSection } from '@/components/sections/LearningEcosystemSection';
 import { WhyLearndawnSection } from '@/components/sections/WhyLearndawnSection';
 import { AboutTeaserSection } from '@/components/sections/AboutTeaserSection';
@@ -13,7 +15,7 @@ import { Footer } from '@/components/footer/Footer';
 
 export const metadata = {
   title: 'Learndawn India | Premier Digital Learning Academy',
-  description: 'A digital learning academy for competitive exams (NEET UG, JEE Main, CUET, AIIMS), academics, skills, mentorship, and career guidance.',
+  description: 'A standalone digital learning institution for competitive exams (NEET UG, JEE Main, CUET, AIIMS), academics, mentorship, and career guidance.',
 };
 
 export default function HomePage() {
@@ -24,31 +26,37 @@ export default function HomePage() {
         {/* 1. Hero */}
         <Hero />
 
-        {/* 2. Select Your Goal Exam */}
+        {/* 2. Institutional Welcome */}
+        <WelcomeSection />
+
+        {/* 3. Select Your Goal Exam */}
         <GoalSelectionSection />
 
-        {/* 3. Universal Search */}
+        {/* 4. Universal Search */}
         <SearchBannerSection />
 
-        {/* 4. Specialties of Learndawn */}
+        {/* 5. Specialties of Learndawn (All 16 client pillars) */}
         <SpecialtiesSection />
 
-        {/* 5. Start Learning / Featured Batches */}
+        {/* 6. Start Learning / Featured Batches */}
         <FeaturedCoursesSection />
 
-        {/* 6. Platform Statistics */}
+        {/* 7. Institutional Milestones (9 exact metrics) */}
         <StatisticsSection />
 
-        {/* 7. Learning Ecosystem */}
+        {/* 8. Student Achievements & Educational Outcomes */}
+        <StudentOutcomesSection />
+
+        {/* 9. Learning Ecosystem */}
         <LearningEcosystemSection />
 
-        {/* 8. Why Learndawn */}
+        {/* 10. Why Learndawn */}
         <WhyLearndawnSection />
 
-        {/* 9. About Learndawn */}
+        {/* 11. About Learndawn */}
         <AboutTeaserSection />
 
-        {/* 10. Contact / Reach Out */}
+        {/* 12. Contact / Reach Out */}
         <ContactTeaserSection />
       </main>
       <Footer />
