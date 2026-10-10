@@ -337,11 +337,65 @@ CREATE TABLE IF NOT EXISTS public.contact_messages (
     name VARCHAR(150) NOT NULL,
     email VARCHAR(255) NOT NULL,
     mobile VARCHAR(20),
+    user_category VARCHAR(50), -- Student, Parent, Educator, Professional, Institution, Other
     subject VARCHAR(200),
     message TEXT NOT NULL,
     status VARCHAR(30) DEFAULT 'new', -- new, in_progress, resolved
     admin_notes TEXT,
     ip_address VARCHAR(45),
+    created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- ==============================================================================
+-- 10B. JOB APPLICATIONS & CAREER COUNSELLING REGISTRATIONS
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS public.job_applications (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    full_name VARCHAR(150) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    mobile VARCHAR(25) NOT NULL,
+    location VARCHAR(150) NOT NULL,
+    age VARCHAR(20),
+    position_applied_for VARCHAR(150) NOT NULL,
+    preferred_work_mode VARCHAR(50) NOT NULL, -- Online / Remote, Hybrid, On-site
+    availability VARCHAR(50) NOT NULL, -- Full-time, Part-time, Contract, Flexible
+    highest_qualification VARCHAR(255) NOT NULL,
+    current_status VARCHAR(50) NOT NULL, -- Student, Graduate, Working Professional, Freelancer, Other
+    relevant_experience TEXT,
+    key_skills TEXT NOT NULL,
+    resume_url TEXT,
+    resume_file_name VARCHAR(255),
+    portfolio_url TEXT,
+    linkedin_url TEXT,
+    why_join TEXT NOT NULL,
+    why_consider TEXT NOT NULL,
+    additional_info TEXT,
+    status VARCHAR(30) DEFAULT 'submitted', -- submitted, reviewing, shortlisted, rejected
+    created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.career_counselling_registrations (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    full_name VARCHAR(150) NOT NULL,
+    dob_or_age VARCHAR(50) NOT NULL,
+    mobile VARCHAR(25) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    city_district_state VARCHAR(200) NOT NULL,
+    current_class VARCHAR(100) NOT NULL,
+    school_college_name VARCHAR(200),
+    academic_stream VARCHAR(100) NOT NULL,
+    recent_academic_performance VARCHAR(100),
+    preferred_career_course VARCHAR(150) NOT NULL,
+    areas_of_interest TEXT NOT NULL,
+    entrance_exam VARCHAR(100),
+    career_concern TEXT NOT NULL,
+    preferred_mode VARCHAR(50) NOT NULL, -- Online, In-person
+    preferred_date DATE NOT NULL,
+    preferred_time_slot VARCHAR(50) NOT NULL,
+    attendees VARCHAR(100) NOT NULL, -- Student, Student + Parent/Guardian, Parent/Guardian
+    guidance_topics TEXT,
+    declaration_confirmed BOOLEAN DEFAULT true,
+    status VARCHAR(30) DEFAULT 'pending_review', -- pending_review, confirmed, completed, cancelled
     created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
@@ -629,6 +683,21 @@ CREATE POLICY "Public read active banners" ON public.banners FOR SELECT USING (i
 
 DROP POLICY IF EXISTS "Public read resources" ON public.resources;
 CREATE POLICY "Public read resources" ON public.resources FOR SELECT USING (true);
+
+-- JOB APPLICATIONS & CAREER COUNSELLING (STRICT PRIVACY)
+ALTER TABLE public.job_applications ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Public can submit job application" ON public.job_applications;
+CREATE POLICY "Public can submit job application" ON public.job_applications FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Admins read job applications" ON public.job_applications;
+CREATE POLICY "Admins read job applications" ON public.job_applications FOR SELECT USING (public.is_admin());
+
+ALTER TABLE public.career_counselling_registrations ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Public can submit career counselling registration" ON public.career_counselling_registrations;
+CREATE POLICY "Public can submit career counselling registration" ON public.career_counselling_registrations FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Admins read career counselling registrations" ON public.career_counselling_registrations;
+CREATE POLICY "Admins read career counselling registrations" ON public.career_counselling_registrations FOR SELECT USING (public.is_admin());
 
 
 -- ==============================================================================

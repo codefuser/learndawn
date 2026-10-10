@@ -449,7 +449,7 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Column 2: Learning Ecosystem */}
+            {/* Column 2: Learning Ecosystem & Mentorship */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 pb-2.5 border-b border-zinc-800/80">
                 <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-500">
@@ -459,12 +459,14 @@ export const Footer: React.FC = () => {
               </div>
               <ul className="space-y-2 text-xs">
                 {[
-                  { name: 'Dawn Studio', href: '/courses', badge: 'LIVE' },
+                  { name: '1:1 Mentorship', href: '/mentorship' },
+                  { name: 'OnePod Learning', href: '/about#onepod' },
+                  { name: 'Group Learning', href: '/about#group-learning' },
+                  { name: 'Career Guidance', href: '/career-guidance', badge: 'SESSIONS' },
+                  { name: 'Academic Counselling', href: '/academic-counselling' },
+                  { name: 'Dawn Studio Batches', href: '/courses', badge: 'LIVE' },
                   { name: 'CBT Practice Hub', href: '/practice', badge: 'NEW' },
                   { name: '4-Layer NCERT', href: '/learning-system' },
-                  { name: '1:1 Mentorship', href: '/mentorship' },
-                  { name: 'Daily Mock Tests', href: '/practice' },
-                  { name: 'Performance AI', href: '/learning-system' },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link
@@ -527,22 +529,23 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Column 4: Academic Council & Trust */}
+            {/* Column 4: Academic Council, Careers & Support */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 pb-2.5 border-b border-zinc-800/80">
                 <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500">
                   <Award className="w-3.5 h-3.5" />
                 </div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white">Academy</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white">Academy &amp; Support</h4>
               </div>
               <ul className="space-y-2 text-xs">
                 {[
                   { name: 'About Academy', href: '/about' },
-                  { name: 'Faculty Credentials', href: '/about#collaborators' },
-                  { name: 'Methodology', href: '/learning-system' },
-                  { name: 'Careers & Faculty', href: '/about#careers', badge: 'HIRING' },
-                  { name: 'Student Desk', href: '/contact#support' },
-                  { name: 'Helpline & Contact', href: '/contact' },
+                  { name: 'Student Desk', href: '/student-desk', badge: '24/7' },
+                  { name: 'Mental Health & Care', href: '/mental-health', badge: '112' },
+                  { name: 'Job Opportunities', href: '/careers', badge: 'HIRING' },
+                  { name: 'Build With LearnDawn', href: '/careers#build-with-learndawn' },
+                  { name: 'Collaborators', href: '/about#collaborators' },
+                  { name: 'Admissions & Contact', href: '/contact' },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link
@@ -554,7 +557,11 @@ export const Footer: React.FC = () => {
                         <span>{item.name}</span>
                       </span>
                       {item.badge && (
-                        <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-600/20 text-emerald-400 border border-emerald-500/30">
+                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                          item.badge === 'HIRING'
+                            ? 'bg-rose-600/20 text-rose-400 border border-rose-500/30'
+                            : 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/30'
+                        }`}>
                           {item.badge}
                         </span>
                       )}

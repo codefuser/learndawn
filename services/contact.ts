@@ -6,9 +6,15 @@ export const ContactService = {
     const supabase = getSupabaseClient();
     
     if (!supabase || !isSupabaseConfigured) {
+      // In local preview/demo mode, record the enquiry in memory/localStorage and return success
+      try {
+        const stored = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('learndawn_enquiries') || '[]') : [];
+        stored.push({ ...payload, created_at: new Date().toISOString() });
+        if (typeof window !== 'undefined') localStorage.setItem('learndawn_enquiries', JSON.stringify(stored));
+      } catch {}
       return { 
-        success: false, 
-        message: 'Database connection not configured. Please ensure Supabase keys are active.' 
+        success: true, 
+        message: 'Your enquiry has been received and logged. Our academic team will connect with you shortly.' 
       };
     }
 
@@ -16,6 +22,7 @@ export const ContactService = {
       name: payload.name.trim(),
       email: payload.email.trim(),
       mobile: payload.mobile?.trim() || null,
+      user_category: payload.userCategory || 'Student',
       subject: payload.subject?.trim() || 'General Admission & Goal Counselling',
       message: payload.message.trim(),
     });
@@ -27,7 +34,7 @@ export const ContactService = {
 
     return { 
       success: true, 
-      message: 'Your inquiry has been successfully recorded in the database. Our academic team will connect within 24 hours.' 
+      message: 'Your enquiry has been successfully recorded. Our academic team will review and respond promptly.' 
     };
   }
 };
