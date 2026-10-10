@@ -90,9 +90,11 @@ export const Footer: React.FC = () => {
       {/* Giant Architectural Watermark */}
       <div 
         aria-hidden="true" 
-        className="absolute -bottom-10 left-1/2 -translate-x-1/2 select-none pointer-events-none font-black text-[13vw] tracking-[0.22em] text-white/[0.015] whitespace-nowrap uppercase z-0 font-sans"
+        className="absolute -bottom-6 sm:-bottom-8 md:-bottom-10 inset-x-0 w-full flex items-center justify-center select-none pointer-events-none z-0 overflow-hidden px-4"
       >
-        LEARNDAWN
+        <span className="font-black text-[clamp(2.5rem,11vw,11rem)] tracking-[0.05em] sm:tracking-[0.08em] md:tracking-[0.10em] text-white/[0.02] dark:text-white/[0.025] whitespace-nowrap uppercase font-sans text-center leading-none">
+          LEARNDAWN
+        </span>
       </div>
 
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 space-y-16">

@@ -122,9 +122,9 @@ export const Navbar: React.FC = () => {
             {/* Home */}
             <Link
               href="/"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                 pathname === '/'
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -140,9 +140,9 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isProgramsActive || programsOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -237,9 +237,9 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLearningOpen(!learningOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isLearningActive || learningOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -258,7 +258,7 @@ export const Navbar: React.FC = () => {
                 <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/courses"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400">
                       <GraduationCap className="w-4 h-4" />
@@ -271,7 +271,7 @@ export const Navbar: React.FC = () => {
 
                   <Link
                     href="/learning-system"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
                       <Layers className="w-4 h-4" />
@@ -284,7 +284,7 @@ export const Navbar: React.FC = () => {
 
                   <Link
                     href="/practice"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400">
                       <CheckCircle2 className="w-4 h-4" />
@@ -301,9 +301,9 @@ export const Navbar: React.FC = () => {
             {/* Mentorship */}
             <Link
               href="/mentorship"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                 pathname.startsWith('/mentorship')
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -313,9 +313,9 @@ export const Navbar: React.FC = () => {
             {/* Resources */}
             <Link
               href="/resources"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                 pathname.startsWith('/resources')
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -331,9 +331,9 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isAboutActive || aboutOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -352,7 +352,7 @@ export const Navbar: React.FC = () => {
                 <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/about"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <BookOpen className="w-4 h-4 text-red-500" />
                     <div>
@@ -363,7 +363,7 @@ export const Navbar: React.FC = () => {
 
                   <Link
                     href="/contact"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <PhoneCall className="w-4 h-4 text-red-500" />
                     <div>
@@ -503,13 +503,13 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href="/auth/sign-in"
-                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
+                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0 cursor-pointer outline-none focus:outline-none"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden"
+                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden cursor-pointer outline-none focus:outline-none"
                 >
                   <span>{t('nav.signUp')}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" />

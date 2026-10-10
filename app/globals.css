@@ -32,6 +32,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Ensure all buttons, links, and interactive elements show the hand pointer on hover */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
 /* Custom Theme-Matched Slim Scrollbars across all browsers and elements */
 * {
   scrollbar-width: thin;
