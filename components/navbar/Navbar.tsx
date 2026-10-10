@@ -24,7 +24,12 @@ import {
   PhoneCall,
   CheckCircle2,
   Stethoscope,
-  Cpu
+  Cpu,
+  Compass,
+  Heart,
+  Briefcase,
+  Headphones,
+  Users
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -37,11 +42,14 @@ export const Navbar: React.FC = () => {
   // Navigation Dropdown states for Desktop / Laptop
   const [programsOpen, setProgramsOpen] = useState(false);
   const [learningOpen, setLearningOpen] = useState(false);
+  const [guidanceOpen, setGuidanceOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
 
   // Mobile sub-accordions
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
   const [mobileLearningOpen, setMobileLearningOpen] = useState(false);
+  const [mobileGuidanceOpen, setMobileGuidanceOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
 
   const pathname = usePathname();
   const { user, signOut, switchDemoRole } = useAuth();
@@ -49,6 +57,7 @@ export const Navbar: React.FC = () => {
 
   const programsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const learningTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const guidanceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const aboutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -63,6 +72,7 @@ export const Navbar: React.FC = () => {
     if (programsTimeoutRef.current) clearTimeout(programsTimeoutRef.current);
     setProgramsOpen(true);
     setLearningOpen(false);
+    setGuidanceOpen(false);
     setAboutOpen(false);
   };
   const handleProgramsLeave = () => {
@@ -73,10 +83,22 @@ export const Navbar: React.FC = () => {
     if (learningTimeoutRef.current) clearTimeout(learningTimeoutRef.current);
     setLearningOpen(true);
     setProgramsOpen(false);
+    setGuidanceOpen(false);
     setAboutOpen(false);
   };
   const handleLearningLeave = () => {
     learningTimeoutRef.current = setTimeout(() => setLearningOpen(false), 150);
+  };
+
+  const handleGuidanceEnter = () => {
+    if (guidanceTimeoutRef.current) clearTimeout(guidanceTimeoutRef.current);
+    setGuidanceOpen(true);
+    setProgramsOpen(false);
+    setLearningOpen(false);
+    setAboutOpen(false);
+  };
+  const handleGuidanceLeave = () => {
+    guidanceTimeoutRef.current = setTimeout(() => setGuidanceOpen(false), 150);
   };
 
   const handleAboutEnter = () => {
@@ -84,6 +106,7 @@ export const Navbar: React.FC = () => {
     setAboutOpen(true);
     setProgramsOpen(false);
     setLearningOpen(false);
+    setGuidanceOpen(false);
   };
   const handleAboutLeave = () => {
     aboutTimeoutRef.current = setTimeout(() => setAboutOpen(false), 150);
@@ -91,7 +114,8 @@ export const Navbar: React.FC = () => {
 
   const isProgramsActive = ['/exams', '/academics'].some(p => pathname.startsWith(p));
   const isLearningActive = ['/courses', '/learning-system', '/practice'].some(p => pathname.startsWith(p));
-  const isAboutActive = ['/about', '/contact'].some(p => pathname.startsWith(p));
+  const isGuidanceActive = ['/mentorship', '/career-guidance', '/academic-counselling'].some(p => pathname.startsWith(p));
+  const isAboutActive = ['/about', '/student-desk', '/mental-health', '/careers', '/contact'].some(p => pathname.startsWith(p));
 
   return (
     <>
@@ -122,9 +146,9 @@ export const Navbar: React.FC = () => {
             {/* Home */}
             <Link
               href="/"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                 pathname === '/'
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
@@ -140,9 +164,9 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setProgramsOpen(!programsOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isProgramsActive || programsOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
@@ -237,14 +261,14 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLearningOpen(!learningOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isLearningActive || learningOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <span className="hidden xl:inline">Courses & System</span>
-                <span className="xl:hidden">Courses</span>
+                <span className="hidden xl:inline">Learning Systems</span>
+                <span className="xl:hidden">Systems</span>
                 <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${learningOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
@@ -257,11 +281,39 @@ export const Navbar: React.FC = () => {
               >
                 <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
+                    href="/about#onepod"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                      <Users className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">OnePod Learning System</div>
+                      <div className="text-[11px] text-slate-500">Personalised Mentorship Model</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/about#group-learning"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                      <GraduationCap className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Group Learning System</div>
+                      <div className="text-[11px] text-slate-500">Collaborative Live Batches</div>
+                    </div>
+                  </Link>
+
+                  <div className="my-1 border-t border-slate-100 dark:border-zinc-800/60" />
+
+                  <Link
                     href="/courses"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400">
-                      <GraduationCap className="w-4 h-4" />
+                      <Layers className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Video Masterclasses</div>
@@ -271,10 +323,10 @@ export const Navbar: React.FC = () => {
 
                   <Link
                     href="/learning-system"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
-                      <Layers className="w-4 h-4" />
+                      <Award className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">4-Layer Learning</div>
@@ -284,7 +336,7 @@ export const Navbar: React.FC = () => {
 
                   <Link
                     href="/practice"
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
                     <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400">
                       <CheckCircle2 className="w-4 h-4" />
@@ -298,31 +350,89 @@ export const Navbar: React.FC = () => {
               </div>
             </div>
 
-            {/* Mentorship */}
-            <Link
-              href="/mentorship"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
-                pathname.startsWith('/mentorship')
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
-              }`}
+            {/* Guidance & Mentorship Dropdown */}
+            <div 
+              className="relative shrink-0"
+              onMouseEnter={handleGuidanceEnter}
+              onMouseLeave={handleGuidanceLeave}
             >
-              {t('nav.mentorship')}
-            </Link>
+              <button
+                type="button"
+                onClick={() => setGuidanceOpen(!guidanceOpen)}
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
+                  isGuidanceActive || guidanceOpen
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
+                }`}
+              >
+                <span className="hidden xl:inline">Guidance & Mentorship</span>
+                <span className="xl:hidden">Guidance</span>
+                <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${guidanceOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
+              </button>
+
+              <div 
+                className={`absolute left-0 top-full pt-1.5 w-64 z-50 transition-all duration-200 ease-out origin-top ${
+                  guidanceOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
+                }`}
+              >
+                <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
+                  <Link
+                    href="/mentorship"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                      <Users className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">1:1 Mentorship</div>
+                      <div className="text-[11px] text-slate-500">Personal Guidance & Error Analysis</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/career-guidance"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                      <Compass className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Career Guidance</div>
+                      <div className="text-[11px] text-slate-500">Explore Pathways & 5-Step Session</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/academic-counselling"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400">
+                      <BookOpen className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Academic Counselling</div>
+                      <div className="text-[11px] text-slate-500">Course, Stream & Medical Guidance</div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
 
             {/* Resources */}
             <Link
               href="/resources"
-              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors ${
+              className={`px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-colors cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                 pathname.startsWith('/resources')
-                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800'
+                  ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
               }`}
             >
               {t('nav.resources')}
             </Link>
 
-            {/* About & Contact Dropdown */}
+            {/* About & Support Dropdown */}
             <div 
               className="relative shrink-0"
               onMouseEnter={handleAboutEnter}
@@ -331,19 +441,19 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all ${
+                className={`group flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-lg whitespace-nowrap shrink-0 transition-all cursor-pointer outline-none focus:outline-none focus:ring-0 ${
                   isAboutActive || aboutOpen
-                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900 border border-transparent dark:border-zinc-800 shadow-xs'
+                    ? 'text-red-500 font-bold bg-zinc-100 dark:bg-zinc-900'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <span className="hidden xl:inline">About & Contact</span>
+                <span className="hidden xl:inline">About & Support</span>
                 <span className="xl:hidden">About</span>
                 <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-300 ${aboutOpen ? 'rotate-180 text-red-500' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
               <div 
-                className={`absolute right-0 top-full pt-1.5 w-52 z-50 transition-all duration-200 ease-out origin-top ${
+                className={`absolute right-0 top-full pt-1.5 w-60 z-50 transition-all duration-200 ease-out origin-top ${
                   aboutOpen
                     ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
                     : 'opacity-0 -translate-y-2 scale-95 pointer-events-none invisible'
@@ -352,23 +462,58 @@ export const Navbar: React.FC = () => {
                 <div className="bg-white dark:bg-[#0c0c0f]/95 backdrop-blur-xl rounded-2xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-slate-200/80 dark:border-zinc-800/80 p-2 text-xs">
                   <Link
                     href="/about"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
-                    <BookOpen className="w-4 h-4 text-red-500" />
+                    <BookOpen className="w-4 h-4 text-red-500 shrink-0" />
                     <div>
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">About Academy</div>
-                      <div className="text-[10px] text-slate-500">Mission, Faculty & Council</div>
+                      <div className="text-[10px] text-slate-500">Reaching the Unreached</div>
                     </div>
                   </Link>
 
                   <Link
-                    href="/contact"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition"
+                    href="/student-desk"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
                   >
-                    <PhoneCall className="w-4 h-4 text-red-500" />
+                    <Headphones className="w-4 h-4 text-blue-500 shrink-0" />
                     <div>
-                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Admissions & Contact</div>
-                      <div className="text-[10px] text-slate-500">Helpline & Pan-India Desk</div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Student Desk</div>
+                      <div className="text-[10px] text-slate-500">Central Help &amp; Toll-Free</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/mental-health"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <Heart className="w-4 h-4 text-rose-500 shrink-0" />
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Mental Health &amp; Care</div>
+                      <div className="text-[10px] text-slate-500">Student Well-Being &amp; Emergency 112</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/careers"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <Briefcase className="w-4 h-4 text-amber-500 shrink-0" />
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Build With LearnDawn</div>
+                      <div className="text-[10px] text-slate-500">Job Opportunities &amp; Careers</div>
+                    </div>
+                  </Link>
+
+                  <div className="my-1 border-t border-slate-100 dark:border-zinc-800/60" />
+
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/50 group transition cursor-pointer"
+                  >
+                    <PhoneCall className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Contact &amp; Admissions</div>
+                      <div className="text-[10px] text-slate-500">Enquiries &amp; Support Channels</div>
                     </div>
                   </Link>
                 </div>
@@ -503,13 +648,13 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <Link
                   href="/auth/sign-in"
-                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0"
+                  className="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-red-600 dark:hover:text-red-400 transition whitespace-nowrap shrink-0 cursor-pointer outline-none focus:outline-none"
                 >
                   {t('nav.login')}
                 </Link>
                 <Link
                   href="/auth/sign-up"
-                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden"
+                  className="hidden md:inline-flex group relative px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-md shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all items-center gap-1.5 whitespace-nowrap shrink-0 overflow-hidden cursor-pointer outline-none focus:outline-none"
                 >
                   <span>{t('nav.signUp')}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" />
@@ -595,14 +740,14 @@ export const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              {/* Mobile Accordion: Courses & System */}
+              {/* Mobile Accordion: Learning Systems */}
               <div>
                 <button
                   type="button"
                   onClick={() => setMobileLearningOpen(!mobileLearningOpen)}
                   className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
                 >
-                  <span>Courses & System</span>
+                  <span>Learning Systems</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileLearningOpen ? 'rotate-180 text-red-500' : ''}`} />
                 </button>
                 <div
@@ -610,23 +755,57 @@ export const Navbar: React.FC = () => {
                     mobileLearningOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
                   }`}
                 >
+                  <Link href="/about#onepod" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">OnePod Learning System</Link>
+                  <Link href="/about#group-learning" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Group Learning System</Link>
                   <Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Video Masterclasses</Link>
                   <Link href="/learning-system" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">4-Layer Learning Ecosystem</Link>
                   <Link href="/practice" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-red-600 transition">Dawn CBT Practice</Link>
                 </div>
               </div>
 
-              <Link
-                href="/mentorship"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
-                  pathname.startsWith('/mentorship')
-                    ? 'bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
-              >
-                {t('nav.mentorship')}
-              </Link>
+              {/* Mobile Accordion: Guidance & Mentorship */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setMobileGuidanceOpen(!mobileGuidanceOpen)}
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                >
+                  <span>Guidance & Mentorship</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileGuidanceOpen ? 'rotate-180 text-red-500' : ''}`} />
+                </button>
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-indigo-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileGuidanceOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/mentorship" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-indigo-600 transition">1:1 Mentorship</Link>
+                  <Link href="/career-guidance" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-indigo-600 transition">Career Guidance & Sessions</Link>
+                  <Link href="/academic-counselling" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-indigo-600 transition">Academic Counselling</Link>
+                </div>
+              </div>
+
+              {/* Mobile Accordion: About & Support */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                >
+                  <span>About & Support</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileAboutOpen ? 'rotate-180 text-red-500' : ''}`} />
+                </button>
+                <div
+                  className={`pl-4 space-y-1 border-l-2 border-blue-500/40 ml-4 transition-all duration-300 ease-in-out overflow-hidden ${
+                    mobileAboutOpen ? 'max-h-96 opacity-100 my-1 py-1' : 'max-h-0 opacity-0 my-0 py-0'
+                  }`}
+                >
+                  <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 transition">About Academy</Link>
+                  <Link href="/student-desk" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 transition">Student Desk Support</Link>
+                  <Link href="/mental-health" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-rose-600 transition">Mental Health & Care (112)</Link>
+                  <Link href="/careers" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-amber-600 transition">Build With LearnDawn & Careers</Link>
+                  <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition">Contact & Admissions</Link>
+                </div>
+              </div>
 
               <Link
                 href="/resources"
@@ -638,30 +817,6 @@ export const Navbar: React.FC = () => {
                 }`}
               >
                 {t('nav.resources')}
-              </Link>
-
-              <Link
-                href="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
-                  pathname.startsWith('/about')
-                    ? 'bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
-              >
-                About Academy
-              </Link>
-
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
-                  pathname.startsWith('/contact')
-                    ? 'bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
-              >
-                Contact & Admissions
               </Link>
             </nav>
 

@@ -211,8 +211,84 @@ export interface ContactFormValues {
   name: string;
   email: string;
   mobile: string;
+  userCategory?: 'Student' | 'Parent' | 'Educator' | 'Professional' | 'Institution' | 'Other';
   subject: string;
   message: string;
+}
+
+export interface JobListing {
+  id: string;
+  number: number;
+  title: string;
+  category: 'Academic & Education' | 'Mentorship & Counselling' | 'Media & Creative' | 'Operations & Student Support';
+  description: string;
+  compensation: string;
+  status: 'Available' | 'Apply now' | 'No Current Vacancies';
+  isAvailable: boolean;
+}
+
+export interface JobApplicationFormValues {
+  // A. Personal Details
+  fullName: string;
+  email: string;
+  mobile: string;
+  location: string;
+  age?: string;
+
+  // B. Position Details
+  positionAppliedFor: string;
+  preferredWorkMode: 'Online / Remote' | 'Hybrid' | 'On-site';
+  availability: 'Full-time' | 'Part-time' | 'Contract' | 'Flexible';
+
+  // C. Education & Experience
+  highestQualification: string;
+  currentStatus: 'Student' | 'Graduate' | 'Working Professional' | 'Freelancer' | 'Other';
+  relevantExperience?: string;
+  keySkills: string;
+
+  // D. Portfolio & Documents
+  resumeUrl?: string;
+  resumeFileName?: string;
+  portfolioUrl?: string;
+  linkedInUrl?: string;
+
+  // E. Your Interest in LearnDawn
+  whyJoin: string;
+  whyConsider: string;
+  additionalInfo?: string;
+}
+
+export interface CareerCounsellingFormValues {
+  // A. Student Details
+  fullName: string;
+  dobOrAge: string;
+  mobile: string;
+  email: string;
+  cityDistrictState: string;
+
+  // B. Academic Details
+  currentClass: string;
+  schoolCollegeName?: string;
+  academicStream: string;
+  recentAcademicPerformance?: string;
+
+  // C. Career Interests
+  preferredCareerCourse: string;
+  areasOfInterest: string;
+  entranceExam?: string;
+  careerConcern: string;
+
+  // D. Session Details
+  preferredMode: 'Online' | 'In-person';
+  preferredDate: string;
+  preferredTimeSlot: string;
+  attendees: 'Student' | 'Student + Parent/Guardian' | 'Parent/Guardian';
+
+  // E. Additional Information
+  guidanceTopics?: string;
+
+  // F. Declaration
+  declarationConfirmed: boolean;
 }
 
 export interface SearchResultItem {
